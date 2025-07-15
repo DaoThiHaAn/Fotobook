@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md sticky-top" data-controller="navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center gap-3">
+            <%= image_tag "logo.png", alt: "Fotobook logo", size: "50x40" %>
+            <!-- TODO: changed when admin login-->
+            <span><%= t('nav.app_name')%></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" 
+                data-action="click->navbar#toggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar" data-navbar-target="collapse">
+            <!-- TODO: SEARCH BAR (press enter to submit)-->
+            <form>
+                <input class="form-control" type="text" placeholder="Search Photo / Album">
+            </form>
+            
+            <!-- TODO: VIEW AUTHOURIZATION-->
+            <ul class="navbar-nav ms-auto gap-3 align-items-center justify-content-start"> <!-- push these elements to the right-->             
+                <li class="nav-item d-flex align-items-center ms-2 profile">
+                    <%= image_tag "demo-avatar.png", alt: "Profile Avatar", class: "avatar" %>
+                    <span>username</span>
+                </li>
+
+                <li class="nav-item btn-group">
+                    <button class="btn login-btn">
+                        <%= t('button.login') %>
+                    </button>
+
+                    <button class="btn signup-btn">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <%= t('button.signup') %>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>

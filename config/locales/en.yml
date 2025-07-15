@@ -28,4 +28,55 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  nav:
+    app_name: "Fotobook"
+    admin: "Fotobook Admin"
+
+  sidebar:
+    feeds: "Feeds"
+    discover: "Discover"
+    mng_photos: "Manage Photos"
+    mng_albums: "Manage Albums"
+    mng_users: "Manage Users"
+
+  button:
+    photo: "Photo"
+    album: "Album"
+    save: "Save"
+    previous: "Previous"
+    next: "Next"
+    signup: "Sign Up"
+    login: "Login"
+    logout: "Logout"
+    follow_action: "follow"
+    follower: "Follower"
+    following: "Following"
+    edit_profile: "Edit Profile"
+    delete: "Delete"
+    cancel: "Cancel"
+    add_photo: "Add Photo"
+    add_album: "Add Album"
+    edit: "Edit"
+    change: "Change"
+    back: "Back"
+
+  form:
+    profile:
+      admin_edit_title: "Edit User Profile"
+      email: "Email"
+      fname: "First Name"
+      lname: "Last Name"
+      active: "Active?"
+      password: "Password"
+      password_confirmation: "Password Confirmation"
+      forgot_password: "Forgot Password?"
+      create_account: "Create Account"
+
+    post:
+      edit_album_title: "Edit Album"
+      edit_photo_title: "Edit Photo"
+      description: "Description"
+      mode: "Sharing Mode"
+      public: "Public"
+      private: "Private"  
+  
