@@ -28,11 +28,11 @@
 </aside>
 
 <!-- RESPONSIVE MODE -->
-<button class="btn sidebar-toggle-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#sidebar-offcanvas" aria-controls="sidebar-offcanvas" title="Open sidebar">
+<button class="sidebar-toggle-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#sidebar-offcanvas" aria-controls="sidebar-offcanvas" title="Open sidebar">
     <i class="fa-regular fa-square-caret-right"></i>
 </button>
 
-<aside class="offcanvas offcanvas-start offcanvas-lg custom-sidebar responsive" id="sidebar-offcanvas"
+<aside class="offcanvas offcanvas-start offcanvas-lg custom-sidebar responsive d-lg-none" id="sidebar-offcanvas"
         data-controller="sidebar" data-sidebar-target="sidebar">
     <div class="offcanvas-header">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -41,24 +41,24 @@
     <div class="offcanvas-body">
         <nav class="nav flex-column">
             <!-- TODO: Authorization-->
-            <a class="nav-link sidebar-link" href="#">
+            <a class="sidebar-link" href="#">
                 <i class="fa-solid fa-house me-2"></i>
                 <%= t('sidebar.feeds')%>
             </a>
-            <a class="nav-link sidebar-link" href="#">
+            <a class="sidebar-link" href="#">
                 <i class="fa-solid fa-compass me-2"></i>
                 <%= t('sidebar.discover')%>
             </a>
                         
-            <a class="nav-link sidebar-link" href="#">
+            <a class="sidebar-link" href="#">
                 <i class="fa-solid fa-images me-2"></i>
                 <%= t('sidebar.mng_photos')%>
             </a>
-            <a class="nav-link sidebar-link" href="#">
+            <a class="sidebar-link" href="#">
                 <i class="fa-solid fa-folder me-2"></i>
                 <%= t('sidebar.mng_albums')%>
             </a>
-            <a class="nav-link sidebar-link" href="#">
+            <a class="sidebar-link" href="#">
                 <i class="fa-solid fa-users me-2"></i>
                 <%= t('sidebar.mng_users')%>
             </a>
