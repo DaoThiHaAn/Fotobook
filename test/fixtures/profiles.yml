@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  photos_count: 1
+  albums_count: 1
+  followers_count: 1
+  followings_count: 1
+
+two:
+  photos_count: 1
+  albums_count: 1
+  followers_count: 1
+  followings_count: 1
