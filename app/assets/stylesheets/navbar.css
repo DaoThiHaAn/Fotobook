@@ -1,0 +1,87 @@
+.navbar {
+    background-color: var(--dark-blue);
+    min-height: 70px;
+    border-bottom: 1px solid var(--form-color); ;
+}
+
+.navbar-brand span {
+    font-size: 1.3rem !important;
+}
+
+.navbar-brand img {
+    width: 50px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.nav-item, .navbar-brand {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-collapse.show {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.041);
+    border-radius: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+.navbar-collapse.show .profile {
+    margin-top: 15px;
+}
+
+nav .marked-btn {
+    background-color: whitesmoke;
+    border: var(--marked-btn-color) solid 2px;
+    color: var(--marked-btn-color) ;
+    transition: all 0.3s ease;
+    border-radius: 5px !important;
+}
+
+nav .marked-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #617bb4;
+}
+
+nav .marked-btn:active {
+    font-weight: bolder;
+}
+
+.navbar-toggler {
+    background-color: #647bac;
+}
+.navbar-toggler:focus {
+    outline: grey 2px solid !important;
+    box-shadow: none !important;
+    border-color: transparent !important; /* Just in case there's a default border */
+}
+
+.navbar-toggler-icon {
+    /* For Bootstrap's default toggler icon (SVG background), use filter: */
+    filter: invert(1) brightness(1);
+}
+
+nav .login-btn {
+    background-color: var(--marked-btn-color);
+    color: #c8cedd;
+    border: none;
+}
+
+nav .login-btn:active {
+    font-weight: bolder;
+}
+
+.nav-item.btn-group {
+    padding: 2px;
+    background-color: var(--marked-btn-color) !important;
+    border-radius: 0;
+}

@@ -7,7 +7,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     
     <meta name='description' content="<%= content_for?(:meta_description)? yield(:meta_description) : "Fotobook is for sharing your photos and abulms with everyone"%>">
-    <meta name="keywords" content="<%= content_for?(:meta_keywords)? yield(:meta_keywords) : "fotobooks, photos, ablums, sharing"%>">
+    <meta name="keywords" content="<%= content_for?(:meta_keywords)? "fotobooks, photos, ablums, sharing #{yield(:meta_keywords)}" : "fotobooks, photos, ablums, sharing"%>">
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -36,6 +36,7 @@
   <body>
     <%= render 'layouts/navbar' %>
     <div class="main-content d-flex">
+      <!--TODO only rendered after login -->
       <%= render 'layouts/sidebar' %>
       <main class="content-area">
         <%= yield %>

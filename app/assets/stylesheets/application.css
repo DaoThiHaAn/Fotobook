@@ -8,10 +8,16 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+@import url("navbar.css");
+@import url("sidebar.css");
+@import url("auth.css");
+
 :root {
 --dark-blue: #3C5999;
 --plholder-color: rgb(156, 156, 156);
---border-btn-color: rgb(35, 53, 91);
+--marked-btn-color: rgb(35, 53, 91);
+--primary-btn-hover: #26829b;
+--form-color: rgba(219, 234, 248, 0.93);
 font-size: 17px;
 }
 
@@ -20,6 +26,7 @@ body {
     background-color: whitesmoke;
     padding: 0;
     margin: 0;
+    height: 100vh;
 }
 
 input::placeholder, textarea::placeholder {
@@ -28,142 +35,50 @@ input::placeholder, textarea::placeholder {
     color: var(--plholder-color) !important;
 }
 
+input, textarea {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--plholder-color);
+    padding: 3px 10px;
+}
+input, textarea {
+    font-size: 1rem;
+    color: #333;
+    background-color: white;
+}
+input:focus, textarea:focus {
+    border-width: 2px;
+    border-color: var(--dark-blue);
+}
+
 button, a {
     cursor: pointer;
 }
 
 a {
-    text-decoration: none;;
+    text-decoration: none;
+    color: inherit;
 }
 
-/* NAVBAR */
-.navbar {
+.custom-primary-btn {
+    border: none;
     background-color: var(--dark-blue);
-    min-height: 70px;
-}
-
-.navbar-brand span {
-    font-size: 1.3rem !important;
-}
-
-.nav-item, .navbar-brand {
-    color: white !important;
+    color: white;
     font-weight: bold;
-}
-
-.navbar-collapse.show {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.041);
-    border-radius: 10px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 8px;
-}
-
-.navbar-collapse.show .profile {
-    margin-top: 15px;
-}
-
-nav .signup-btn {
-    background-color: whitesmoke;
-    border: var(--border-btn-color) solid 2px;
-    color: var(--border-btn-color) ;
+    padding: 7px 20px;
+    border-radius: 5px;
+    width: fit-content;
     transition: all 0.3s ease;
-    border-radius: 5px !important;
-}
+} 
 
-nav .signup-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background-color: #617bb4;
+.custom-primary-btn:hover {
+    background-color: var(--primary-btn-hover);
+    box-shadow: 0 4px 10px rgba(31, 62, 119, 0.379);
 }
-
-nav .signup-btn:active {
-    font-weight: bolder;
-}
-
-.navbar-toggler {
-    background-color: #647bac;
-}
-.navbar-toggler:focus {
-    outline: grey 2px solid !important;
-    box-shadow: none !important;
-    border-color: transparent !important; /* Just in case there's a default border */
-}
-
-.navbar-toggler-icon {
-    /* For Bootstrap's default toggler icon (SVG background), use filter: */
-    filter: invert(1) brightness(1);
-}
-
-nav .login-btn {
-    background-color: var(--border-btn-color);
-    color: #c8cedd;
-    border: none;
-}
-
-nav .login-btn:active {
-    font-weight: bolder;
-}
-
-.btn-group {
-    padding: 2px;
-    background-color: var(--border-btn-color) !important;
-    border-radius: 0;
-}
-
-/* SIDEBAR */
-.custom-sidebar {
-    flex: 1;
-    min-height: 100vh;
-    align-items: center;
-    position: sticky
-}
-
-.custom-sidebar .offcanvas-body {
-    padding: 0 10px 0;
-}
-
-.custom-sidebar.responsive {
-    border-right: 1px solid #dee2e6;
-    background-color: #f8f9fa;
-    width: fit-content !important;
-    position: absolute;
-}
-
-.sidebar-link {
-    color: #84888b !important;
-    padding: 10px;
-    margin: 4px 0;
-    transition: all 0.1s ease;
-}
-
-.sidebar-link:hover {
-    color: var(--dark-blue) !important;
-    font-size: 1.1rem;
-    font-weight: bold;
-    width: 100%;
-}
-
-.sidebar-toggle-btn {
-    margin-top: 20px;
-    position: fixed;
-    left: 0;
-    z-index: 1000;
-    font-size: 1.5rem;
-    border: none;
-    background-color: transparent;
-}
-
+ 
 /* Main Content Layout */
 .main-content {
-    min-height: calc(100vh - 70px);
+    height: 100%;
     margin: 0;
 }
 

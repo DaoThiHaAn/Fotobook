@@ -1,0 +1,64 @@
+.auth-form-container {
+    background-image: url('wallpaper.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.auth-form-container .card {
+    background-color: var(--form-color);
+    height: fit-content;
+}
+
+.social-login img {
+    width: 50px;
+    height: auto;
+}
+
+.social-login img:hover {
+    box-shadow: 0 3px 10px rgba(10, 13, 101, 0.4);
+    border-radius: 50%;
+}
+
+.auth-form {
+    max-width: 80%;
+}
+
+.auth-form-container p i {
+    color: var(--dark-blue);
+}
+
+.auth-form label {
+    margin-bottom: 10px;
+}
+
+.pw-field {
+    position: relative;
+    width: fit-content
+}
+
+.pw-field input {
+    padding-right: 30px;
+    width: 100%;
+}
+
+.togglePw {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 15px;
+    cursor: pointer;
+}
+
+.custom-link {
+    color: var(--dark-blue);
+    font-size: 1.1rem;
+    font-style: italic;
+
+}
+
+.custom-link:hover {
+    text-decoration: underline;
+}
