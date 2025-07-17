@@ -5,6 +5,7 @@
             <!-- TODO: changed when admin login-->
             <span><%= t('nav.app_name')%></span>
         </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" 
                 data-action="click->navbar#toggle">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +18,14 @@
             </form>
             
             <!-- TODO: VIEW AUTHOURIZATION-->
-            <ul class="navbar-nav ms-auto gap-3 align-items-center justify-content-start"> <!-- push these elements to the right-->            
+            <ul class="navbar-nav ms-auto gap-3 align-items-center justify-content-start"> <!-- push these elements to the right-->  
+                <div class="lang-switcher">
+                    <% other_locale = (I18n.locale == :en) ? :vi : :en %>
+                    <%= link_to url_for(locale: other_locale), title: t('message.switch_lang') do %>
+                        <%= image_tag "#{I18n.locale == :en ? 'en' : 'vi'}.png", alt: "#{I18n.locale == :en ? 'English' : 'Vietnamese'} flag", class: "lang-icon" %>
+                    <% end %> 
+                </div>
+
                 <%unless session[:current_user_id]%>
                     <li class="nav-item btn-group">
                         <%= link_to login_path, class: "btn login-btn" do %>

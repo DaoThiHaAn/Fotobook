@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ "collapse" ]
+    static targets = [ "collapse", "lang" ]
 
     connect() {
         console.log("navbar_controller.js connected!")

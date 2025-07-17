@@ -8,28 +8,30 @@
     <div class="card-body">
         <!-- TODO: Login via third parties-->
         <div class="social-login d-flex gap-5 justify-content-center mb-4">
-            <a href="#", title="Login with Google">
+            <a href="#", title="<%= t('form.profile.login_with', app: "Google") %>">
                 <%= image_tag "google.png",alt: "Google logo" %>
             </a>
 
-            <a href="#", title="Login with Facebook">
+            <a href="#", title="<%= t('form.profile.login_with', app: "Facebook") %>">
                 <%= image_tag "facebook.png", alt: "Facebook logo" %>
             </a>
 
-            <a href="#", title="Login with Twitter">
+            <a href="#", title="<%= t('form.profile.login_with', app: "Twitter") %>">
                 <%= image_tag "twitter.png", alt: "Twitter logo" %>
             </a>
         </div>
 
         <div class="d-flex align-items-center my-4">
             <hr class="flex-grow-1">
-            <span class="mx-3 text-muted text-uppercase fw-medium">Or</span>
+            <span class="mx-3 text-muted text-uppercase fw-medium">
+                <%= t('form.profile.or')%>
+            </span>
             <hr class="flex-grow-1">
         </div>
         
         
         <!-- TODO: handle form-->
-        <%= form_with url: "/login", method: :get, class: "auth-form d-flex flex-column gap-3" do |f| %>
+        <%= form_with url: handle_login_path, method: :post, class: "auth-form d-flex flex-column gap-3" do |f| %>
             <div>
                 <%= f.label :email, t('form.profile.email') %><br/>
                 <%= f.email_field :email, placeholder: t('form.profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, require: true %>
@@ -49,7 +51,7 @@
         <div class="mt-3 text-center">
             <%= link_to t('form.profile.forgot_pw'), forgot_pw_path, class: "custom-link" %>
             <p>
-                Not have an account?
+                <%= t('message.not_have_acc')%>
                 <span><%= link_to t('form.profile.create_acc'), new_user_path, class: "custom-link" %></span>
             </p>
         </div>

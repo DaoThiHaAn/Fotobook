@@ -1,0 +1,63 @@
+vi:
+  nav:
+    app_name: "Fotobook"
+    admin: "Quản trị viên Fotobook"
+
+  sidebar:
+    feeds: "Bảng tin"
+    discover: "Khám phá"
+    mng_photos: "Quản lý Ảnh"
+    mng_albums: "Quản lý Tập ảnh"
+    mng_users: "Quản lý người dùng"
+
+  button:
+    photo: "Ảnh"
+    album: "Bộ sưu tập"
+    save: "Lưu"
+    previous: "Trước"
+    next: "Tiếp"
+    signup: "Đăng ký"
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+    follow_action: "theo dõi"
+    follower: "Người theo dõi"
+    following: "Đang theo dõi"
+    edit_profile: "Chỉnh sửa hồ sơ"
+    delete: "Xóa"
+    cancel: "Hủy"
+    add_photo: "Thêm Ảnh"
+    add_album: "Thêm Tập ảnh"
+    edit: "Sửa"
+    change: "Thay đổi"
+    back: "Quay lại"
+
+  form:
+    profile:
+      admin_edit_title: "Chỉnh sửa hồ sơ người dùng"
+      email: "Email"
+      fname: "Tên"
+      lname: "Họ"
+      active: "Hoạt động?"
+      pw: "Mật khẩu"
+      pw_confirmation: "Xác nhận mật khẩu"
+      forgot_pw: "Quên mật khẩu?"
+      create_acc: "Tạo tài khoản mới"
+      back_to_login: "Quay lại Đăng nhập"
+      or: "Hoặc"
+      login_with: "Đăng nhập với %{app}"
+
+
+    post:
+      edit_album_title: "Chỉnh sửa Tập ảnh"
+      edit_photo_title: "Chỉnh sửa Ảnh"
+      description: "Mô tả"
+      mode: "Chế độ chia sẻ"
+      public: "Công khai"
+      private: "Riêng tư"  
+  
+  message:
+    logout_success: "Bạn đã đăng xuất thành công."
+    login_success: "Bạn đã đăng nhập thành công."
+    signup_success: "Bạn đã đăng ký thành công."
+    not_have_acc: "Bạn chưa có tài khoản?"
+    switch_lang: "Chuyển sang tiếng Anh"

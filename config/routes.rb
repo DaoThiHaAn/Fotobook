@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   get "/login", to: "authentication#login", as: :login
+  post "/login", to: "authenticationa#handle_login", as: :handle_login
   get "/logout", to: "authentication#logout", as: :logout
   get "/forgot_pw", to: "authentication#forgot_pw", as: :forgot_pw
 end

@@ -7,7 +7,7 @@
     <h1 class="card-header text-center"><%= "#{t('nav.app_name')} #{t('button.signup')}" %></h1>
     <div class="card-body">
         <!-- TODO: handle form-->
-        <%= form_with url: "/login", method: :get, class: "auth-form d-flex flex-column gap-3" do |f| %>
+        <%= form_with url: users_path, method: :post, class: "auth-form d-flex flex-column gap-3" do |f| %>
             <div>
                 <%= f.label :email do %>
                   <%= t('form.profile.email') %><span class="text-danger"> *</span>
