@@ -38,7 +38,11 @@
     <div class="main-content d-flex">
       <!--TODO only rendered after login -->
       <%= render 'layouts/sidebar' %>
+      
       <main class="content-area">
+        <% if content_for?(:tab_bar)%>
+          <%= yield(:tab_bar)%>
+        <% end %>
         <%= yield %>
       </main>
     </div>

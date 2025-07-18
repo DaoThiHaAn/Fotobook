@@ -1,0 +1,34 @@
+.main-tabs {
+    background-color: white;
+    padding: 10px 0;;
+}
+
+
+.tab-btn {
+    border: 2px solid var(--dark-blue);
+    padding: 5px 15px;
+    color: rgba(37, 69, 155, 0.607);
+    background-color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.tab-btn.active {
+    border: none;
+    background-color: var(--dark-blue);
+    color: white;
+    opacity: 1;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-btn-hover);
+    color: var(--primary-btn-hover);
+    background-color: white;
+}
+
+.tab-btn.active:hover {
+    background-color: var(--primary-btn-hover);
+    border-color: var(--primary-btn-hover);
+    color: white;
+}

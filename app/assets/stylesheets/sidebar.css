@@ -1,7 +1,15 @@
 .custom-sidebar {
     flex: 1;
     height: 100vh;
-    position: sticky
+    position: sticky;
+    font-size: 0.9rem
+}
+
+.custom-sidebar.welcome {
+    background-image: url('welcome1.png') ;
+    background-size:100% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .custom-sidebar .offcanvas-body {
@@ -11,7 +19,7 @@
 .custom-sidebar.responsive {
     border-right: 1px solid #dee2e6;
     background-color: #f8f9fa;
-    width: 250px !important;
+    width: 200px !important;
     position: absolute;
 }
 
@@ -24,7 +32,7 @@
 
 .sidebar-link:hover {
     color: var(--dark-blue) !important;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     width: 100%;
 }
@@ -34,7 +42,7 @@
     position: fixed;
     left: 0;
     z-index: 1000;
-    font-size: 1.5rem;
+    font-size: 2rem;
     border: none;
     background-color: transparent;
 }

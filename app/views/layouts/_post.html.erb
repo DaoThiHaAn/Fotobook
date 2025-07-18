@@ -1,0 +1,64 @@
+<div class="px-3 pb-5 d-flex flex-wrap justify-content-between card-container">
+<!-- TODO change to local var "post" + authorization + image viewing + dynamic counting-->
+<%20.times do%>
+    <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
+        <div class="post-img">
+            <%= image_tag "demo-avatar.png", alt: t('button.photo') %>
+        </div>
+
+        <div class="d-flex flex-column flex-wrap p-3 post-content">
+            <div class="user d-flex align-items-center mb-3">
+                <%= link_to users_path, title: "Open profile", class:"me-1" do %>
+                    <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "post avatar me-1" %>
+                    <span>username</span>
+                <% end %>
+
+                <!-- TODO: In the "feeds", not have Follow button -->
+                <% 
+                    is_followed = false
+                    follow_btn_class = is_followed ? "active" : "gradient-text"
+                    title_txt = is_followed ? t('button.unfollow_action') : t('button.follow_action')
+                    btn_text = is_followed ? t('button.following') : t('button.follow_action')
+                %>
+                <button class="follow-btn <%=follow_btn_class%> text-lowercase ms-auto" title="<%=title_txt%>"
+                    data-controller="post" data-action="click->post#toggleFollow"
+                    data-follow-title="<%=t('button.follow_action')%>"
+                    data-unfollow-title="<%=t('button.unfollow_action')%>"
+                    data-following-text="<%=t('button.following')%>"
+                >
+                    <%=btn_text%>
+                </button>
+
+            </div>
+
+            <h6>
+                POST TITLE
+            </h6>
+
+            <p class="post-description mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sdhfskjdfsajkfnsNJ EFSJHFQB EFJKAKJGLJ EWGJLGJN GJEQ WJ;GJQ
+            </p>
+
+            <div class="post-footer mt-auto d-flex flex-wrap justify-content-between" data-controller="post">
+                <div class="mb-1">
+                    <%
+                        is_liked = true
+                        icon = is_liked ? "fa-solid" : "fa-regular"
+                        title_txt = is_liked ? t('message.unlike') : t('message.like')
+                    %>
+                    <i class="<%=icon%> fa-heart fa-lg align-self-center me-2 heart-count", title="<%= title_txt%>"
+                        data-action="click->post#toggleHeart"
+                        data-like-title="<%=t('message.like')%>"
+                        data-unlike-title="<%= t('message.unlike') %>"></i>
+                    
+                    <p class="heart-count d-inline">123</p>
+                </div>
+                <p class="date">4:56pm 12/3/45</p>
+            </div>
+
+        </div>
+
+
+    </div>
+<% end %>
+</div>

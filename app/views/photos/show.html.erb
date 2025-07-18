@@ -1,10 +1,5 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :tab_bar do %>
+  <%= render "main_tabs" %>
+<% end %>
 
-<%= render @photo %>
-
-<div>
-  <%= link_to "Edit this photo", edit_photo_path(@photo) %> |
-  <%= link_to "Back to photos", photos_path %>
-
-  <%= button_to "Destroy this photo", @photo, method: :delete %>
-</div>
+<p>ff</p>

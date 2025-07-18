@@ -1,4 +1,9 @@
 vi:
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%H:%M"
+
   nav:
     app_name: "Fotobook"
     admin: "Quản trị viên Fotobook"
@@ -12,7 +17,7 @@ vi:
 
   button:
     photo: "Ảnh"
-    album: "Bộ sưu tập"
+    album: "Tập ảnh"
     save: "Lưu"
     previous: "Trước"
     next: "Tiếp"
@@ -20,6 +25,7 @@ vi:
     login: "Đăng nhập"
     logout: "Đăng xuất"
     follow_action: "theo dõi"
+    unfollow_action: "hủy theo dõi"
     follower: "Người theo dõi"
     following: "Đang theo dõi"
     edit_profile: "Chỉnh sửa hồ sơ"
@@ -61,3 +67,7 @@ vi:
     signup_success: "Bạn đã đăng ký thành công."
     not_have_acc: "Bạn chưa có tài khoản?"
     switch_lang: "Chuyển sang tiếng Anh"
+    click_post: "Nhấn để xem chi tiết"
+    like: "Thả tim"
+    unlike: "Hủy tim"
+

@@ -1,11 +1,11 @@
 .navbar {
     background-color: var(--dark-blue);
-    min-height: 70px;
+    height: fit-content;
     border-bottom: 1px solid var(--form-color); ;
 }
 
 .navbar-brand span {
-    font-size: 1.3rem !important;
+    font-size: 1.1rem !important;
 }
 
 .navbar-brand img {
@@ -16,7 +16,7 @@
 
 .lang-icon {
     width: 40px;
-    height: 30px;
+    height: 25px;
     cursor: pointer;
 }
 

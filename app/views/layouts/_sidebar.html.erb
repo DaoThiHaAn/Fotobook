@@ -1,29 +1,33 @@
-<aside class="custom-sidebar d-none d-lg-flex align-items-center justify-content-center" id="sidebar">    
+<aside class="custom-sidebar d-none d-lg-flex align-items-center justify-content-center <%= nil.nil? ? "welcome" : ""%>" id="sidebar">    
+    <!-- TODO Guest has no option, change if to unless-->
+
     <div class="offcanvas-body">
-        <nav class="nav flex-column">
-            <!-- TODO: Authorization-->
-            <a class="nav-link sidebar-link" href="#">
-                <i class="fa-solid fa-house me-2"></i>
-                <%= t('sidebar.feeds')%>
-            </a>
-            <a class="nav-link sidebar-link" href="#">
-                <i class="fa-solid fa-compass me-2"></i>
-                <%= t('sidebar.discover')%>
-            </a>
-                        
-            <a class="nav-link sidebar-link" href="#">
-                <i class="fa-solid fa-images me-2"></i>
-                <%= t('sidebar.mng_photos')%>
-            </a>
-            <a class="nav-link sidebar-link" href="#">
-                <i class="fa-solid fa-folder me-2"></i>
-                <%= t('sidebar.mng_albums')%>
-            </a>
-            <a class="nav-link sidebar-link" href="#">
-                <i class="fa-solid fa-users me-2"></i>
-                <%= t('sidebar.mng_users')%>
-            </a>
-        </nav>
+        <%if 1%>
+            <nav class="nav flex-column">
+                <!-- TODO: Authorization-->
+                <a class="nav-link sidebar-link" href="#">
+                    <i class="fa-solid fa-house me-2"></i>
+                    <%= t('sidebar.feeds')%>
+                </a>
+                <a class="nav-link sidebar-link" href="#">
+                    <i class="fa-solid fa-compass me-2"></i>
+                    <%= t('sidebar.discover')%>
+                </a>
+                            
+                <a class="nav-link sidebar-link" href="#">
+                    <i class="fa-solid fa-images me-2"></i>
+                    <%= t('sidebar.mng_photos')%>
+                </a>
+                <a class="nav-link sidebar-link" href="#">
+                    <i class="fa-solid fa-folder me-2"></i>
+                    <%= t('sidebar.mng_albums')%>
+                </a>
+                <a class="nav-link sidebar-link" href="#">
+                    <i class="fa-solid fa-users me-2"></i>
+                    <%= t('sidebar.mng_users')%>
+                </a>
+            </nav>
+        <%end%>
     </div>
 </aside>
 
