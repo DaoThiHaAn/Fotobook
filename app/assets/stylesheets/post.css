@@ -28,10 +28,41 @@
     position: relative;
 }
 
-.post-img img {
+.post-photo {
     width: 100%;
     height: 100%;
     border-radius: 10px 0 0 10px;
+}
+
+.post-img.thumbnail {
+    margin: 30px;
+    margin-right:   10px;
+}
+
+.post-img.thumbnail img {
+    position: absolute; /* <--- This is critical for stacking */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 2px solid white;
+}
+
+.layer1 {
+    transform: rotate(13deg) translateX(-3%);
+    z-index: 1;
+}
+
+.layer2 {
+    transform: rotate(7deg) translateX(-2%);
+    z-index: 2;
+}
+
+.layer3 {
+    transform: translateY(2%);
+    z-index: 3;
 }
 
 .user {
@@ -79,7 +110,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.75rem;
-    word-break: break-all;
+    word-break:keep-all;
 }
 
 .post-card p {

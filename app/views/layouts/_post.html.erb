@@ -2,9 +2,18 @@
 <!-- TODO change to local var "post" + authorization + image viewing + dynamic counting-->
 <%20.times do%>
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
-        <div class="post-img">
-            <%= image_tag "demo-avatar.png", alt: t('button.photo') %>
+        
+        <div class="post-img thumbnail">
+            <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "layer1" %>
+            <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "layer2" %>
+            <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "layer3" %>
         </div>
+        
+        <!-- if show image, use this code
+        <div class="post-img">
+            <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "post-photo" %>
+        </div>
+        -->
 
         <div class="d-flex flex-column flex-wrap p-3 post-content">
             <div class="user d-flex align-items-center mb-3">
@@ -53,7 +62,7 @@
                     
                     <p class="heart-count d-inline">123</p>
                 </div>
-                <p class="date">4:56pm 12/3/45</p>
+                <p class="date ms-2">4:56pm 12/3/45</p>
             </div>
 
         </div>

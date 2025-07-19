@@ -36,6 +36,8 @@ vi:
     edit: "Sửa"
     change: "Thay đổi"
     back: "Quay lại"
+    toggle_sidebar: "Mở thanh bên"
+
 
   form:
     profile:

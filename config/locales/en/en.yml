@@ -60,6 +60,7 @@ en:
     edit: "Edit"
     change: "Change"
     back: "Back"
+    toggle_sidebar: "Open sidebar"
 
   form:
     profile:
