@@ -3,8 +3,6 @@
 }
 .post-card {
     width: 47%;
-    min-height: 20vw;
-    max-height: fit-content;
     background-color: var(--post-bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -23,10 +21,7 @@
     flex: 1 1 50%;
 }
 
-.post-img {
-    min-width: 30%;
-    position: relative;
-}
+
 
 .post-photo {
     width: 100%;
@@ -34,29 +29,22 @@
     border-radius: 10px 0 0 10px;
 }
 
-.post-img.thumbnail {
-    margin: 30px;
-    margin-right:   10px;
-}
-
 .post-img.thumbnail img {
     position: absolute; /* <--- This is critical for stacking */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    height: 85%;
     object-fit: cover;
     border-radius: 2px;
     border: 2px solid white;
 }
 
 .layer1 {
-    transform: rotate(13deg) translateX(-3%);
+    transform: rotate(12deg) translateX(-3%);
     z-index: 1;
 }
 
 .layer2 {
-    transform: rotate(7deg) translateX(-2%);
+    transform: rotate(6deg) translateX(-2%);
     z-index: 2;
 }
 
@@ -75,15 +63,16 @@
 }
 
 .follow-btn {
-    border-radius: 30px !important;
-    border: 1px solid #EB5757;
+    border-radius: 30px;
+    outline: 1px solid #EB5757 !important; /* avoid side effect of gradient text trick */
     height: fit-content;
-    padding: 2px 15px;
+    padding: 1px 12px;
     min-width: fit-content;
     background-color: transparent;
     color: white;
     font-weight: bold;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
+    border:none;
 }
 
 .gradient-text {
@@ -99,7 +88,7 @@
 }
 
 .follow-btn:hover {
-    border-width: 2px;;
+    outline-width: 2px !important;
 }
 
 .post-description {
@@ -126,9 +115,6 @@
 }
 
 @media  screen and (max-width: 992px) {
-    .post-card {
-        height: 30vh;
-    }
     .post-description {
         -webkit-line-clamp: 4;
     }
@@ -154,8 +140,11 @@
 }
 
 @media  screen and (max-width: 576px) {
+    .card-container {
+        flex-direction: column;
+    }
     .post-card {
-        width: fit-content;
+        width: 100%;
     }
     .post-description {
         -webkit-line-clamp: 5;

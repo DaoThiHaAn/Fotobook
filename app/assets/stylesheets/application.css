@@ -23,7 +23,7 @@
 --folow-btn-color: linear-gradient(to top left, #EB5757, #F2994A);
 --post-bg-color: whitesmoke;
 --heart-color:  rgb(226, 83, 123);
-font-size: 15px;
+font-size: 14px;
 }
 
 body {
@@ -102,7 +102,7 @@ a {
 /* RESPONSIVE */
 @media screen and (max-width: 991px) {
     :root {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .content-area {
