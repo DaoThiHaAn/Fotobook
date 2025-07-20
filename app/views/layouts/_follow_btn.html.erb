@@ -1,0 +1,15 @@
+<% 
+# TODO: Change the logic
+    is_followed = false
+    follow_btn_class = is_followed ? "active" : "gradient-text"
+    title_txt = is_followed ? t('button.unfollow_action') : t('button.follow_action')
+    btn_text = is_followed ? t('button.following', count: 1) : t('button.follow_action')
+%>
+<button class="follow-btn <%=follow_btn_class%> text-lowercase ms-auto" title="<%=title_txt%>"
+    data-controller="post" data-action="click->post#toggleFollow"
+    data-follow-title="<%=t('button.follow_action')%>"
+    data-unfollow-title="<%=t('button.unfollow_action')%>"
+    data-following-text="<%=t('button.following', count: 1)%>"
+>
+    <%=btn_text%>
+</button>

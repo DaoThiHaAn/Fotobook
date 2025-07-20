@@ -28,8 +28,6 @@
 #       enabled: "ON"
 
 en:
-  avatar: "Avatar"
-
   nav:
     app_name: "Fotobook"
     admin: "Fotobook Admin"
@@ -89,6 +87,7 @@ en:
     back_to_login: "Back to Login"
     or: "or"
     login_with: "Login with %{app}"
+    avatar: "Avatar"
 
   post:
     edit_album_title: "Edit Album"

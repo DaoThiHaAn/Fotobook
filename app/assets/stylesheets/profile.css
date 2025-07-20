@@ -58,11 +58,6 @@
     color: var(--primary-btn-hover);
 }
 
-.profile-tab-btn p {
-    margin: 0;
-    font-size: 1.8em;
-}
-
 /* PHOTO TAB */
 .profile-tab-view {
     row-gap: 1.5rem;
@@ -163,10 +158,44 @@
     padding: 20px;            /* Remove extra padding */
 }
 
-.photos-count .number {
-    font-size: 1.8rem
+.number {
+    font-size: 1.8em;
+    font-weight: bold;
 }
 
+/* FOLLOWING TAB */
+.follow.tab-item {
+    padding: 15px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgb(221, 221, 221);
+}
+
+.follow.tab-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.follow.tab-item button {
+    margin: 0 !important;
+    font-size: 0.9rem;
+}
+
+.follow.tab-item .avatar {
+    width: 60%;
+    aspect-ratio: 1/1;
+}
+
+.follow.tab-item .username {
+    color: #4F4F4F;
+    font-weight: bold;
+    -webkit-line-clamp: 2;
+}
+
+.extra-info {
+    color: var(--dark-blue);
+    font-size: 0.8rem;
+}
 
 
 
@@ -178,19 +207,31 @@
     .tab-item.album {
         width: 20%;
     }
+    .follow.tab-item {
+        width: 19%;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .tab-item {
         width: 30%
     }
-    .tab-item.album {
+
+    .tab-item.album, .follow.tab-item {
         width: 25%
+    }
+    .follow.tab-item .avatar {
+        width: 70%;
+        aspect-ratio: 1/1;
     }
 }
 
 @media screen and (max-width: 576px) {
     .tab-item, .tab-item.album {
         width: 40%
+    }
+
+    .follow.tab-item {
+        width: 30%;
     }
 }

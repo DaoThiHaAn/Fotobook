@@ -1,0 +1,23 @@
+<section class="mt-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
+<%20.times do%>
+    <div class="follow tab-item d-flex flex-column gap-2 align-items-center justify-content-center">
+        <%= image_tag "demo-avatar.png", alt: t("profile.avatar"), class: "avatar m-0" %>
+        <div> <!-- Need <div> to display properly-->
+            <p class="truncate username"> long long long long long long long  long username</p>
+        </div>
+        <div class="d-flex gap-4 mb-2 extra-info">
+            <div class="text-center">
+                <p class="m-0 number">123</p>
+                <p class="m-0 text-uppercase"><%= t('button.photo', count: 12) %></p>
+            </div>
+
+            <div class="text-center">
+                <p class="m-0 number">123</p>
+                <p class="m-0 text-uppercase"><%= t('button.album', count: 12) %></p>
+            </div>
+        </div>
+        
+        <%= render "layouts/follow_btn"%>
+    </div>
+<%end%>
+</section>

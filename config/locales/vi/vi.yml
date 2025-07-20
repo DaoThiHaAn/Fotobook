@@ -1,5 +1,4 @@
 vi:
-  avatar: "Ảnh đại diện"
   time:
     formats:
       default: "%d/%m/%Y %H:%M"
@@ -64,6 +63,7 @@ vi:
     back_to_login: "Quay lại Đăng nhập"
     or: "Hoặc"
     login_with: "Đăng nhập với %{app}"
+    avatar: "Ảnh đại diện"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"

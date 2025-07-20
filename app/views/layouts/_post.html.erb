@@ -18,25 +18,13 @@
         <div class="d-flex flex-column flex-wrap p-3 post-content">
             <div class="user d-flex align-items-center mb-3">
                 <%= link_to users_path, title: "Open profile", class:"me-1 d-flex align-items-center" do %>
-                    <%= image_tag "demo-avatar.png", alt: t('avatar'), class: "post avatar me-1" %>
+                    <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "post avatar me-1" %>
                     <div class="d-flex flex-wrap">long long long long username</div>
                 <% end %>
 
                 <!-- TODO: In the "feeds", not have Follow button -->
-                <% 
-                    is_followed = false
-                    follow_btn_class = is_followed ? "active" : "gradient-text"
-                    title_txt = is_followed ? t('button.unfollow_action') : t('button.follow_action')
-                    btn_text = is_followed ? t('button.following') : t('button.follow_action')
-                %>
-                <button class="follow-btn <%=follow_btn_class%> text-lowercase ms-auto" title="<%=title_txt%>"
-                    data-controller="post" data-action="click->post#toggleFollow"
-                    data-follow-title="<%=t('button.follow_action')%>"
-                    data-unfollow-title="<%=t('button.unfollow_action')%>"
-                    data-following-text="<%=t('button.following')%>"
-                >
-                    <%=btn_text%>
-                </button>
+                <%= render "layouts/follow_btn"%>
+
 
             </div>
 

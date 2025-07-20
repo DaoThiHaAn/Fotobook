@@ -2,7 +2,7 @@
 
 <!-- TODO -->
 <section class="general-info d-flex m-3 gap-4 container-fluid">
-  <%= image_tag "demo-avatar.png", alt: t('avatar'), class: "profile-avatar" %>
+  <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "profile-avatar" %>
 
   <div class="d-flex flex-column gap-3">
     <%= link_to edit_user_path(1) do %>
@@ -15,22 +15,22 @@
 
     <div class="btn-group profile-btn-group d-flex flex-wrap gap-3">
       <button class="profile-tab-btn active text-uppercase">
-        <p>108</p>
+        <p class="m-0 number">108</p>
         <%= t('button.photo', count:108)%>
       </button>
 
       <button class="profile-tab-btn text-uppercase">
-        <p>108</p>
+        <p class="m-0 number">108</p>
         <%= t('button.album', count:108)%>
       </button>
 
       <button class="profile-tab-btn text-uppercase">
-        <p>1</p>
+        <p class="m-0 number">1</p>
         <span><%= t('button.follower', count:1) %></span>
       </button>
 
       <button class="profile-tab-btn text-uppercase">
-        <p>0</p>
+        <p class="m-0 number">0</p>
         <span><%= t('button.following', count:0) %></span>
       </button>
     </div>
@@ -38,5 +38,5 @@
   </div>
 </section>
 
-<%= render "album_tab"%>
+<%= render "following_tab"%>
 
