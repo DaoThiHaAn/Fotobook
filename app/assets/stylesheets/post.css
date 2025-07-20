@@ -95,14 +95,8 @@
 }
 
 .post-description {
-    display: -webkit-box;
     -webkit-line-clamp: 5;            /* how many lines to show */
-    -webkit-box-orient: vertical;
-    text-align: justify;
-    overflow: hidden;
-    text-overflow: ellipsis;
     font-size: 0.75rem;
-    word-break:keep-all;
 }
 
 .post-card p {

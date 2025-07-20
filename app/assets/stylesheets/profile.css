@@ -1,0 +1,140 @@
+.general-info {
+    font-size: 0.9rem;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    width: 15%;
+    min-width: 100px;
+}
+
+.edit-profile-btn {
+    width: fit-content;
+    border: 2px solid var(--dark-blue);
+    background-color: transparent;
+    color: var(--dark-blue);
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.8em
+}
+
+.general-info h1 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: bold;      
+}
+
+.profile-tab-btn {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    background-color: transparent;
+    color: var(--dark-blue);
+    font-weight: medium;
+    color: var(--muted);
+    border: none;
+    position: relative;
+    padding-right: 20px;
+}
+
+.profile-tab-btn:not(:last-child)::after {
+    content: ''; /* Pseudo-elements must have content */
+    position: absolute;
+    right: 0;
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%);
+    height: 40%;
+    width: 1px; 
+    background-color: var(--muted);
+}
+
+.profile-tab-btn.active {
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+
+.profile-tab-btn:hover {
+    color: var(--primary-btn-hover);
+}
+
+.profile-tab-btn p {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* PHOTO TAB */
+.profile-tab-view {
+    row-gap: 1.5rem;
+}
+
+.photo-item {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 20%;
+}
+.photo-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.img-div {
+    position: relative;
+    width: 100%;
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;    
+}
+
+.edit-photo-btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+.edit-photo-btn button {
+    border: none;
+    font-size: 0.8em;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    padding: 2px 7px;
+    border-radius: 30px;
+}
+
+.edit-photo-btn button:hover {
+    background-color: black;
+    color: white;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: black;
+    background-color: white;
+    padding: 5px;
+    font-size: 0.8em;
+    border-radius: 50%;
+}
+
+.photo-title {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 2;
+    text-align: center !important;
+}
+
+
+/* RESPONSIVE STYLES */
+@media screen and (max-width: 992px) {
+    .photo-item {
+        width: 25%
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .photo-item {
+        width: 30%
+    }
+}

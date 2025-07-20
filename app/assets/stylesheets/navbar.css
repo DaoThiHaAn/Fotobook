@@ -1,7 +1,8 @@
 .navbar {
     background-color: var(--dark-blue);
     height: fit-content;
-    border-bottom: 1px solid var(--form-color); ;
+    border-bottom: 1px solid var(--form-color);
+    z-index: 10000;
 }
 
 .navbar-brand span {
@@ -55,7 +56,7 @@ nav .marked-btn {
 nav .marked-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background-color: #617bb4;
+    background-color: var(--primary-btn-hover);
 }
 
 nav .marked-btn:active {

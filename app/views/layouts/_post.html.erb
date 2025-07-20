@@ -4,21 +4,21 @@
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
         
         <div class="post-img thumbnail d-flex align-items-center justify-content-center">
-            <%= image_tag "welcome.png", alt: t('button.photo'), class: "layer1" %>
-            <%= image_tag "welcome.png", alt: t('button.photo'), class: "layer2" %>
-            <%= image_tag "welcome.png", alt: t('button.photo'), class: "layer3" %>
+            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer1" %>
+            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer2" %>
+            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer3" %>
         </div>
         
         <!-- if show image, use this code -->
         <!--<div class="post-img">
-            <%= image_tag "welcome.png", alt: t('button.photo'), class: "post-photo" %>
+            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "post-photo" %>
         </div>-->
         
 
         <div class="d-flex flex-column flex-wrap p-3 post-content">
             <div class="user d-flex align-items-center mb-3">
                 <%= link_to users_path, title: "Open profile", class:"me-1 d-flex align-items-center" do %>
-                    <%= image_tag "demo-avatar.png", alt: t('button.photo'), class: "post avatar me-1" %>
+                    <%= image_tag "demo-avatar.png", alt: t('avatar'), class: "post avatar me-1" %>
                     <div class="d-flex flex-wrap">long long long long username</div>
                 <% end %>
 
@@ -44,7 +44,7 @@
                 POST TITLE
             </h6>
 
-            <p class="post-description mb-4">
+            <p class="post-description truncate mb-4">
                 AKJGLJ EWGJLGJN GJEQ WJ;GJQ sdkfjh jfkhkjwf jefnkjwfnrek fjskfh kgjkgj skgfdskljgs slkfjslkjg lagjlkgjerlgj nsklgfdkljgd g gtgy dtg ty thsth ehryeh trheyr yj etj etjye rhth yejt jukr iurytjsr r rw ggtytrty er6y yrwr trhy wry h yju iuy retqe gyjyetju temuki krh hq hthyjej u h wryu  
             </p>
 

@@ -13,16 +13,19 @@
 @import url("auth.css");
 @import url("main_tab.css");
 @import url("post.css");
+@import url("profile.css");
 
 :root {
 --dark-blue: #3C5999;
 --plholder-color: rgb(156, 156, 156);
 --marked-btn-color: rgb(35, 53, 91);
---primary-btn-hover: #26829b;
+--primary-btn-hover: #617bb4;
 --form-color: rgba(219, 234, 248, 0.9);
 --folow-btn-color: linear-gradient(to top left, #EB5757, #F2994A);
 --post-bg-color: whitesmoke;
 --heart-color:  rgb(226, 83, 123);
+--muted: #9a9a9a;
+--green: #219653;
 font-size: 14px;
 }
 
@@ -81,6 +84,15 @@ a {
     background-color: var(--primary-btn-hover);
     box-shadow: 0 4px 10px rgba(31, 62, 119, 0.379);
 }
+
+.truncate {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break:keep-all;
+}
  
 /* Main Content Layout */
 .main-content {
@@ -100,7 +112,7 @@ a {
 
 
 /* RESPONSIVE */
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 992px) {
     :root {
         font-size: 13px;
     }

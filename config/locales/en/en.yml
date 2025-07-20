@@ -28,6 +28,8 @@
 #       enabled: "ON"
 
 en:
+  avatar: "Avatar"
+
   nav:
     app_name: "Fotobook"
     admin: "Fotobook Admin"
@@ -40,8 +42,14 @@ en:
     mng_users: "Manage Users"
 
   button:
-    photo: "Photo"
-    album: "Album"
+    photo:
+      zero: "Photo"
+      one: "Photo"
+      other: "Photos"
+    album:
+      zero: "Album"
+      one: "Album"
+      other: "Albums"
     save: "Save"
     previous: "Previous"
     next: "Next"
@@ -50,8 +58,14 @@ en:
     logout: "Logout"
     follow_action: "follow"
     unfollow_action: "unfollow"
-    follower: "Follower"
-    following: "Following"
+    follower:
+      zero: "Follower"
+      one: "Follower"
+      other: "Followers"
+    following:
+      zero: "Following"
+      one: "Following"
+      other: "Followings"
     edit_profile: "Edit Profile"
     delete: "Delete"
     cancel: "Cancel"

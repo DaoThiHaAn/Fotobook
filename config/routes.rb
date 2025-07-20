@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   root "users#index"
 
-  resources :users, :albums, :photos
+  resources :users, :albums, :photos, :profiles
 
   resources :users do
     resources :photos, :albums, shallow: true

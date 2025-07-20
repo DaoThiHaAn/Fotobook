@@ -1,4 +1,5 @@
 vi:
+  avatar: "Ảnh đại diện"
   time:
     formats:
       default: "%d/%m/%Y %H:%M"
@@ -16,8 +17,14 @@ vi:
     mng_users: "Quản lý người dùng"
 
   button:
-    photo: "Ảnh"
-    album: "Tập ảnh"
+    photo:
+      zero: "Ảnh"
+      one: "Ảnh"
+      other: "Ảnh"
+    album:
+      zero: "Tập ảnh"
+      one: "Tập ảnh"
+      other: "Tập ảnh"
     save: "Lưu"
     previous: "Trước"
     next: "Tiếp"
@@ -26,8 +33,14 @@ vi:
     logout: "Đăng xuất"
     follow_action: "theo dõi"
     unfollow_action: "hủy theo dõi"
-    follower: "Người theo dõi"
-    following: "Đang theo dõi"
+    follower:
+      zero: "Người theo dõi"
+      one: "Người theo dõi"
+      other: "Người theo dõi"
+    following:
+      zero: "Đang theo dõi"
+      one: "Đang theo dõi"
+      other: "Đang theo dõi"
     edit_profile: "Chỉnh sửa hồ sơ"
     delete: "Xóa"
     cancel: "Hủy"

@@ -1,6 +1,7 @@
 .main-tabs {
     background-image: linear-gradient(to bottom, white, white, rgba(255, 255, 255, 0.9));
-    padding: 10px 0;;
+    padding: 10px 0;
+    z-index: 9996
 }
 
 

@@ -1,0 +1,19 @@
+<section class="mt-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
+<%20.times do%>
+    <div class="photo-item">
+        <div class="img-div">
+            <!-- TODO: click the image to view the photo in a modal -->
+            <%= image_tag "demo-avatar.png", alt: t('photo')%>
+            <%= link_to edit_photo_path, class: "edit-photo-btn" do%>
+                <button>
+                    <%= t('button.edit')%>
+                </button>
+            <%end%>
+
+            <!-- TODO: Private icon only shown in My Profile-->
+            <i class="fa-solid fa-lock lock-icon"></i>
+        </div>
+        <p class="m-3 mt-2 photo-title truncate">long long long long long long long long long  long long long long long long a b Photo title</p>
+    </div>
+<%end%>
+</section>
