@@ -68,12 +68,13 @@
     row-gap: 1.5rem;
 }
 
-.photo-item {
+.tab-item {
     cursor: pointer;
-    border-radius: 5px;
     width: 20%;
+    overflow: hidden;
 }
-.photo-item:hover {
+
+.tab-item:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -82,33 +83,33 @@
     width: 100%;
 }
 
-.photo-item img {
+.tab-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    border-radius: 5px 5px 0 0;    
 }
 
-.edit-photo-btn {
+.edit-photo-btn{
     position: absolute;
     bottom: 2px;
     right: 2px;
 }
-.edit-photo-btn button {
+
+.edit-photo-btn button, .edit-album-btn button{
     border: none;
     font-size: 0.8em;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: whitesmoke;
+    background-color: var(--black-transparent);
+    color: rgb(218, 218, 218);
     padding: 2px 7px;
     border-radius: 30px;
 }
 
-.edit-photo-btn button:hover {
+.edit-photo-btn button:hover, .edit-album-btn button:hover {
     background-color: black;
     color: white;
 }
 
-.lock-icon {
+.lock-icon, .lock-icon-album {
     position: absolute;
     top: 2px;
     right: 2px;
@@ -125,16 +126,71 @@
     text-align: center !important;
 }
 
+/* ALBUM TAB */
+.album-profile {
+    position: relative;
+    margin: 15px 10px 0 20px;
+    aspect-ratio: 1 / 1; /* Makes it a square. Change to 4/3 or 16/9 if you want */
+    min-height: 120px;
+}
+
+
+.edit-album-btn {
+    position: absolute;
+    z-index: 4;
+    right: 4px;
+    bottom: 2px;
+}
+
+.lock-icon-album {
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    z-index: 4;
+}
+
+.photos-count {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%; 
+    border-radius: 50%;
+    background-color: var(--black-transparent);
+    color: white;
+    z-index: 4;           /* Ensure it's above the images */
+    padding: 20px;            /* Remove extra padding */
+}
+
+.photos-count .number {
+    font-size: 1.8rem
+}
+
+
+
 
 /* RESPONSIVE STYLES */
 @media screen and (max-width: 992px) {
-    .photo-item {
+    .tab-item {
+        width: 23%
+    }
+    .tab-item.album {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tab-item {
+        width: 30%
+    }
+    .tab-item.album {
         width: 25%
     }
 }
 
 @media screen and (max-width: 576px) {
-    .photo-item {
-        width: 30%
+    .tab-item, .tab-item.album {
+        width: 40%
     }
 }

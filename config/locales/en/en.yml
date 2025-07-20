@@ -76,28 +76,27 @@ en:
     back: "Back"
     toggle_sidebar: "Open sidebar"
 
-  form:
-    profile:
-      admin_edit_title: "Edit User Profile"
-      email: "Email"
-      fname: "First Name"
-      lname: "Last Name"
-      active: "Active?"
-      pw: "Password"
-      pw_confirmation: "Password Confirmation"
-      forgot_pw: "Forgot Password?"
-      create_acc: "Create Account"
-      back_to_login: "Back to Login"
-      or: "or"
-      login_with: "Login with %{app}"
+  profile:
+    admin_edit_title: "Edit User Profile"
+    email: "Email"
+    fname: "First Name"
+    lname: "Last Name"
+    active: "Active?"
+    pw: "Password"
+    pw_confirmation: "Password Confirmation"
+    forgot_pw: "Forgot Password?"
+    create_acc: "Create Account"
+    back_to_login: "Back to Login"
+    or: "or"
+    login_with: "Login with %{app}"
 
-    post:
-      edit_album_title: "Edit Album"
-      edit_photo_title: "Edit Photo"
-      description: "Description"
-      mode: "Sharing Mode"
-      public: "Public"
-      private: "Private"  
+  post:
+    edit_album_title: "Edit Album"
+    edit_photo_title: "Edit Photo"
+    description: "Description"
+    mode: "Sharing Mode"
+    public: "Public"
+    private: "Private"  
   
   message:
     logout_success: "You have successfully logged out."

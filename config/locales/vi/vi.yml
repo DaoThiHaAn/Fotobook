@@ -51,30 +51,27 @@ vi:
     back: "Quay lại"
     toggle_sidebar: "Mở thanh bên"
 
+  profile:
+    admin_edit_title: "Chỉnh sửa hồ sơ người dùng"
+    email: "Email"
+    fname: "Tên"
+    lname: "Họ"
+    active: "Hoạt động?"
+    pw: "Mật khẩu"
+    pw_confirmation: "Xác nhận mật khẩu"
+    forgot_pw: "Quên mật khẩu?"
+    create_acc: "Tạo tài khoản mới"
+    back_to_login: "Quay lại Đăng nhập"
+    or: "Hoặc"
+    login_with: "Đăng nhập với %{app}"
 
-  form:
-    profile:
-      admin_edit_title: "Chỉnh sửa hồ sơ người dùng"
-      email: "Email"
-      fname: "Tên"
-      lname: "Họ"
-      active: "Hoạt động?"
-      pw: "Mật khẩu"
-      pw_confirmation: "Xác nhận mật khẩu"
-      forgot_pw: "Quên mật khẩu?"
-      create_acc: "Tạo tài khoản mới"
-      back_to_login: "Quay lại Đăng nhập"
-      or: "Hoặc"
-      login_with: "Đăng nhập với %{app}"
-
-
-    post:
-      edit_album_title: "Chỉnh sửa Tập ảnh"
-      edit_photo_title: "Chỉnh sửa Ảnh"
-      description: "Mô tả"
-      mode: "Chế độ chia sẻ"
-      public: "Công khai"
-      private: "Riêng tư"  
+  post: 
+    edit_album_title: "Chỉnh sửa Tập ảnh"
+    edit_photo_title: "Chỉnh sửa Ảnh"
+    description: "Mô tả"
+    mode: "Chế độ chia sẻ"
+    public: "Công khai"
+    private: "Riêng tư"  
   
   message:
     logout_success: "Bạn đã đăng xuất thành công."

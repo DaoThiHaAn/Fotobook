@@ -26,6 +26,7 @@
 --heart-color:  rgb(226, 83, 123);
 --muted: #9a9a9a;
 --green: #219653;
+--black-transparent: rgba(0, 0, 0, 0.4);
 font-size: 14px;
 }
 

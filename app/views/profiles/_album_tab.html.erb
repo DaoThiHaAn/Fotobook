@@ -1,0 +1,29 @@
+<section class="mt-5 d-flex flex-wrap gap-5 justify-content-center profile-tab-view">
+<%20.times do%>
+    <div class="tab-item album">
+        <!-- TODO: click the album to view all photos in a modal
+        Edit btn only in My Profile-->
+        <div class="album-profile">
+            <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class: "layer1" %>
+            <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class: "layer2" %>
+            <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class:"layer3" %>
+            <%= link_to edit_photo_path, class: "edit-album-btn" do%>
+                <button>
+                    <%= t('button.edit')%>
+                </button>
+            <%end%>
+
+            <!-- TODO: Private icon only shown in My Profile-->
+            <i class="fa-solid fa-lock lock-icon-album", title="<%= t('post.private')%>"></i>
+
+            <!--TODO: Show number of photos in the album-->
+            <div class="photos-count d-flex flex-column justify-content-center align-items-center">
+                <p class="number m-0">1</p>
+                <p class="text-uppercase m-0"><%= t('button.photo', count: 12) %></p>
+            </div>
+        </div>
+
+        <p class="m-3 mt-5 photo-title truncate">long long long long long long long long long  long long long long long long a b Photo title</p>
+    </div>
+<%end%>
+</section>
