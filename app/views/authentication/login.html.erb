@@ -5,7 +5,7 @@
 <div class="auth-form-container d-flex">
 <section class="card m-auto d-flex flex-column">
     <h1 class="card-header text-center"><%= "#{t('nav.app_name')} #{t('button.login')}" %></h1>
-    <div class="card-body">
+    <div class="card-body d-flex align-items-center justify-content-center flex-column">
         <!-- TODO: Login via third parties-->
         <div class="social-login d-flex gap-5 justify-content-center mb-4">
             <a href="#", title="<%= t('profile.login_with', app: "Google") %>">
@@ -23,29 +23,29 @@
 
         <div class="d-flex align-items-center my-4">
             <hr class="flex-grow-1">
-            <span class="mx-3 text-muted text-uppercase fw-medium">
+            <p class="mx-3 text-muted text-uppercase fw-medium">
                 <%= t('profile.or')%>
-            </span>
+            </p>
             <hr class="flex-grow-1">
         </div>
         
         
         <!-- TODO: handle form-->
         <%= form_with url: handle_login_path, method: :post, class: "auth-form d-flex flex-column gap-3" do |f| %>
-            <div>
-                <%= f.label :email, t('profile.email') %><br/>
+            <div class="d-flex flex-column">
+                <%= f.label :email, t('profile.email') %>
                 <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, require: true %>
             </div>
-            <div data-controller="auth">
-                <%= f.label :current_password, t('profile.pw') %><br/>
+            <div data-controller="form" class="d-flex flex-column">
+                <%= f.label :current_password, t('profile.pw') %>
                 <div class="pw-field">
                     <%= f.password_field :current_password, placeholder: t('profile.pw'), maxlength: 64, autocomplete: "current-password",
-                         data: { auth_target: "pwField" }, require: true %>
-                    <i class="fa-solid fa-eye togglePw" data-action="click->auth#togglePw" data-auth-target="eyeIcon"></i>
+                         data: { form_target: "pwField" }, require: true %>
+                    <i class="fa-solid fa-eye togglePw" data-action="click->form#togglePw" data-form-target="eyeIcon"></i>
                 </div>
             </div>
             
-            <%= f.submit t('button.login'), class: "custom-primary-btn" %>
+            <%= f.submit t('button.login'), class: "m-auto custom-primary-btn" %>
         <% end %>
 
         <div class="mt-3 text-center">

@@ -73,14 +73,17 @@ en:
     change: "Change"
     back: "Back"
     toggle_sidebar: "Open sidebar"
+    delete_acc: "Delete your account"
 
   profile:
-    admin_edit_title: "Edit User Profile"
+    edit_title: "Edit User Profile"
     email: "Email"
     fname: "First Name"
     lname: "Last Name"
     active: "Active?"
     pw: "Password"
+    current_pw: "Current Password"
+    new_pw: "New Password"
     pw_confirmation: "Password Confirmation"
     forgot_pw: "Forgot Password?"
     create_acc: "Create Account"
@@ -88,6 +91,10 @@ en:
     or: "or"
     login_with: "Login with %{app}"
     avatar: "Avatar"
+    basic_info: "Basic Information"
+    change_pw: "Change Password"
+    max_field: "(Maximum %{num} characters)"
+    max_file: "(Maximum %{num} MB)"
 
   post:
     edit_album_title: "Edit Album"

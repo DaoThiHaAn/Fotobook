@@ -5,7 +5,7 @@ export default class extends Controller {
     static targets = [ "pwField", "eyeIcon" ]
 
     connect() {
-        console.log("auth_controller.js connected!")
+        console.log("form_controller.js connected!")
     }
 
     togglePw() {

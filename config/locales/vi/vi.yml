@@ -49,14 +49,17 @@ vi:
     change: "Thay đổi"
     back: "Quay lại"
     toggle_sidebar: "Mở thanh bên"
+    delete_acc: "Xóa tài khoản của bạn"
 
   profile:
-    admin_edit_title: "Chỉnh sửa hồ sơ người dùng"
+    edit_title: "Chỉnh sửa hồ sơ người dùng"
     email: "Email"
     fname: "Tên"
     lname: "Họ"
     active: "Hoạt động?"
     pw: "Mật khẩu"
+    current_pw: "Mật khẩu hiện tại"
+    new_pw: "Mật khẩu mới"
     pw_confirmation: "Xác nhận mật khẩu"
     forgot_pw: "Quên mật khẩu?"
     create_acc: "Tạo tài khoản mới"
@@ -64,6 +67,10 @@ vi:
     or: "Hoặc"
     login_with: "Đăng nhập với %{app}"
     avatar: "Ảnh đại diện"
+    basic_info: "Thông tin cơ bản"
+    change_pw: "Thay đổi mật khẩu"
+    max_field: "(Tối đa %{num} ký tự)"
+    max_file: "(Dung lượng tối đa %{num} MB)"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"

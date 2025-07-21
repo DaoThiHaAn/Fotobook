@@ -1,0 +1,77 @@
+.profile-form-container h1 {
+    font-size: 2rem;
+}
+
+.profile-form-container h2 {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-form .form-group {
+    gap: 1rem;
+}
+
+
+.change-avatar {
+    position: relative;
+    width: 30%;
+}
+
+.change-avatar img {
+    width: 100%;
+    height: auto;
+}
+
+.change-btn {
+    width: 80%;
+    position: absolute;
+    bottom: 1px;
+    z-index: 2;
+    right: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    opacity: 0.5;
+}
+
+.change-btn:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.form-group label {
+    min-width: fit-content
+}
+
+.save.custom-primary-btn {
+    background-color: var(--green);
+}
+
+.save.custom-primary-btn:hover {
+    background-color: var(--green-hover);
+}
+
+.delete-btn {
+    background-color: rgba(177, 86, 86, 0.815);
+    color: whitesmoke;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: red;
+    color: white;
+}

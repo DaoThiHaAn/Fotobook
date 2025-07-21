@@ -15,9 +15,15 @@
     object-fit: cover;
 }
 
+.searchbar {
+    min-width: 25%;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
 .lang-icon {
-    width: 40px;
-    height: 25px;
+    width: 35px !important;
+    height: 25px !important;
     cursor: pointer;
 }
 
@@ -43,14 +49,17 @@
 
 .navbar-collapse.show .profile {
     margin-top: 15px;
+    max-width: 10% !important;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 nav .marked-btn {
     background-color: whitesmoke;
     border: var(--marked-btn-color) solid 2px;
     color: var(--marked-btn-color) ;
-    transition: all 0.3s ease;
     border-radius: 5px !important;
+    min-width: fit-content !important;
 }
 
 nav .marked-btn:hover {
