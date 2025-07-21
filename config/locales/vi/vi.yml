@@ -70,15 +70,25 @@ vi:
     basic_info: "Thông tin cơ bản"
     change_pw: "Thay đổi mật khẩu"
     max_field: "(Tối đa %{num} ký tự)"
-    max_file: "(Dung lượng tối đa %{num} MB)"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"
     edit_photo_title: "Chỉnh sửa Ảnh"
+    title: "Tiêu đề"
+    photo_title: "Tiêu đề Ảnh"
+    album_title: "Tiêu đề Tập Ảnh"
     description: "Mô tả"
+    photo_description: "Mô tả Ảnh"
+    album_description: "Mô tả Tập ảnh"
     mode: "Chế độ chia sẻ"
     public: "Công khai"
     private: "Riêng tư"  
+    change_photo: "Thay đổi Ảnh"
+    change_photos: "Thay đổi Ảnh"
+    max_file: "Dung lượng tối đa %{num} MB"
+    max_photo: "Tối đa %{num} ảnh"
+    allowed_type: "Kiểu hợp lệ: jpeg (jpg), png, gif"
+
   
   message:
     logout_success: "Bạn đã đăng xuất thành công."

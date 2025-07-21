@@ -15,6 +15,7 @@
 @import url("post.css");
 @import url("profile.css");
 @import url("edit_profile.css");
+@import url("edit_post.css");
 
 :root {
 --dark-blue: #3C5999;
@@ -48,11 +49,11 @@ form {
 
 input::placeholder, textarea::placeholder {
     font-style: italic;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--plholder-color) !important;
 }
 
-input, textarea {
+input, textarea, select {
     outline: none;
     border-radius: 5px;
     width: 80%;
@@ -61,7 +62,7 @@ input, textarea {
     border: 1px solid var(--input-border-color);
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus    {
     border-width: 2px;
     border-color: var(--dark-blue);
 }

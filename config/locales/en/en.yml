@@ -94,15 +94,25 @@ en:
     basic_info: "Basic Information"
     change_pw: "Change Password"
     max_field: "(Maximum %{num} characters)"
-    max_file: "(Maximum %{num} MB)"
 
   post:
     edit_album_title: "Edit Album"
     edit_photo_title: "Edit Photo"
+    title: "Title"
+    photo_title: "Photo Title"
+    album_title: "Album Title"
     description: "Description"
+    photo_description: "Photo Description"
+    album_description: "Album Description"
     mode: "Sharing Mode"
     public: "Public"
-    private: "Private"  
+    private: "Private"
+    change_photo: "Change Photo"
+    change_photos: "Change Photo(s)"
+    max_file: "Maximum %{num} MB"
+    allowed_type: "Allowed types: jpeg (jpg), png, gif"
+    max_photo: "Maximum %{count} photos"
+
   
   message:
     logout_success: "You have successfully logged out."
