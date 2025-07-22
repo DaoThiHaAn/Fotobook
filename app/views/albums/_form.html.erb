@@ -1,82 +1,70 @@
-<section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
-    <div class="d-flex justify-content-between w-100">
-        <h1 class="m-0"><%= t('post.edit_photo_title')%></h1>
-        <button class="custom-primary-btn back">
-            <%= t('button.back')%>
-        </button>
+<%= form_with url: album_path(1), method: :patch, class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
+  <div class="big-row d-flex flex-column flex-md-row justify-content-between gap-5">
+    <div class="col d-flex flex-column gap-3">
+      <div class="d-flex flex-column gap-2"  data-controller="char-counter">
+        <div class="label-row d-flex justify-content-between">
+          <%= f.label :title do %>
+            <%= t('post.title') %>
+            <span class="text-danger">*</span>
+          <% end %>
+          <div class="char-count text-muted">
+            <span class="current-count" data-char-counter-target="counter">0</span>
+            /<span class="max-count">140</span>
+          </div>
+        </div>
+        <%= f.text_area :title, maxlength: 140, placeholder: "#{t('post.photo_title')} #{t('profile.max_field', num: 140)}", class:"field-photo-title",
+            data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
+      </div>
+
+      <div class="d-flex flex-column gap-2 mt-5">
+        <%= f.label :mode, t('post.mode') %>
+        <%= f.select :mode, [[" 🌐 #{t('post.public')}", "public"], ["🔒 #{t('post.private')}", "private"]] %>
+      </div>
     </div>
-    <hr class="w-100"/>
 
-    <!-- TODO: handle form-->
-    <%= form_with url: photo_path(1), method: :patch, class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
-      <div class="big-row d-flex flex-column flex-md-row justify-content-between gap-5">
-        <div class="col d-flex flex-column gap-3">
-          <div class="d-flex flex-column gap-2"  data-controller="char-counter">
-            <div class="label-row d-flex justify-content-between">
-              <%= f.label :title do %>
-                <%= t('post.title') %>
-                <span class="text-danger">*</span>
-              <% end %>
-              <div class="char-count text-muted">
-                <span class="current-count" data-char-counter-target="counter">0</span>
-                /<span class="max-count">140</span>
-              </div>
-            </div>
-            <%= f.text_area :title, maxlength: 140, placeholder: "#{t('post.photo_title')} #{t('profile.max_field', num: 140)}", class:"field-photo-title",
-                data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
-          </div>
-
-          <div class="d-flex flex-column gap-2">
-            <%= f.label :mode, t('post.mode') %>
-            <%= f.select :mode, [[" 🌐 #{t('post.public')}", "public"], ["🔒 #{t('post.private')}", "private"]] %>
-          </div>
-        </div>
-
-        <div class="col d-flex flex-column gap-2"  data-controller="char-counter">
-          <div class="label-row d-flex justify-content-between">
-            <%= f.label :description do %>
-              <%= t('post.description') %>
-              <span class="text-danger">*</span>
-            <% end %>
-            <div class="char-count text-muted">
-              <span class="current-count" data-char-counter-target="counter">0</span>
-              /<span class="max-count">300</span>
-            </div>
-          </div>
-
-          <%= f.text_area :description, maxlength: 300, placeholder: "#{t('post.photo_description')} #{t('profile.max_field', num: 300)}",
-              data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
-        </div>
-      </div>
-      
-
-      <!-- TODO: can upload upto 25 images-->
-      <div class="image-upload" data-controller="image-upload">
-        <!-- Hidden file input -->
-        <%= f.file_field :image, accept: 'image/jpeg, image/png, image/gif', class: "d-none", data: { action: "change->image-upload#preview" }%>
-
-        <div class="change-title d-flex gap-5">
-            <p><%=t('post.change_photo')%> <span class="text-danger">*</span></p>
-            <div class="note text-muted">
-                <p><%=t('post.max_file', num: 5)%></p>
-                <p><%= t('post.allowed_type') %></p>
-                <p><%= t('post.max_photo', count: 25) %></p>
-            </div>
-        </div>
-        <!-- Custom button to trigger file input -->
-        <label class="upload-btn d-flex justify-content-center align-items-center" for="<%= f.object_name %>_image" title="<%=t('button.add_photo')%>">
-            <i class="fa fa-plus-circle fa-lg"></i>
-        </label>
-
-        <!-- Image preview container -->
-        <div class="preview-container mt-2 d-none" data-image-upload-target="previewWrapper">
-            <img src="" alt="Preview" class="img-thumbnail" data-image-upload-target="previewImage" />
+    <div class="col d-flex flex-column gap-2"  data-controller="char-counter">
+      <div class="label-row d-flex justify-content-between">
+        <%= f.label :description do %>
+          <%= t('post.description') %>
+          <span class="text-danger">*</span>
+        <% end %>
+        <div class="char-count text-muted">
+          <span class="current-count" data-char-counter-target="counter">0</span>
+          /<span class="max-count">300</span>
         </div>
       </div>
 
+      <%= f.text_area :description, maxlength: 300, placeholder: "#{t('post.photo_description')} #{t('profile.max_field', num: 300)}",
+          data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
+    </div>
+  </div>
+  
 
-      <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
+  <!-- TODO: can upload upto 25 images-->
+  <div class="image-upload" data-controller="image-upload">
+    <!-- Hidden file input -->
+    <%= f.file_field :image, accept: 'image/jpeg, image/png, image/gif', class: "d-none", data: { action: "change->image-upload#preview" }%>
 
-    <%end%>
+    <div class="change-title d-flex gap-5">
+        <p><%=t('post.change_photo')%> <span class="text-danger">*</span></p>
+        <div class="note text-muted">
+            <p><%=t('post.max_file', num: 5)%></p>
+            <p><%= t('post.allowed_type') %></p>
+            <p><%= t('post.max_photo', count: 25) %></p>
+        </div>
+    </div>
+    <!-- Custom button to trigger file input -->
+    <label class="upload-btn d-flex justify-content-center align-items-center" for="<%= f.object_name %>_image" title="<%=t('button.add_photo')%>">
+        <i class="fa fa-plus-circle fa-lg"></i>
+    </label>
 
-</section>
+    <!-- Image preview container -->
+    <div class="preview-container mt-2 d-none" data-image-upload-target="previewWrapper">
+        <img src="" alt="Preview" class="img-thumbnail" data-image-upload-target="previewImage" />
+    </div>
+  </div>
+
+
+  <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
+
+<%end%>

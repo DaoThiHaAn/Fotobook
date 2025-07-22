@@ -63,6 +63,10 @@ input, textarea, select {
     border: 1px solid var(--input-border-color);
 }
 
+select {
+    width: fit-content;
+}
+
 input:focus, textarea:focus, select:focus, input[type="checkbox"]:focus {
     border-width: 2px;
     border-color: var(--dark-blue);
@@ -81,6 +85,10 @@ button, a {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+hr {
+    margin: 0
 }
 
 .custom-primary-btn {

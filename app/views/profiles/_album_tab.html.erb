@@ -7,7 +7,7 @@
             <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class: "layer1" %>
             <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class: "layer2" %>
             <%= image_tag "demo-avatar.png", alt: t('button.photo.one'), class:"layer3" %>
-            <%= link_to edit_photo_path, class: "edit-album-btn" do%>
+            <%= link_to edit_album_path(1), class: "edit-album-btn" do%>
                 <button>
                     <%= t('button.edit')%>
                 </button>

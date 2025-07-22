@@ -1,9 +1,6 @@
-<% content_for :title, "New photo" %>
+<% content_for :title, "Add Photo" %>
 
-<%= render "form", photo: @photo %>
-
-<br>
-
-<div>
-  <%= link_to "Back to photos", photos_path %>
-</div>
+<section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
+<%= render partial: 'layouts/form_title', locals: { title: t('post.add_photo_title') } %>
+<%= render "form"%>
+</section>

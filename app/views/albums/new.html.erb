@@ -1,11 +1,6 @@
-<% content_for :title, "New album" %>
+<% content_for :title, "New Album" %>
 
-<h1>New album</h1>
-
-<%= render "form", album: @album %>
-
-<br>
-
-<div>
-  <%= link_to "Back to albums", albums_path %>
-</div>
+<section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
+<%= render partial: 'layouts/form_title', locals: { title: t('post.new_album_title') } %>
+<%= render "form"%>
+</section>

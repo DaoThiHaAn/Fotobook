@@ -100,6 +100,8 @@ en:
   post:
     edit_album_title: "Edit Album"
     edit_photo_title: "Edit Photo"
+    new_album_title: "New Album"
+    new_photo_title: "New Photo"
     title: "Title"
     photo_title: "Photo Title"
     album_title: "Album Title"

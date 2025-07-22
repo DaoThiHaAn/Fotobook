@@ -76,6 +76,8 @@ vi:
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"
     edit_photo_title: "Chỉnh sửa Ảnh"
+    new_album_title: "Tạo Tập ảnh mới"
+    new_photo_title: "Tạo Ảnh mới"
     title: "Tiêu đề"
     photo_title: "Tiêu đề Ảnh"
     album_title: "Tiêu đề Tập Ảnh"
