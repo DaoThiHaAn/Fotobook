@@ -1,9 +1,6 @@
-<!-- TODO: SHOW PHOTO DETAIILS -> A MODAL -->
-<%= content_for :title, "Photo Details"%>
-
-<%= turbo_frame_tag "modal" do %>
-<div class="modal show d-block" id="myModal" data-controller="modal">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+ <%= turbo_frame_tag "modal", data: { controller: "modal" } do %>
+<div class="modal fade show d-block bg-primary" id="modal">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen">
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -19,10 +16,9 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-action="modal#close">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
 
     </div>
   </div>
-</div>
-<%end%>
+</div><%end%>

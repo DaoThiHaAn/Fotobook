@@ -1,14 +1,14 @@
 <section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
     <div class="d-flex justify-content-between w-100">
-        <h1 class="m-0"><%= t('profile.edit_title')%></h1>
+        <h1><%= t('profile.edit_title')%></h1>
         <button class="custom-primary-btn back">
             <%= t('button.back')%>
         </button>
     </div>
-    <hr class="w-100"/>
+    <hr class="w-100 m-0"/>
 
     <!-- TODO: handle form -->
-    <%= form_with url: user_path(1), method: :patch, class: "profile-form" do |f| %>
+    <%= form_with url: user_path(1), method: :patch do |f| %>
         <div class="change-avatar m-auto">
             <%= image_tag "demo-avatar.png", alt: t('profile.avatar')%>
             <!-- TODO: change avatar -->
@@ -17,61 +17,61 @@
             </button>
         </div>
 
-        <h2 class="m-auto"><%= t('profile.basic_info') %></h2>
-        <div class="form-group d-flex flex-column flex-md-row ">
-            <%= f.label :fname, t('profile.fname') %>
-            <%= f.text_field :fname, maxlength: 25 %>
+        <h2 class="text-center my-5"><%= t('profile.basic_info') %></h2>
+        <div class="row mb-3">
+            <%= f.label :fname, t('profile.fname'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :fname, maxlength: 25, class: "col-md-6" %>
         </div>
 
-        <div class="form-group d-flex flex-column flex-md-row">
-            <%= f.label :lname, t('profile.lname') %>
-            <%= f.text_field :lname, maxlength: 25 %>
+        <div class="row mb-3">
+            <%= f.label :lname, t('profile.lname'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :lname, maxlength: 25, class: "col-md-6" %>
         </div>
 
-        <div class="form-group d-flex flex-column flex-md-row">
-            <%= f.label :email, t('profile.email') %>
-            <%= f.email_field :email, maxlength: 25 %>
+        <div class="row mb-3">
+            <%= f.label :email, t('profile.email'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.email_field :email, maxlength: 25, class: "col-md-6" %>
         </div>
 
-        <div class="d-flex flex-column flex-md-row">
+        <div class="d-flex flex-column flex-md-row mt-4">
             <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
         </div>
     <% end %>
 
     <h2><%= t('profile.change_pw') %></h2>
-    <%= form_with url: user_path(1), method: :patch, class: "profile-form" do |f| %>
-        <div class="form-group d-flex flex-column flex-md-row">
-            <%= f.label :current_password, t('profile.current_pw') %>
-            <div class="pw-field" data-controller="form">
+    <%= form_with url: user_path(1), method: :patch do |f| %>
+        <div class="row mb-3">
+            <%= f.label :current_password, t('profile.current_pw'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <div class="pw-field col-md-6" data-controller="form">
                 <%= f.password_field :current_password, maxlength: 64, autocomplete: "new-password",
                     data:{form_target: "pwField"}, require: true  %>
                 <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
             </div>
         </div>
 
-        <div class="form-group d-flex flex-column flex-md-row">
-            <%= f.label :new_password do %>
+        <div class="row mb-3">
+            <%= f.label :new_password, class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" do %>
                 <%= t('profile.new_pw') %><span class="text-danger"> *</span>
             <% end %>
-            <div class="pw-field" data-controller="form">
+            <div class="pw-field col-md-6" data-controller="form">
                 <%= f.password_field :new_password, maxlength: 64, placeholder: "#{t('profile.pw')} #{t('profile.max_field', num: 64)}", autocomplete: "new-password",
-                    data:{form_target: "pwField"}, require: true  %>
+                    data:{form_target: "pwField"}, require: true%>
                 <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
             </div>
         </div>
 
-        <div class="form-group d-flex flex-nowrap flex-column flex-md-row">
-            <%= f.label :cf_password do %>
+        <div class="row mb-3">
+            <%= f.label :cf_password, class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" do %>
                 <%= t('profile.pw_confirmation') %><span class="text-danger"> *</span>
             <% end %>
-            <div class="pw-field" data-controller="form">
+            <div class="pw-field col-md-6" data-controller="form">
                 <%= f.password_field :cf_password, placeholder: t('profile.pw_confirmation'), maxlength: 64, autocomplete: "new-password",
                     data:{form_target: "pwField"}, require: true  %>
                 <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-md-row">
+        <div class="d-flex flex-column flex-md-rowm mt-4">
             <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
         </div>
     <% end %>

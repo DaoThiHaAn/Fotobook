@@ -20,8 +20,14 @@ Rails.application.routes.draw do
     resources :photos, :albums, shallow: true
   end
 
+  namespace :admin do
+    resources :users, only: [ :index, :edit, :update ], controller: "manage_users"
+    resources :albums, only: [ :index, :edit, :update ], controller: "manage_albums"
+    resources :photos, only: [ :index, :edit, :update ], controller: "manage_photos"
+  end
+
   get "/login", to: "authentication#login", as: :login
-  post "/login", to: "authenticationa#handle_login", as: :handle_login
+  post "/login", to: "authentication#handle_login", as: :handle_login
   get "/logout", to: "authentication#logout", as: :logout
   get "/forgot_pw", to: "authentication#forgot_pw", as: :forgot_pw
 end

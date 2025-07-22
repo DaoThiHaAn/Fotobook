@@ -31,21 +31,21 @@
         
         
         <!-- TODO: handle form-->
-        <%= form_with url: handle_login_path, method: :post, class: "auth-form d-flex flex-column gap-3" do |f| %>
-            <div class="d-flex flex-column">
-                <%= f.label :email, t('profile.email') %>
-                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, require: true %>
+        <%= form_with url: handle_login_path, method: :post do |f| %>
+            <div class="row mb-3">
+                <%= f.label :email, t('profile.email'), class: "col-form-label col-5" %>
+                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, required: true, class: "col-8" %>
             </div>
-            <div data-controller="form" class="d-flex flex-column">
-                <%= f.label :current_password, t('profile.pw') %>
-                <div class="pw-field">
+            <div data-controller="form" class="row">
+                <%= f.label :current_password, t('profile.pw'), class: "col-form-label col-5" %>
+                <div class="pw-field col-8">
                     <%= f.password_field :current_password, placeholder: t('profile.pw'), maxlength: 64, autocomplete: "current-password",
-                         data: { form_target: "pwField" }, require: true %>
+                         data: { form_target: "pwField" }, required: true %>
                     <i class="fa-solid fa-eye togglePw" data-action="click->form#togglePw" data-form-target="eyeIcon"></i>
                 </div>
             </div>
             
-            <%= f.submit t('button.login'), class: "m-auto custom-primary-btn" %>
+            <%= f.submit t('button.login'), class: "m-auto mt-5 custom-primary-btn" %>
         <% end %>
 
         <div class="mt-3 text-center">

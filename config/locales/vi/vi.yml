@@ -50,6 +50,7 @@ vi:
     back: "Quay lại"
     toggle_sidebar: "Mở thanh bên"
     delete_acc: "Xóa tài khoản của bạn"
+    delete_this_acc: "Xóa tài khoản này"
 
   profile:
     edit_title: "Chỉnh sửa hồ sơ người dùng"
@@ -70,6 +71,7 @@ vi:
     basic_info: "Thông tin cơ bản"
     change_pw: "Thay đổi mật khẩu"
     max_field: "(Tối đa %{num} ký tự)"
+    last_login: "Lần đăng nhập cuối"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"

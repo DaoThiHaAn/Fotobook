@@ -2,7 +2,7 @@
     background-color: var(--dark-blue);
     height: fit-content;
     border-bottom: 1px solid var(--form-color);
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .navbar-brand span {

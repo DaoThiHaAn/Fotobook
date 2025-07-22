@@ -74,6 +74,7 @@ en:
     back: "Back"
     toggle_sidebar: "Open sidebar"
     delete_acc: "Delete your account"
+    delete_this_acc: "Delete this account"
 
   profile:
     edit_title: "Edit User Profile"
@@ -94,6 +95,7 @@ en:
     basic_info: "Basic Information"
     change_pw: "Change Password"
     max_field: "(Maximum %{num} characters)"
+    last_login: "Last Login"
 
   post:
     edit_album_title: "Edit Album"

@@ -16,6 +16,7 @@
 @import url("profile.css");
 @import url("edit_profile.css");
 @import url("edit_post.css");
+@import url("manage_user.css");
 
 :root {
 --dark-blue: #3C5999;
@@ -62,9 +63,14 @@ input, textarea, select {
     border: 1px solid var(--input-border-color);
 }
 
-input:focus, textarea:focus, select:focus    {
+input:focus, textarea:focus, select:focus, input[type="checkbox"]:focus {
     border-width: 2px;
     border-color: var(--dark-blue);
+}
+
+.custom.form-check-input {
+    width: 1.2rem;
+    height: 1.5rem;
 }
 
 button, a {

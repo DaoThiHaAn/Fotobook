@@ -1,0 +1,16 @@
+.admin-mng-title {
+    font-size: 2rem;
+    color: var(--dark-blue);
+}
+
+thead {
+    font-size: 1.1rem
+}
+
+.custom.table-group-divider {
+    color: var(--muted);
+}
+
+.email-cell {
+    word-break: break-all;
+}

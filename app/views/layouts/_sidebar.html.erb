@@ -22,10 +22,10 @@
                     <i class="fa-solid fa-folder me-2"></i>
                     <%= t('sidebar.mng_albums')%>
                 </a>
-                <a class="nav-link sidebar-link" href="#">
+                <%= link_to admin_users_path, class: "sidebar-link" do %>
                     <i class="fa-solid fa-users me-2"></i>
                     <%= t('sidebar.mng_users')%>
-                </a>
+                <% end %>
             </nav>
         <%end%>
     </div>
@@ -62,10 +62,11 @@
                 <i class="fa-solid fa-folder me-2"></i>
                 <%= t('sidebar.mng_albums')%>
             </a>
-            <a class="sidebar-link" href="#">
+
+            <%= link_to admin_users_path, class: "sidebar-link" do %>
                 <i class="fa-solid fa-users me-2"></i>
                 <%= t('sidebar.mng_users')%>
-            </a>
+            <% end %>
         </nav>
     </div>
 </aside>

@@ -9,20 +9,11 @@
     margin-top: 20px;
 }
 
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.profile-form .form-group {
-    gap: 1rem;
-}
-
 
 .change-avatar {
     position: relative;
     width: 30%;
+    min-width: 180px;
 }
 
 .change-avatar img {
@@ -74,4 +65,11 @@
 .delete-btn:hover {
     background-color: red;
     color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .save.custom-primary-btn, .delete-btn {
+        padding: 5px 15px;
+    }
 }

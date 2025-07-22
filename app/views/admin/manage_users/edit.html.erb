@@ -1,0 +1,52 @@
+<section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
+    <div class="d-flex justify-content-between w-100">
+        <h1 class="m-0"><%= t('profile.edit_title')%></h1>
+        <button class="custom-primary-btn back">
+            <%= t('button.back')%>
+        </button>
+    </div>
+    <hr class="w-100 m-0"/>
+
+    <!-- TODO: handle form -->
+    <%= form_with url: user_path(1), method: :patch do |f| %>
+        <div class="change-avatar m-auto">
+            <%= image_tag "demo-avatar.png", alt: t('profile.avatar')%>
+            <!-- TODO: change avatar -->
+            <button class="change-btn">
+                <%= t('button.change')%>
+            </button>
+        </div>
+
+        <h2 class="text-center my-5"><%= t('profile.basic_info') %></h2>
+        <div class="row mb-3">
+            <%= f.label :fname, t('profile.fname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :fname, maxlength: 25, class: "col-md-6" %>
+        </div>
+
+        <div class="row mb-3">
+            <%= f.label :lname, t('profile.lname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :lname, maxlength: 25, class: "col-md-6" %>
+        </div>
+
+        <div class="row mb-3">
+            <%= f.label :email, t('profile.email'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.email_field :email, maxlength: 25, class: "col-md-6" %>
+        </div>
+
+        <div class="row mb-3">
+            <%= f.label :active, t('profile.active'), class: "form-check-label col-form-label col-3 me-3 text-md-end text-start fw-bold" %>
+            <%= f.check_box :active, class: "custom form-check-input col-6" %>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row mt-5">
+            <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
+        </div>
+    <% end %>
+
+    <!-- TODO: delete account -->
+    <button class="delete-btn mb-5">
+        <i class="fa-solid fa-trash me-2"></i>
+        <%= t('button.delete_this_acc') %>
+    </button>   
+
+</section>
