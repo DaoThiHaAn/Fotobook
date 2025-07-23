@@ -17,6 +17,7 @@
 @import url("edit_profile.css");
 @import url("edit_post.css");
 @import url("manage_user.css");
+@import url("admin_post.css");
 
 :root {
 --dark-blue: #3C5999;
@@ -89,6 +90,10 @@ a {
 
 hr {
     margin: 0
+}
+
+h1 {
+    color: var(--dark-blue)
 }
 
 .custom-primary-btn {

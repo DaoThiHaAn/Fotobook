@@ -3,22 +3,23 @@
 
 <%= turbo_frame_tag "modal" do %>
 <div class="modal show d-block" id="myModal" data-controller="modal">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title"><%= "long long long long long Photo title"%></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
+      <div class="modal-body d-flex justify-content-center">
+        <%= image_tag "demo-avatar.png"%>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
+        <p><%= "Photo description goes here nfjkgndfjk kjrnfkjg  kqfgnqek jflfeql jqrjegfeqi qgbasj jsffhqipg iqwhwrh qgb gibqiphgq wghq;ghq iJRJQWQR RGQJGQF WIRUQGBTEDFVSCndefbq jfdg fjkwlef qlgjnqe;kf qwkjgnekqr; nkgn qrgnq qkgnreq;g qrkgn wq;gnqn" %></p>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-action="modal#close">Close</button>
       </div>
 
