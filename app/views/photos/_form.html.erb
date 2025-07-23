@@ -61,16 +61,18 @@
 
     <!-- TODO: can click image to edit ; Image preview container -->
     <div class="preview-container d-flex flex-wrap justify-content-between w-100 mt-2 gap-4" data-image-upload-target="previewWrapper">
-        <%= image_tag "demo-avatar.png", alt: "Preview", class: "img-thumbnail", data: { image_upload_target: "previewImage" } %>
-        <%= image_tag "demo-avatar.png", alt: "Preview", class: "img-thumbnail", data: { image_upload_target: "previewImage" } %>
-
-        <%= image_tag "welcome.png", alt: "Preview", class: "img-thumbnail", data: { image_upload_target: "previewImage" } %>
-        <%= image_tag "demo-avatar.png", alt: "Preview", class: "img-thumbnail", data: { image_upload_target: "previewImage" } %>
-
+        <div class="img-preview-container">
+            <i class="fa-solid fa-xmark fa-large" title="<%= t('message.del_icon') %>"></i>
+            <%= image_tag "demo-avatar.png", alt: t("post.previewed_photo"), class: "img-thumbnail", data: { image_upload_target: "previewImage" } %>
+        </div>
     </div>
   </div>
 
-
-  <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
-
-<%end%>
+<div class="d-flex justify-content-center align-items-center gap-4">
+  <%= f.submit t('button.save'), class: "save custom-primary-btn" %>
+  <%= link_to photos_path, method: :delete, class: "delete-btn" do %>
+    <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
+    <span><%= t('button.delete') %></span>
+  <% end %>
+</div>
+<% end %>

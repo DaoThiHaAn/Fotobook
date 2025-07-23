@@ -92,6 +92,8 @@ vi:
     max_file: "Dung lượng tối đa %{num} MB"
     max_photo: "Tối đa %{num} ảnh"
     allowed_type: "Kiểu hợp lệ: jpeg (jpg), png, gif"
+    previewed_photo: "Ảnh xem trước"
+
 
   
   message:
@@ -103,4 +105,5 @@ vi:
     click_post: "Nhấn để xem chi tiết"
     like: "Thả tim"
     unlike: "Hủy tim"
+    del_icon: "Xóa ảnh này"
 

@@ -116,6 +116,7 @@ en:
     max_file: "Maximum %{num} MB"
     allowed_type: "Allowed types: jpeg (jpg), png, gif"
     max_photo: "Maximum %{count} photos"
+    previewed_photo: "Previewed Photo"
 
   
   message:
@@ -127,3 +128,4 @@ en:
     click_post: "Click to view the details"
     like: "Add to Favorites"
     unlike: "Remove from Favorites"
+    del_icon: "Remove this photo"
