@@ -1,5 +1,23 @@
-<p>Welcome <%= @email %>!</p>
+ <div class="email-container">
+      <h1>Welcome to Fotobook, <%= @email %>!</h1>
 
-<p>You can confirm your account email through the link below:</p>
+      <p>
+        Thank you for signing up. To complete your registration and activate your account, please confirm your email address by clicking the button below:
+      </p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+      <p class="text-center">
+        <%= link_to 'Confirm My Account', confirmation_url(@resource, confirmation_token: @token), class: 'custom-primary-btn' %>
+      </p>
+
+      <p>
+        If you didn’t create an account with us, you can safely ignore this email. No action is required.
+      </p>
+
+      <p>
+        We're excited to have you join our community! Start uploading your favorite photos and creating albums to share with friends.
+      </p>
+
+      <div class="text-muted fst-italic">
+        &copy; <%= Time.current.year %> Fotobook. All rights reserved.
+      </div>
+</div>

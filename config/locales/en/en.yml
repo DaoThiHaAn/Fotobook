@@ -75,6 +75,7 @@ en:
     toggle_sidebar: "Open sidebar"
     delete_acc: "Delete your account"
     delete_this_acc: "Delete this account"
+    resend: "Resend"
 
   profile:
     edit_title: "Edit User Profile"
@@ -96,6 +97,7 @@ en:
     change_pw: "Change Password"
     max_field: "(Maximum %{num} characters)"
     last_login: "Last Login"
+    resend_email: "Resend Confirmation Email"
 
   post:
     edit_album_title: "Edit Album"

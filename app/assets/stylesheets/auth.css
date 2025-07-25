@@ -3,8 +3,13 @@
     background-size: cover;
     background-position: center;
     width: 100%;
+    min-height: 100%;
     z-index: -1;
     padding: 50px 0;
+}
+
+.auth-form-container .card {
+    min-width: 60%; 
 }
 
 .auth-form-container h1 {

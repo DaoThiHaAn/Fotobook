@@ -22,9 +22,9 @@
             <form class="searchbar mb-3 mb-lg-0">
                 <input class="form-control" type="text" placeholder="Search Photo / Album">
             </form>
-            <!-- TODO: VIEW AUTHOURIZATION-->
+            <!--  VIEW AUTHOURIZATION-->
             <ul class="navbar-nav ms-auto gap-3 align-items-center justify-content-start"> <!-- push these elements to the right-->  
-                <%unless session[:current_user_id]%>
+                <%unless user_signed_in?%>
                     <li class="nav-item btn-group">
                         <%= link_to login_path, class: "btn login-btn" do %>
                             <%= t('button.login') %>
@@ -37,11 +37,13 @@
 
                 <%else%>
                     <li class="nav-item d-flex align-items-center ms-2 profile">
-                        <%= image_tag "demo-avatar.png", alt: "Profile Avatar", class: "avatar" %>
-                         <span>long long long long long long long long long long long username</span>
+                        <%= link_to edit_user_registration_path, class: "d-flex align-items-center", title: t('button.edit_profile') do %>
+                            <%= image_tag "demo-avatar.png", alt: "Profile Avatar", class: "avatar" %>
+                            <span><%= formatted_name(current_user) %></span>
+                        <% end %>
                     </li>
                     <li>
-                    <%= link_to new_user_path, class: "ms-2 btn marked-btn" do %>
+                    <%= link_to destroy_user_session_path, class: "ms-2 btn marked-btn" do %>
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <%= t('button.logout') %>
                     <%end %>

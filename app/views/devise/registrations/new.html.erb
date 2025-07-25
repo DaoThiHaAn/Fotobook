@@ -19,7 +19,7 @@
             <% if f.object.errors[:email].any?
                 f.object.errors[:email].each do |message|%>
                     <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join(". ") %>.
+                        <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join(". ") %> ❗
                     </p>
                 <% end %>
             <%end%>
