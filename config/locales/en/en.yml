@@ -120,9 +120,7 @@ en:
 
   
   message:
-    logout_success: "You have successfully logged out."
-    login_success: "You have successfully logged in."
-    signup_success: "You have successfully signed up."
+    not_receive_instruction: "Didn't receive confirmation instructions?"
     not_have_acc: "Don't have an account?"
     switch_lang: "Switch to Vietnamese"
     click_post: "Click to view the details"

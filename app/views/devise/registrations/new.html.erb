@@ -1,0 +1,99 @@
+<% content_for :title, "Sign Up" %>
+<% content_for :meta_descriptions, "Create a new Fotobook account"%>
+<% content_for :meta_keywords, "signup"%>
+
+
+<div class="auth-form-container d-flex">
+<section class="card m-auto d-flex flex-column">
+    <h1 class="card-header text-center"><%= "#{t('nav.app_name')} #{t('button.signup')}" %></h1>
+    <div class="card-body d-flex align-items-center justify-content-center flex-column">
+        <!-- TODO: handle form-->
+        <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name), local: true) do |f| %>
+            <%#= render "devise/shared/error_messages", resource: resource %>
+            <div class="row mb-3">
+                <%= f.label :email, class: "col-form-label col-7 col-md-5" do %>
+                  <%= t('profile.email') %><span class="text-danger"> *</span>
+                <% end %>
+                <%= f.email_field :email, placeholder: "#{t('profile.email')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "username", autofocus: true, required: true, class: "col-10 col-md-8" %>
+            </div>
+            <% if f.object.errors[:email].any?
+                f.object.errors[:email].each do |message|%>
+                    <p class="error row mb-3 ms-4">
+                        <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join(". ") %>.
+                    </p>
+                <% end %>
+            <%end%>
+
+            <div class="row mb-3">
+                <%= f.label :first_name, class: "col-form-label col-7 col-md-5" do %>
+                    <%= t('profile.fname') %><span class="text-danger"> *</span>
+                <% end %>
+                <%= f.text_field :first_name, placeholder: "#{t('profile.fname')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "given-name", required: true, class: "col-10 col-md-8" %>
+            </div>
+            <% if f.object.errors[:first_name].any?
+                f.object.errors[:first_name].each do |message|%>
+                    <p class="error row mb-3 ms-4">
+                        <%= f.object.errors[:first_name].map { |msg| "#{t('profile.fname')} #{msg}" }.join(". ") %> ❗
+                    </p>
+                <% end %>
+            <%end%>
+
+            <div class="row mb-3">
+                <%= f.label :last_name, class: "col-form-label col-7 col-md-5" do %>
+                    <%= t('profile.lname') %><span class="text-danger"> *</span>
+                <% end %>
+                <%= f.text_field :last_name, placeholder: "#{t('profile.lname')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "family-name", required: true, class: "col-10 col-md-8" %>
+            </div>
+            <% if f.object.errors[:last_name].any?
+                f.object.errors[:last_name].each do |message|%>
+                    <p class="error row mb-3 ms-4">
+                        <%= f.object.errors[:last_name].map { |msg| "#{t('profile.lname')} #{msg}" }.join(". ") %> ❗
+                    </p>
+                <% end %>
+            <%end%>
+
+            <div class="row mb-3">
+                <%= f.label :password, class: "col-form-label col-7 col-md-5" do %>
+                    <%= t('profile.pw') %><span class="text-danger"> *</span>
+                <% end %>
+                <div class="pw-field col-10 col-md-8 p-0" data-controller="form">
+                    <%= f.password_field :password, placeholder:"#{t('profile.pw')} #{t('profile.max_field', num: 64)}", maxlength: 64, autocomplete: "new-password",
+                        data:{form_target: "pwField"}, required: true  %>
+                    <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
+                </div>
+            </div>
+            <% if f.object.errors[:password].any?
+                f.object.errors[:password].each do |message|%>
+                    <p class="error row mb-3 ms-4">
+                        <%= f.object.errors[:password].map { |msg| "#{t('profile.pw')} #{msg}" }.join(". ") %> ❗
+                    </p>
+                <% end %>
+            <%end%>
+            
+            <div class="row mb-3">
+                <%= f.label :password_confirmation, class: "col-form-label col-7 col-md-5" do %>
+                    <%= t('profile.pw_confirmation') %><span class="text-danger"> *</span>
+                <% end %>
+                <div class="pw-field col-10 col-md-8 p-0" data-controller="form">
+                    <%= f.password_field :password_confirmation, placeholder: t('profile.pw_confirmation'), maxlength: 64, autocomplete: "new-password",
+                        data:{form_target: "pwField"}, required: true %>
+                    <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
+                </div>
+            </div>
+            <% if f.object.errors[:password_confirmation].any?
+                f.object.errors[:password_confirmation].each do |message|%>
+                    <p class="error row mb-3 ms-4">
+                        <%= f.object.errors[:password_confirmation].map { |msg| "#{t('profile.pw_confirmation')} #{msg}" }.join(". ") %> ❗
+                    </p>
+                <% end %>
+            <%end%>
+
+            <%= f.submit t('button.signup'), class: "custom-primary-btn m-auto mt-4" %>
+        <% end %>
+
+        <%= render "devise/shared/links" %>         
+    </div>
+</section>
+ 
+</div>
+

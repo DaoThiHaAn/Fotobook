@@ -97,9 +97,7 @@ vi:
 
   
   message:
-    logout_success: "Bạn đã đăng xuất thành công."
-    login_success: "Bạn đã đăng nhập thành công."
-    signup_success: "Bạn đã đăng ký thành công."
+    not_receive_instruction: "Không nhận được hướng dẫn xác thực?"
     not_have_acc: "Bạn chưa có tài khoản?"
     switch_lang: "Chuyển sang tiếng Anh"
     click_post: "Nhấn để xem chi tiết"

@@ -4,6 +4,67 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <style>
       /* Email styles need to be inline */
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .content {
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .content h2 {
+      color: #4CAF50;
+    }
+    .content p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .footer {
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .content, .header, .footer {
+        padding: 20px 15px;
+      }
+      .cta-button {
+        padding: 10px 20px;
+      }
+    }
     </style>
   </head>
 

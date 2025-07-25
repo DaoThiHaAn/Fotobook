@@ -7,6 +7,10 @@
     z-index: -1;
 }
 
+.auth-form-container h1 {
+    color: var(--dark-blue)
+}
+
 .auth-form-container .card {
     background-color: var(--form-color);
     height: fit-content;
@@ -30,8 +34,13 @@
     color: var(--dark-blue);
 }
 
-.auth-form label {
+.auth-form-container label {
     margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.auth-form-container hr {
+    color: black;
 }
 
 .pw-field {
@@ -55,9 +64,14 @@
     color: var(--dark-blue);
     font-size: 1.1rem;
     font-style: italic;
-
 }
 
 .custom-link:hover {
     text-decoration: underline;
+}
+
+.error {
+    font-size: 0.85rem;
+    font-weight: light;
+    color: rgb(198, 4, 4);
 }

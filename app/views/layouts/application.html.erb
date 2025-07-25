@@ -36,6 +36,15 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
     <div class="main-content d-flex">
       <!--TODO only rendered after login -->
       <%= render 'layouts/sidebar' %>
