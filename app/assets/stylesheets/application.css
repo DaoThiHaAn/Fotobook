@@ -46,7 +46,7 @@ body {
 }
 
 form {
-    width: 80%;
+    max-width: 80%;
 }
 
 input::placeholder, textarea::placeholder {
@@ -120,6 +120,30 @@ h1 {
     word-break:keep-all;
 }
 
+.toast-container {
+    z-index: 1080; 
+    width: 100%; 
+}
+
+.toast-container p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.custom-alert.toast {
+    border: 1px solid rgb(153, 3, 3);
+}
+
+.custom-alert.toast .toast-header {
+    background-color: rgb(249, 112, 112);
+    color: white;
+    border-bottom: 1px solid rgb(153, 3, 3); 
+}
+
+.notice {
+    border: 1px solid green;
+}
+
 /* Main Content Layout */
 .main-content {
     height: 100%;
@@ -159,5 +183,9 @@ hr {
     
     .content-area {
         margin: 10px;
+    }
+
+    .toast-container .toast {
+        width: 90%;
     }
 }

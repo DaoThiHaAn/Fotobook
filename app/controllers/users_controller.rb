@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  layout "devise", only: [:edit]
-
   def new
   end
 
@@ -18,9 +16,4 @@ class UsersController < ApplicationController
 
   def update
   end
-
-  def sign_up_params
-    params.require(resource_name).permit(:email, :password, :password_confirmation, :fname, :l) # Add your custom fields
-  end
-
 end
