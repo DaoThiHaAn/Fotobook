@@ -43,7 +43,7 @@
                         <% end %>
                     </li>
                     <li>
-                    <%= link_to destroy_user_session_path, class: "ms-2 btn marked-btn" do %>
+                    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "ms-2 btn marked-btn" do %>
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <%= t('button.logout') %>
                     <%end %>

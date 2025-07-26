@@ -35,7 +35,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Make template changes take effect immediately.
-  config.action_mailer.perform_caching = true
+  config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
@@ -49,7 +49,10 @@ Rails.application.configure do
     user_name:            "daothihaan@gmail.com",
     password:             "jifr ezuq eocy bjdo",
     authentication:       "plain",
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    # Increase the timeout for opening the connection (in seconds)
+    open_timeout:         20,
+    read_timeout:         20
   }
 
   # Print deprecation notices to the Rails logger.

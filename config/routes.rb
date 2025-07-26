@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-# Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-# get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-# get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-# Defines the root path route ("/")
-# root "posts#index"
+  # Defines the root path route ("/")
+
+  root "photos#index" # show all posts of photos in guest mode
+
 
 devise_scope :user do
   get "/login", to: "devise/sessions#new" # login_*
@@ -20,7 +22,6 @@ devise_for :users
 
 
 
-  root "users#index"
 
   resources :users, :albums, :photos, :profiles
 
@@ -33,7 +34,4 @@ devise_for :users
     resources :albums, only: [ :index, :edit, :update ], controller: "manage_albums"
     resources :photos, only: [ :index, :edit, :update ], controller: "manage_photos"
   end
-
-  get "/logout", to: "authentication#logout", as: :logout
-  get "/forgot_pw", to: "authentication#forgot_pw", as: :forgot_pw
 end

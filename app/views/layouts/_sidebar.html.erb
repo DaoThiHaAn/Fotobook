@@ -1,8 +1,8 @@
-<aside class="custom-sidebar d-none d-lg-flex align-items-center justify-content-center <%= nil.nil? ? "welcome" : ""%>" id="sidebar">    
+<aside class="custom-sidebar d-none d-lg-flex align-items-center justify-content-center <%= user_signed_in? ? "" : "welcome"%>" id="sidebar">    
     <!-- TODO Guest has no option, change if to unless-->
 
     <div class="offcanvas-body">
-        <%if 1%>
+        <%if user_signed_in?%>
             <nav class="nav flex-column">
                 <!-- TODO: Authorization-->
                 <a class="nav-link sidebar-link" href="#">

@@ -22,4 +22,11 @@ class ApplicationController < ActionController::Base
     # For account update (optional)
     devise_parameter_sanitizer.permit(:account_update, keys: [ :first_name, :last_name ])
   end
+
+  private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 end
