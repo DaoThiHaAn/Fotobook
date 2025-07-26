@@ -16,12 +16,10 @@
                 <% end %>
                 <%= f.email_field :email, placeholder: "#{t('profile.email')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "username", autofocus: true, required: true, class: "col-10 col-md-8" %>
             </div>
-            <% if f.object.errors[:email].any?
-                f.object.errors[:email].each do |message|%>
-                    <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join(". ") %> ❗
-                    </p>
-                <% end %>
+            <% if f.object.errors[:email].any? %>
+                <p class="error row mb-3 ms-4">
+                    <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join(". ") %> ❗
+                </p>
             <%end%>
 
             <div class="row mb-3">
@@ -30,12 +28,10 @@
                 <% end %>
                 <%= f.text_field :first_name, placeholder: "#{t('profile.fname')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "given-name", required: true, class: "col-10 col-md-8" %>
             </div>
-            <% if f.object.errors[:first_name].any?
-                f.object.errors[:first_name].each do |message|%>
-                    <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:first_name].map { |msg| "#{t('profile.fname')} #{msg}" }.join(". ") %> ❗
-                    </p>
-                <% end %>
+            <% if f.object.errors[:first_name].any? %>
+                <p class="error row mb-3 ms-4">
+                    <%= f.object.errors[:first_name].map { |msg| "#{t('profile.fname')} #{msg}" }.join(". ") %> ❗
+                </p>
             <%end%>
 
             <div class="row mb-3">
@@ -44,12 +40,10 @@
                 <% end %>
                 <%= f.text_field :last_name, placeholder: "#{t('profile.lname')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "family-name", required: true, class: "col-10 col-md-8" %>
             </div>
-            <% if f.object.errors[:last_name].any?
-                f.object.errors[:last_name].each do |message|%>
-                    <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:last_name].map { |msg| "#{t('profile.lname')} #{msg}" }.join(". ") %> ❗
-                    </p>
-                <% end %>
+            <% if f.object.errors[:last_name].any? %>
+                <p class="error row mb-3 ms-4">
+                    <%= f.object.errors[:last_name].map { |msg| "#{t('profile.lname')} #{msg}" }.join(". ") %> ❗
+                </p>
             <%end%>
 
             <div class="row mb-3">
@@ -62,12 +56,10 @@
                     <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
                 </div>
             </div>
-            <% if f.object.errors[:password].any?
-                f.object.errors[:password].each do |message|%>
-                    <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:password].map { |msg| "#{t('profile.pw')} #{msg}" }.join(". ") %> ❗
-                    </p>
-                <% end %>
+            <% if f.object.errors[:password].any? %>
+                <p class="error row mb-3 ms-4">
+                    <%= f.object.errors[:password].map { |msg| "#{t('profile.pw')} #{msg}" }.join(". ") %> ❗
+                </p>
             <%end%>
             
             <div class="row mb-3">
@@ -80,12 +72,10 @@
                     <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
                 </div>
             </div>
-            <% if f.object.errors[:password_confirmation].any?
-                f.object.errors[:password_confirmation].each do |message|%>
-                    <p class="error row mb-3 ms-4">
-                        <%= f.object.errors[:password_confirmation].map { |msg| "#{t('profile.pw_confirmation')} #{msg}" }.join(". ") %> ❗
-                    </p>
-                <% end %>
+            <% if f.object.errors[:password_confirmation].any? %>
+                <p class="error row mb-3 ms-4">
+                    <%= f.object.errors[:password_confirmation].map { |msg| "#{t('profile.pw_confirmation')} #{msg}" }.join(". ") %> ❗
+                </p>
             <%end%>
 
             <%= f.submit t('button.signup'), class: "custom-primary-btn m-auto mt-4" %>
