@@ -18,7 +18,9 @@ devise_scope :user do
   get "/login", to: "devise/sessions#new" # login_*
   get "/signup", to: "devise/registrations#new"  # signup_* helper by default
 end
-devise_for :users
+devise_for :users,  controllers: {
+  omniauth_callbacks: "users/omniauth_callbacks"
+}
 
 
 

@@ -44,7 +44,13 @@ gem "thruster", require: false
 
 gem "rack-cors"
 gem "carrierwave"
-gem 'kaminari'
+gem "kaminari"
+
+# Login with other providers
+gem "omniauth-facebook"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
+gem "omniauth-twitter2"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

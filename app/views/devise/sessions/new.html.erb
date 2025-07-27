@@ -8,16 +8,16 @@
     <div class="card-body d-flex align-items-center justify-content-center flex-column">
         <!-- TODO: Login via third parties-->
         <div class="social-login d-flex gap-5 justify-content-center mb-4">
-            <a href="#", title="<%= t('profile.login_with', app: "Google") %>">
-                <%= image_tag "google.png",alt: "Google logo" %>
-            </a>
+            <%= link_to user_google_oauth2_omniauth_authorize_path, title: t('profile.login_with', app: "Google") do %>
+                <%= image_tag "google.png", alt: "Google logo" %>
+            <% end %>
 
-            <a href="#", title="<%= t('profile.login_with', app: "Facebook") %>">
+            <%= link_to user_facebook_omniauth_authorize_path, title: t('profile.login_with', app: "Facebook") do %>
                 <%= image_tag "facebook.png", alt: "Facebook logo" %>
-            </a>
+            <% end %>
 
             <a href="#", title="<%= t('profile.login_with', app: "Twitter") %>">
-                <%= image_tag "twitter.png", alt: "Twitter logo" %>
+                <%= image_tag "twitter.png", alt: "X logo" %>
             </a>
         </div>
 
@@ -66,4 +66,9 @@
  
 </div>
 
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+  <% end %>
+<% end %>
 
