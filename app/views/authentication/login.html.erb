@@ -34,7 +34,7 @@
         <%= form_with url: handle_login_path, method: :post do |f| %>
             <div class="row mb-3">
                 <%= f.label :email, t('profile.email'), class: "col-form-label col-5" %>
-                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, required: true, class: "col-8" %>
+                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "email", autofocus: true, required: true, class: "col-8" %>
             </div>
             <div data-controller="form" class="row">
                 <%= f.label :current_password, t('profile.pw'), class: "col-form-label col-5" %>

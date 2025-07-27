@@ -1,16 +1,29 @@
-<h2>Forgot your password?</h2>
+<% content_for :title, "Forgot Password" %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="auth-form-container d-flex">
+<section class="card m-auto d-flex flex-column">
+    <h1 class="card-header text-center"><%= t('profile.forgot_pw') %></h1>
+    <div class="card-body d-flex align-items-center justify-content-center flex-column">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_with model: resource, scope: resource_name, url: password_path(resource_name), html: { method: :post }, local: true do |f| %>
+          <div class="row mb-3">
+              <%= f.label :email, t('profile.email'), class: "col-form-label col-5" %>
+              <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "email", autofocus: true, required: true%>
+          </div>
+          <% if f.object.errors.any? %>
+          <div class="row mb-3 ms-4 error">
+            <%= safe_join(f.object.errors.full_messages.map { |msg| h(msg) }, ", ") %> ❗
+          </div>
+          <% end %>
+          
+          <%= f.submit t('button.send'), class: "m-auto mt-1 custom-primary-btn" %>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+      <div class="mt-3 text-center d-flex flex-column gap-2">
+          <%= render "devise/shared/links" %>         
+      </div>
 
-<%= render "devise/shared/links" %>
+    </div>
+</section>
+ 
+</div>

@@ -8,7 +8,7 @@
         <%= form_with model: resource, scope: resource_name, url: confirmation_path(resource_name), method: :post, local: true do |f| %>
             <div class="row mb-3">
                 <%= f.label :email, t('profile.email'), class: "col-form-label col-5" %>
-                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "username", autofocus: true, required: true,
+                <%= f.email_field :email, placeholder: t('profile.email'), maxlength: 25, autocomplete: "email", autofocus: true, required: true,
                     value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
             </div>
             <% if f.object.errors.any? %>

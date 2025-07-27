@@ -76,6 +76,7 @@ en:
     delete_acc: "Delete your account"
     delete_this_acc: "Delete this account"
     resend: "Resend"
+    send: "Send"
 
   profile:
     edit_title: "Edit User Profile"
@@ -87,7 +88,7 @@ en:
     current_pw: "Current Password"
     new_pw: "New Password"
     pw_confirmation: "Password Confirmation"
-    forgot_pw: "Forgot Password?"
+    forgot_pw: "Forgot Your Password?"
     create_acc: "Create Account"
     back_to_login: "Back to Login"
     or: "or"
@@ -98,6 +99,7 @@ en:
     max_field: "(Maximum %{num} characters)"
     last_login: "Last Login"
     resend_email: "Resend Confirmation Email"
+    reset_pw: "Reser Password"
 
   post:
     edit_album_title: "Edit Album"

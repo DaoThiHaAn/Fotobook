@@ -14,7 +14,7 @@
                 <%= f.label :email, class: "col-form-label col-7 col-md-5" do %>
                   <%= t('profile.email') %><span class="text-danger"> *</span>
                 <% end %>
-                <%= f.email_field :email, placeholder: "#{t('profile.email')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "username", autofocus: true, required: true, class: "col-10 col-md-8" %>
+                <%= f.email_field :email, placeholder: "#{t('profile.email')} #{t('profile.max_field', num: 25)}", maxlength: 25, autocomplete: "email", autofocus: true, required: true, class: "col-10 col-md-8" %>
             </div>
             <% if f.object.errors[:email].any? %>
                 <p class="error row mb-3 ms-4">

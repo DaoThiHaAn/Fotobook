@@ -52,6 +52,7 @@ vi:
     delete_acc: "Xóa tài khoản của bạn"
     delete_this_acc: "Xóa tài khoản này"
     resend: "Gửi lại"
+    send: "Gửi"
 
   profile:
     edit_title: "Chỉnh sửa hồ sơ người dùng"
@@ -74,6 +75,7 @@ vi:
     max_field: "(Tối đa %{num} ký tự)"
     last_login: "Lần đăng nhập cuối"
     resend_email: "Gửi lại email xác nhận"
+    reset_pw: "Đặt lại mật khẩu"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"
