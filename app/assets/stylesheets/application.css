@@ -164,6 +164,10 @@ hr {
     color: var(--muted)
 }
 
+.field_with_errors {
+  display: contents;
+}
+
 
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {

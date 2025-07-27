@@ -36,6 +36,7 @@
     <%= form_with url: user_path(1), method: :patch do |f| %>
         <div class="row mb-3">
             <%= f.label :current_password, t('profile.current_pw'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= t('profile.pw_must_fill') %>
             <div class="pw-field col-md-6" data-controller="form">
                 <%= f.password_field :current_password, maxlength: 64, autocomplete: "new-password",
                     data:{form_target: "pwField"}, require: true  %>

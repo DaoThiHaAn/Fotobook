@@ -76,6 +76,8 @@ vi:
     last_login: "Lần đăng nhập cuối"
     resend_email: "Gửi lại email xác nhận"
     reset_pw: "Đặt lại mật khẩu"
+    email_pw: "Email và Mật khẩu"
+    pw_must_fill: "Vui lòng nhập mật khẩu để xác minh danh tính của bạn"
 
   post: 
     edit_album_title: "Chỉnh sửa Tập ảnh"
@@ -108,5 +110,8 @@ vi:
     like: "Thả tim"
     unlike: "Hủy tim"
     del_icon: "Xóa ảnh này"
-    warning: Cảnh báo"
+    warning: "Cảnh báo"
+    delete_confirm: "Bạn có chắc chắn muốn xóa tài khoản này không?"
+    update_success: "Cập nhật hồ sơ thành công!"
+    update_failed: "Cập nhật hồ sơ thất bại. Vui lòng thử lại :("
 

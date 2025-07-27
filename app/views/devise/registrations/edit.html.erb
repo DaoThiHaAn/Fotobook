@@ -1,43 +1,130 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
+    <%= render partial: 'layouts/form_title', locals: { title: t('profile.edit_title') } %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <!-- TODO: handle form -->
+    <%= form_with(model: @user, url: user_path(@user), method: :patch, data: {turbo: false}) do |f| %>
+        <div class="change-avatar m-auto">
+            <%= image_tag "demo-avatar.png", alt: t('profile.avatar')%>
+            <!-- TODO: change avatar -->
+            <button class="change-btn">
+                <%= t('button.change')%>
+            </button>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <h2 class="text-center my-5"><%= t('profile.basic_info') %></h2>
+        <div class="row mb-3">
+            <%= f.label :first_name, t('profile.fname'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :first_name, maxlength: 25, class: "col-md-6" %>
+        </div>
+        <% if f.object.errors[:first_name].any? %>
+            <p class="error row mb-3 ms-4">
+                <%= f.object.errors[:first_name].map { |msg| "#{t('profile.fname')} #{msg}" }.join("<br>").html_safe %> ❗
+            </p>
+        <%end%>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <div class="row mb-3">
+            <%= f.label :last_name, t('profile.lname'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :last_name, maxlength: 25, class: "col-md-6" %>
+        </div>
+        <% if f.object.errors[:last_name].any? %>
+            <p class="error row mb-3 ms-4">
+                <%= f.object.errors[:last_name].map { |msg| "#{t('profile.lname')} #{msg}" }.join("<br>").html_safe %> ❗
+            </p>
+        <%end%>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+        <div class="d-flex flex-column flex-md-row mt-4">
+            <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
+        </div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <h2><%= t('profile.email_pw') %></h2>
+    <%= form_with model: resource, as: resource_name, url: registration_path(resource_name), method: :patch, data: {turbo: true} do |f| %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="row mb-3">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+        <div class="row mb-3">
+            <%= f.label :email, t('profile.email'), class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.email_field :email, maxlength: 25, class: "col-md-6" %>
+        </div>
+        <% if f.object.errors[:email].any? %>
+            <p class="error row mb-3 ms-4">
+                <%= f.object.errors[:email].map { |msg| "#{t('profile.email')} #{msg}" }.join("<br>").html_safe %> ❗
+            </p>
+        <%end%>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+        <div class="row mb-3">
+            <%= f.label :current_password,
+                class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" do %>
+                <%= t('profile.current_pw') %> <span class="text-danger"> *</span>
+                <button type="button" class="border-0 ms-2 p-0 bg-transparent"
+                        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="<%= t('profile.pw_must_fill') %>">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            <%end%>
+            <div class="col-md-6 p-0">
+                <div class="pw-field" data-controller="form">
+                    <%= f.password_field :current_password, maxlength: 64, autocomplete: "new-password",
+                        data:{form_target: "pwField"}, require: true  %>
+                    <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
+                </div>
+               <% if f.object.errors[:current_password].any? %>
+                    <p class="error ms-2 mt-2 m-0">
+                        <%= f.object.errors[:current_password].map { |msg| "#{t('profile.pw')} #{msg}" }.join("<br>").html_safe %> ❗
+                    </p>
+                <%end%>
+            </div>
+        </div>
+     
 
-<h3>Cancel my account</h3>
+        <div class="row mb-3">
+            <%= f.label :password, class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" do %>
+                <%= t('profile.new_pw') %>
+            <% end %>
+            <div class="col-md-6 p-0">
+                <div class="pw-field" data-controller="form">
+                    <%= f.password_field :password, maxlength: 64, placeholder: "#{t('profile.pw')} #{t('profile.max_field', num: 64)}", autocomplete: "new-password",
+                        data:{form_target: "pwField"}, require: true%>
+                    <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
+                </div>
+                <% if f.object.errors[:password].any? %>
+                    <p class="error row mt-2 ms-2 m-0">
+                        <%= f.object.errors[:password].map { |msg| "#{t('profile.pw')} #{msg}" }.join("<br>").html_safe %> ❗
+                    </p>
+                <%end%>
+            </div>
+        </div>
+        
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+        <div class="row mb-3">
+            <%= f.label :password_confirmation, class: "col-md-4 col-form-label me-3 text-md-end text-start fw-bold" do %>
+                <%= t('profile.pw_confirmation') %>
+            <% end %>
+            <div class="col-md-6 p-0">
+                <div class="pw-field" data-controller="form">
+                    <%= f.password_field :password_confirmation, placeholder: t('profile.pw_confirmation'), maxlength: 64, autocomplete: "new-password",
+                        data:{form_target: "pwField"}, require: true  %>
+                    <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
+                </div>
+                <% if f.object.errors[:password_confirmation].any? %>
+                    <p class="error row ms-2 mt-2 m-0">
+                        <%= f.object.errors[:password_confirmation].map { |msg| "#{t('profile.pw_confirmation')} #{msg}" }.join("<br>").html_safe %> ❗
+                    </p>
+                <%end%>
+            </div>
+        </div>
+        
 
-<%= link_to "Back", :back %>
+        <div class="d-flex flex-column flex-md-rowm mt-4">
+            <%= f.submit t('button.save'), class: "m-auto save custom-primary-btn" %>
+        </div>
+    <% end %>
+
+    <!-- TODO: delete account -->
+    <%= button_to registration_path(resource_name), method: :delete, 
+        data: { confirm: t('button.delete_acc'), turbo_confirm: t('message.delete_acc') }, class: "delete-btn mb-5" do %>
+      <i class="fa-solid fa-trash me-2"></i>
+      <%= t('button.delete_acc') %>
+    <% end %>
+
+</section>

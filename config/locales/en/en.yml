@@ -99,7 +99,9 @@ en:
     max_field: "(Maximum %{num} characters)"
     last_login: "Last Login"
     resend_email: "Resend Confirmation Email"
-    reset_pw: "Reser Password"
+    reset_pw: "Reset Password"
+    email_pw: "Email and Password"
+    pw_must_fill: "Please input the password to verify your identity"
 
   post:
     edit_album_title: "Edit Album"
@@ -132,3 +134,6 @@ en:
     unlike: "Remove from Favorites"
     del_icon: "Remove this photo"
     warning: "Warning!"
+    delete_acc: "Are you sure to delete your account?"
+    update_success: "Profile updated successfully!"
+    update_failed: "Failed to update profile. Please try again :("

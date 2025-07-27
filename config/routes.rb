@@ -19,10 +19,9 @@ devise_scope :user do
   get "/signup", to: "devise/registrations#new"  # signup_* helper by default
 end
 devise_for :users,  controllers: {
-  omniauth_callbacks: "users/omniauth_callbacks"
+  omniauth_callbacks: "users/omniauth_callbacks",
+  registrations: "registrations"
 }
-
-
 
 
   resources :users, :albums, :photos, :profiles

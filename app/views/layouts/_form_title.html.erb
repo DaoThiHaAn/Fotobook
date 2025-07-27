@@ -1,7 +1,5 @@
 <div class="d-flex justify-content-between w-100">
     <h1 class="m-0"><%= title %></h1>
-    <button class="custom-primary-btn back">
-        <%= t('button.back')%>
-    </button>
+    <%= link_to t('button.back'), :back, class: "custom-primary-btn back" %>
 </div>
 <hr class="w-100"/>
