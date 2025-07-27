@@ -3,8 +3,8 @@
 
     <!-- TODO: handle form -->
     <%= form_with(model: @user, url: user_path(@user), method: :patch, data: {turbo: false}) do |f| %>
-        <div class="change-avatar m-auto">
-            <%= image_tag "demo-avatar.png", alt: t('profile.avatar')%>
+        <div class="change-avatar <%= style_avatar(@user) %> m-auto">
+            <%= image_tag @user.get_avatar, alt: t('profile.avatar')%>
             <!-- TODO: change avatar -->
             <button class="change-btn">
                 <%= t('button.change')%>

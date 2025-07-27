@@ -13,4 +13,11 @@ module ApplicationHelper
 
     "#{fname} #{fname_array.join(' ')} #{lname_array.join(' ')}"
   end
+
+  def style_avatar(user)
+    # TODO: check avatar is nil by carrierwave method
+    if user.avatar.nil?
+      "fake"
+    end
+  end
 end

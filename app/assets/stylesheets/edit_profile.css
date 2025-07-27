@@ -21,6 +21,11 @@
     height: auto;
 }
 
+.change-avatar.fake img {
+    border: 2px solid var(--dark-blue);
+    border-radius: 50%;
+}
+
 .change-btn {
     width: 80%;
     position: absolute;

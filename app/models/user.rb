@@ -40,6 +40,16 @@ class User < ApplicationRecord
       user
   end
 
+  # get avatar url
+  def get_avatar
+    # TODO: change to carrierwave method
+    fname = first_name.split.first
+    lname = last_name.split.first
+    if avatar.nil?
+      "https://ui-avatars.com/api/?name=#{fname}+#{lname}&background=fff&color=3C5999&bold=true"
+    end
+  end
+
   # Override Devise's default password validation
   validate :password_complexity
 
