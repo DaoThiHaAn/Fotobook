@@ -5,19 +5,16 @@
   <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "profile-avatar" %>
 
   <div class="d-flex flex-column gap-3">
-    <%= link_to edit_user_path(1) do %>
+    <%= link_to edit_user_registration_path do %>
       <button class="edit-profile-btn">
         <%= t('button.edit_profile') %>
       </button>
     <% end %>
 
-    <h1>USERNAME</h1>
+    <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
 
     <div class="btn-group profile-btn-group d-flex flex-wrap gap-3">
-      <button class="profile-tab-btn active text-uppercase">
-        <p class="m-0 number">108</p>
-        <%= t('button.photo', count:108)%>
-      </button>
+      <%= profile_photo_tab(@is_public, count: @target_person.photos_count) %>
 
       <button class="profile-tab-btn text-uppercase">
         <p class="m-0 number">108</p>
@@ -38,5 +35,13 @@
   </div>
 </section>
 
-<%= render "photo_tab"%>
 
+<% if request.fullpath.include?("photos") %>
+<%= render "photo_tab", photos: @photos, is_public: @is_public %>
+<% elsif request.fullpath.include?("albums") %>
+<%= render "album_tab", albums: @albums, is_public: @is_public %>
+<% elsif request.fullpath.include?("followers") %>
+<%= render "follower_tab", followers: @followers, is_public: @is_public %>
+<% elsif request.fullpath.include?("following") %>
+<%= render "following_tab", following: @following, is_public: @is_public %
+<%end%>

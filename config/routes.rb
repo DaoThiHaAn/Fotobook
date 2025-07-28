@@ -14,21 +14,33 @@ Rails.application.routes.draw do
   root "photos#index" # show all posts of photos in guest mode
 
 
-devise_scope :user do
-  get "/login", to: "devise/sessions#new" # login_*
-  get "/signup", to: "devise/registrations#new"  # signup_* helper by default
-end
-devise_for :users,  controllers: {
-  omniauth_callbacks: "users/omniauth_callbacks",
-  registrations: "registrations"
-}
+    devise_scope :user do
+        get "/login", to: "devise/sessions#new" # login_*
+        get "/signup", to: "devise/registrations#new"  # signup_* helper by default
+    end
+    devise_for :users,  controllers: {
+        omniauth_callbacks: "users/omniauth_callbacks",
+        registrations: "registrations"
+    }
 
 
-  resources :users, :albums, :photos, :profiles
+    resources :users do
+        get "/:tab/photos", to: "photos#index_feeds", as: :tab_photos # tab_feeds_photos()  -> "feeds" or "discover"
 
-  resources :users do
-    resources :photos, :albums, shallow: true
-  end
+        resources :photos, shallow: true, except: [ :index ] do
+            collection do
+                get "", to: "photos#index_user", as: :index # index_user_photos
+            end
+        end
+
+        resources :albums, shallow: true
+    end
+
+
+    resources :profiles do
+        # profiles/:profile_id/photos
+        get "/photos", to: "photos#index_profile", as: :photos # profile_photos
+    end
 
   namespace :admin do
     resources :users, only: [ :index, :edit, :update ], controller: "manage_users"

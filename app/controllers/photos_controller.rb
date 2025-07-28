@@ -3,8 +3,41 @@ class PhotosController < ApplicationController
 
   # GET /photos or /photos.json
   def index
-    @photos = Photo.all
+    # Show all photos in guest mode
+    @photos = Photo.all.includes(:profile).order(updated_at: :desc)
   end
+
+  def index_feeds
+    # TODO: Show all photos in of people who u are following
+    following_ids = Follow.where(follower_id: current_user.id).pluck(:followed_id)
+    @photos = Photo.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+
+    render :index
+  end
+
+def index_discover
+    # Show all photos of people you are not following
+    following_ids = Follow.where(follower_id: current_user.id).pluck(:followed_id)
+    @photos = Photo.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+
+    render :index
+end
+
+  def index_user
+    # TODO: show all photos in your own profile (only u can view)
+    @photos = Photo.where(id: current_user.id).includes(:profile).order(updated_at: :desc)
+    @is_public = false
+    @target_person = Profile.where(user_id: current_user.id)
+    render template: "profiles/show"
+  end
+
+def index_profile
+    # TODO: show all of his public photos when visiting a user profile
+    @photos = Photo.where(user_id: params[:profile_id], is_public: true).order(updated_at: :desc)
+    @is_public = true
+    @target_person = Profile.find_by(user_id: params[:profile_id])
+    render template: "profiles/show"
+end
 
   # GET /photos/1 or /photos/1.json
   def show

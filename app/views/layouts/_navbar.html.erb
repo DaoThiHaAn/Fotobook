@@ -37,7 +37,7 @@
 
                 <%else%>
                     <li class="nav-item d-flex align-items-center ms-2 profile">
-                        <%= link_to edit_user_registration_path, class: "d-flex align-items-center", title: t('button.edit_profile') do %>
+                        <%= link_to user_path(current_user), class: "d-flex align-items-center", title: t('button.edit_profile') do %>
                             <%= image_tag current_user.get_avatar, alt: "Profile Avatar", class: "avatar" %>
                             <span><%= formatted_name(current_user) %></span>
                         <% end %>
