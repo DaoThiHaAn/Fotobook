@@ -31,10 +31,14 @@
     font-size: 1.1rem
 }
 
-.sidebar-link:hover {
+.sidebar-link.active {
     color: var(--dark-blue) !important;
-    font-size: 1.2rem;
     font-weight: bold;
+}
+
+.sidebar-link:hover {
+    color: var(--primary-btn-hover) !important;
+    font-size: 1.2rem;
     width: 100%;
 }
 
