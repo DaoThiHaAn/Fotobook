@@ -14,7 +14,7 @@
     <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
 
     <div class="btn-group profile-btn-group d-flex flex-wrap gap-3">
-      <%= profile_photo_tab(@is_public, count: @target_person.photos_count) %>
+      <%= profile_photo_tab(@is_public, count: 100) %>
 
       <button class="profile-tab-btn text-uppercase">
         <p class="m-0 number">108</p>
@@ -37,11 +37,11 @@
 
 
 <% if request.fullpath.include?("photos") %>
-<%= render "photo_tab", photos: @photos, is_public: @is_public %>
+<%= render partial: "profiles/photo_tab", locals: { photos: @photos, is_public: @is_public } %>
 <% elsif request.fullpath.include?("albums") %>
-<%= render "album_tab", albums: @albums, is_public: @is_public %>
+<%= render partial: "profiles/album_tab", locals: { albums: @albums, is_public: @is_public } %>
 <% elsif request.fullpath.include?("followers") %>
-<%= render "follower_tab", followers: @followers, is_public: @is_public %>
+<%= render partial: "profiles/follower_tab", locals: { followers: @followers, is_public: @is_public } %>
 <% elsif request.fullpath.include?("following") %>
-<%= render "following_tab", following: @following, is_public: @is_public %
+<%= render partial: "profiles/following_tab", locals: { following: @following, is_public: @is_public } %>
 <%end%>

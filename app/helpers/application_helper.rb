@@ -22,16 +22,20 @@ module ApplicationHelper
     end
 
     def highlight_active_tab(tab_name)
-        params[tab_name.to_sym].present? ? "active" : ""
+        if params[tab_name.to_sym].present? || request.fullpath.include?(tab_name)
+            "active"
+        else
+            ""
+        end
     end
 
     # Authorization for 4 link tabs in profile page
     def profile_photo_tab(is_public, count: 0)
         path = is_public ? profile_photos_path(params[:profile_id]) : index_user_photos_path(current_user.id)
-        tab_class = "profile-tab-btn text-uppercase #{active_tab?("photos")}"
+        tab_class = "profile-tab-btn text-uppercase #{highlight_active_tab("photos")}"
 
         link_to path, class: tab_class do
-            content_tag(:p, class: "m-0 number") + t("button.photo", count: count)
+            content_tag(:p, count.to_s, class: "m-0 number") + t("button.photo", count: count)
         end
     end
 end

@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
 
   def index_feeds
     # TODO: Show all photos in of people who u are following
-    following_ids = Follow.where(follower_id: current_user.id).pluck(:followed_id)
+    following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
     @photos = Photo.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
 
     render :index
@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 
 def index_discover
     # Show all photos of people you are not following
-    following_ids = Follow.where(follower_id: current_user.id).pluck(:followed_id)
+    following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
     @photos = Photo.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
 
     render :index

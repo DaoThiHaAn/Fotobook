@@ -137,3 +137,7 @@ en:
     delete_acc: "Are you sure to delete your account?"
     update_success: "Profile updated successfully!"
     update_failed: "Failed to update profile. Please try again :("
+    no_photos: "No photos found!"
+    no_albums: "No albums found!"
+    no_followers: "No followers found!"
+    no_followees: "No followees found!"

@@ -58,6 +58,19 @@
     color: var(--primary-btn-hover);
 }
 
+.profile-edit-btn {
+    border-radius: 35px;
+    border: none;
+    color: white;
+    background-color: var(--green);
+    padding: 8px 25px;
+    font-weight: bold;
+}
+
+.profile-edit-btn:hover {
+    background-color: var(--green-hover)
+}
+
 /* PHOTO TAB */
 .profile-tab-view {
     row-gap: 1.5rem;

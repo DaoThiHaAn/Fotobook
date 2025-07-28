@@ -114,4 +114,8 @@ vi:
     delete_confirm: "Bạn có chắc chắn muốn xóa tài khoản này không?"
     update_success: "Cập nhật hồ sơ thành công!"
     update_failed: "Cập nhật hồ sơ thất bại. Vui lòng thử lại :("
+    no_photos: "Không tìm thấy ảnh nào!"
+    no_albums: "Không tìm thấy tập ảnh nào!"
+    no_followers: "Không tìm thấy người theo dõi nào!"
+    no_followees: "Không tìm thấy người được theo dõi nào!"
 
