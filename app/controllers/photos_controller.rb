@@ -14,22 +14,22 @@ class PhotosController < ApplicationController
   def index_feeds
     # TODO: Show all photos in of people who u are following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-    @photos = Photo.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
-
+    @posts = Photo.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+    @is_photo = true
     render :index
   end
 
 def index_discover
     # Show all photos of people you are not following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-    @photos = Photo.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
-
+    @posts = Photo.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+    @is_photo = true
     render :index
 end
 
   def index_user
     # TODO: show all photos in your own profile (only u can view)
-    @target_person = Profile.find(current_user.id)
+    @target_person = current_user.profile
     @photos = @target_person.photos.order(updated_at: :desc)
     @is_public = false
     render template: "profiles/show"
@@ -61,11 +61,17 @@ end
   # POST /photos or /photos.json
   def create
       puts "Submitted params: #{params.inspect}"
+      if params[:photo][:image_path].blank?
+        flash[:alert] = t("message.select_img")
+        redirect_to new_user_photo_path(current_user)
+        return
+      end
+
       @photo = current_user.profile.photos.build(photo_params)
       if @photo.save
-        redirect_to index_user_photos_path(current_user), notice: "Photo is successfully created."
+        redirect_to index_user_photos_path(current_user), notice: t("message.photo_created")
       else
-        flash.now[:alert] = "Photo could not be created. Please check the errors below."
+        flash.now[:alert] = t("message.photo_created_failed")
         render :new, status: :unprocessable_entity
       end
   end
@@ -73,9 +79,9 @@ end
   # PATCH/PUT /photos/1 or /photos/1.json
   def update
       if @photo.update(photo_params)
-        redirect_to index_user_photos_path(current_user), notice: "Photo was successfully updated!"
+        redirect_to index_user_photos_path(current_user), notice: t("message.photo_updated")
       else
-        redirect_to new_user_photos_path(current_user), alert: "Fail to update!."
+        redirect_to new_user_photos_path(current_user), alert: t("message.photo_updated_failed")
       end
   end
 
@@ -83,10 +89,7 @@ end
   def destroy
     @photo.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to photos_path, status: :see_other, notice: "Photo was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      format.html { redirect_to photos_path, status: :see_other, notice: t("message.photo_deleted") }
   end
 
   private

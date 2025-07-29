@@ -18,7 +18,9 @@
             <!-- TODO: click the image to view the photo in a modal
                         Edit btn only in My Profile
              -->
-            <%= image_tag photo.image_path.url, alt: t('photo')%>
+             <%= link_to photo_path(photo), data: {turbo_frame: "modal"} do%>
+                <%= image_tag photo.image_path.url, alt: t('photo')%>
+            <%end%>
             <% unless is_public%>
                 <%= link_to edit_photo_path(photo), class: "edit-photo-btn" do%>
                     <button>

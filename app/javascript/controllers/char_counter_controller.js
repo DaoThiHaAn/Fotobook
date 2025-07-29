@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     console.log("char_counter_controller connected")
+    this.update() // Initialize counter on connect
   }
   
   update() {

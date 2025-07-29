@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
 
     resources :users, except: [ :edit ] do
-        get "/:tab/photos", to: "photos#index_feeds", as: :tab_photos # tab_feeds_photos()  -> "feeds" or "discover"
+        get "/:tab/photos", to: "photos#index_feeds", as: :tab_photos
+        get "/:tab/albums", to: "albums#index_feeds", as: :tab_albums
 
         resources :photos, shallow: true, except: [ :index ] do
             collection do

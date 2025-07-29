@@ -1,7 +1,9 @@
 <div class="container-fluid main-tabs d-flex justify-content-center mb-3 mt-1 sticky-top">
     <div class="btn-group custom">
-        <button class="tab-btn active text-uppercase"><%=t('button.photo.one') %></button>
-        <button class="tab-btn text-uppercase"><%=t('button.album.one') %></button>
+        <%= link_to t('button.photo.one'), user_tab_photos_path(current_user, params[:tab]),
+                class: "#{highlight_active_tab("photos")} tab-btn text-uppercase d-flex justify-content-center align-items-center"%>
+        <%= link_to t('button.album.one'), user_tab_albums_path(current_user, params[:tab]),
+                class: " #{highlight_active_tab("albums")} tab-btn text-uppercase d-flex justify-content-center align-items-center"%>
     </div>
 </div>
 

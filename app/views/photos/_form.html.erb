@@ -1,5 +1,5 @@
 <!-- TODO: handle form-->
-<%= form_with model: photo, url: photo.persisted? ? user_photo_path(current_user, photo) : user_photos_path(current_user), 
+<%= form_with model: photo, url: user_photos_path(current_user),
     class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
   <div class="big-row d-flex flex-column flex-md-row justify-content-between gap-5">
     <div class="col d-flex flex-column gap-3">
@@ -16,7 +16,7 @@
         </div>
 
         <%= f.text_area :title, maxlength: 140, placeholder: "#{t('post.photo_title')} #{t('profile.max_field', num: 140)}", class:"field-photo-title",
-            data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
+            data: { "char-counter-target": "input", action: "input->char-counter#update" }, required: true %>
       </div>
 
       <div class="d-flex flex-column gap-2 mt-3">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <%= f.text_area :description, maxlength: 300, placeholder: "#{t('post.photo_description')} #{t('profile.max_field', num: 300)}",
-          data: { "char-counter-target": "input", action: "input->char-counter#update" } %>
+          data: { "char-counter-target": "input", action: "input->char-counter#update" }, required: true %>
     </div>
   </div>
   
@@ -46,7 +46,7 @@
   <!-- TODO: Only upload 1 images-->
   <div class="image-upload" data-controller="image-upload">
     <!-- Hidden file input -->
-    <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none", required: true,
+    <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none", 
         data: { image_upload_target: "fileField", action: "change->image-upload#previewPhoto" }%>
 
     <div class="change-title d-flex gap-5">

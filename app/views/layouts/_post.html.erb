@@ -1,6 +1,10 @@
 
 <section class="px-3 pb-5 d-flex flex-wrap justify-content-around card-container">
 <!-- TODO change to local var "post" + authorization + image viewing + dynamic counting + views based on photo/albu-->
+<% if posts.empty? %>
+  <h2 class="text-muted"><%= t('message.no_posts') %></h2>
+<% else %>
+
 <% posts.each do |post| %>
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
 
@@ -61,6 +65,7 @@
 
 
     </div>
-<% end %>
+<% end
+end  %>
 
 </section>

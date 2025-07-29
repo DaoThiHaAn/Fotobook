@@ -45,7 +45,8 @@ export default class extends Controller {
 
     previewPhoto() {
         this.previewAvatar();
-        this.showWrapper()
+        setTimeout(() =>
+                this.showWrapper(), 100); // Show the wrapper after a short delay to ensure the image is loaded
         this.hideAddBtn();
     }
 
