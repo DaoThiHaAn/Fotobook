@@ -1,5 +1,6 @@
 <!-- TODO: handle form-->
-<%= form_with model: photo, url: user_photos_path(current_user), class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
+<%= form_with model: photo, url: photo.persisted? ? user_photo_path(current_user, photo) : user_photos_path(current_user), 
+    class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
   <div class="big-row d-flex flex-column flex-md-row justify-content-between gap-5">
     <div class="col d-flex flex-column gap-3">
       <div class="d-flex flex-column gap-2"  data-controller="char-counter">
@@ -45,7 +46,7 @@
   <!-- TODO: Only upload 1 images-->
   <div class="image-upload" data-controller="image-upload">
     <!-- Hidden file input -->
-    <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none",
+    <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none", required: true,
         data: { image_upload_target: "fileField", action: "change->image-upload#previewPhoto" }%>
 
     <div class="change-title d-flex gap-5">

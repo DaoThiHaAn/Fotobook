@@ -6,7 +6,7 @@
 </div>
 <%end%>
 
-<section class="mt-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
+<section class="mt-5 pb-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
 <% if photos.empty? %>
     <div class="text-center text-uppercase text-muted">
         <p><%= t('message.no_photos') %></p>
@@ -18,9 +18,9 @@
             <!-- TODO: click the image to view the photo in a modal
                         Edit btn only in My Profile
              -->
-            <%= image_tag photo.user.image_path, alt: t('photo')%>
+            <%= image_tag photo.image_path.url, alt: t('photo')%>
             <% unless is_public%>
-                <%= link_to edit_photo_path, class: "edit-photo-btn" do%>
+                <%= link_to edit_photo_path(photo), class: "edit-photo-btn" do%>
                     <button>
                         <%= t('button.edit')%>
                     </button>

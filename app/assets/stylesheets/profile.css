@@ -80,6 +80,7 @@
     cursor: pointer;
     width: 20%;
     overflow: hidden;
+    border: 1px solid whitesmoke;
 }
 
 .tab-item:hover {

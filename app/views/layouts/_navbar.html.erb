@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-md sticky-top" >
     <div class="container-fluid">
         <div class="navbar-brand d-flex align-items-center gap-3">
-            <%= image_tag "logo.png", alt: "Fotobook logo" %>
-            <!-- TODO: changed when admin login-->
-            <span><%= t('nav.app_name')%></span>
+            <%= link_to root_path do %>
+                <%= image_tag "logo.png", alt: "Fotobook logo" %>
+                <!-- TODO: changed when admin login-->
+                <span>
+                    <%= user_signed_in? && current_user.is_admin? ? t('nav.admin') : t('nav.app_name') %>
+                </span>
+            <% end %>
             <div class="lang-switcher">
                 <% other_locale = (I18n.locale == :en) ? :vi : :en %>
                 <%= link_to url_for(locale: other_locale), title: t('message.switch_lang'),

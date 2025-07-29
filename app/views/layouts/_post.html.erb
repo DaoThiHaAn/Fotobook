@@ -1,30 +1,31 @@
 
 <section class="px-3 pb-5 d-flex flex-wrap justify-content-around card-container">
 <!-- TODO change to local var "post" + authorization + image viewing + dynamic counting + views based on photo/albu-->
-<%20.times do%>
+<% posts.each do |post| %>
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
-        
-        <%= link_to photo_path(1), class: "d-block", data: { turbo_frame: "modal", controller: "modal", action: "click->modal#open" } do %>
-        <!-- TODO: show photo modal -->
-         <div class="post-img thumbnail d-flex align-items-center">
-            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer1" %>
-            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer2" %>
-            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "layer3" %>
-        </div>
-        <% end %> 
-        
 
-        
-        <!-- if show image, use this code -->
-        <!--<div class="post-img">
-            <%= image_tag "welcome.png", alt: t('button.photo.one'), class: "post-photo" %>
-        </div>-->
+        <% if is_photo %>
+            <%= link_to photo_path(post), class: "post-img" do %>
+                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "post-photo" %>
+            <% end %>
+        <%else%>
+            <%= link_to album_path(post), class: "d-block", data: { turbo_frame: "modal", controller: "modal", action: "click->modal#open" } do %>
+            <!-- TODO: show photo modal -->
+            <div class="post-img thumbnail d-flex align-items-center">
+                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer1" %>
+                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer2" %>
+                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer3" %>
+            </div>
+            <% end %> 
+        <%end%>
 
         <div class="d-flex flex-column flex-wrap p-3 post-content">
             <div class="user d-flex align-items-center mb-3">
                 <%= link_to users_path, title: "Open profile", class:"me-1 d-flex align-items-center" do %>
-                    <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "post avatar me-1" %>
-                    <div class="d-flex flex-wrap">long long long long username</div>
+                    <%= image_tag post.profile.user.avatar.url, alt: t('profile.avatar'), class: "post avatar me-1" %>
+                    <div class="d-flex flex-wrap">
+                        <%= "#{post.profile.user.first_name} #{post.profile.user.last_name}" %>
+                    </div>
                 <% end %>
 
                 <!-- TODO: In the "feeds", not have Follow button -->
@@ -32,11 +33,11 @@
             </div>
 
             <h6 class="truncate">
-                    lLONG LONG LONG LONG LONG LONG POST long LONG LONG TITLE
+                <%= post.title %>
             </h6>
 
             <p class="post-description truncate mb-4">
- yju iuy retqe gyjyetju temuki krh hq hthyjej u h wryu  
+                <%= post.description %>
             </p>
 
             <div class="post-footer mt-auto d-flex flex-wrap justify-content-between" data-controller="post">
@@ -50,10 +51,10 @@
                         data-action="click->post#toggleHeart"
                         data-like-title="<%=t('message.like')%>"
                         data-unlike-title="<%= t('message.unlike') %>"></i>
-                    
-                    <p class="heart-count d-inline">123</p>
+
+                    <p class="heart-count d-inline"><%= post.hearts_count %></p>
                 </div>
-                <p class="date ms-2">4:56pm 12/3/45</p>
+                <p class="date ms-2"><%= post.updated_at.strftime("%H:%M:%S %d/%m/%Y") %></p>
             </div>
 
         </div>

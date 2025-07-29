@@ -5,8 +5,9 @@ class PhotosController < ApplicationController
 
   # GET /photos or /photos.json
   def index
-    # Show all photos in guest mode
-    @photos = Photo.all.includes(:profile).order(updated_at: :desc)
+    # Show all public photos in guest mode
+    @posts = Photo.all.includes(profile: :user).where(is_public: true).order(updated_at: :desc)
+    @is_photo = true # to render photo partial
   end
 
   def index_feeds
@@ -27,9 +28,9 @@ end
 
   def index_user
     # TODO: show all photos in your own profile (only u can view)
-    @photos = Photo.where(id: current_user.id).includes(:profile).order(updated_at: :desc)
-    @is_public = false
     @target_person = Profile.find(current_user.id)
+    @photos = @target_person.photos.order(updated_at: :desc)
+    @is_public = false
     render template: "profiles/show"
   end
 
@@ -53,13 +54,13 @@ end
 
   # GET /photos/1/edit
   def edit
+    @photo = Photo.find(params[:id])
   end
 
   # POST /photos or /photos.json
   def create
       puts "Submitted params: #{params.inspect}"
-      @user = User.find(params[:user_id])
-      @photo = @user.profile.photos.build(photo_params)
+      @photo = current_user.profile.photos.build(photo_params)
       if @photo.save
         redirect_to index_user_photos_path(current_user), notice: "Photo is successfully created."
       else

@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   around_action :switch_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
   before_action :authorize_role
 
   def default_url_options
