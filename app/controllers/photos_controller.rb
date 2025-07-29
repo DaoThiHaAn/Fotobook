@@ -7,8 +7,13 @@ class PhotosController < ApplicationController
   # GET /photos or /photos.json
   def index
     # Show all public photos in guest mode
+    unless user_signed_in?
     @posts = Photo.all.includes(profile: :user).where(is_public: true).order(updated_at: :desc)
     @is_photo = true # to render photo partial
+    else
+      # If logged in, redirect to feeds
+      redirect_to user_tab_photos_path(current_user, "feeds")
+    end
   end
 
   def index_feeds
@@ -60,7 +65,7 @@ end
 
   # POST /photos or /photos.json
   def create
-      puts "Submitted params: #{params.inspect}"
+      # puts "Submitted params: #{params.inspect}"
       if params[:photo][:image_path].blank?
         flash[:alert] = t("message.select_img")
         redirect_to new_user_photo_path(current_user)
@@ -81,7 +86,8 @@ end
       if @photo.update(photo_params)
         redirect_to index_user_photos_path(current_user), notice: t("message.photo_updated")
       else
-        redirect_to new_user_photos_path(current_user), alert: t("message.photo_updated_failed")
+        flash.now[:alert] = t("message.photo_updated_failed")
+        render :edit, status: :unprocessable_entity
       end
   end
 
