@@ -5,11 +5,11 @@
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
 
         <% if is_photo %>
-            <%= link_to photo_path(post), class: "post-img" do %>
-                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "post-photo" %>
-            <% end %>
+                <%= link_to photo_path(post), class: "post-img",  data: { turbo_frame: "modal" } do %>
+                    <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "post-photo" %>
+                <% end %>
         <%else%>
-            <%= link_to album_path(post), class: "d-block", data: { turbo_frame: "modal", controller: "modal", action: "click->modal#open" } do %>
+            <%= link_to album_path(post), class: "d-block", data: { turbo_frame: "modal" } do %>
             <!-- TODO: show photo modal -->
             <div class="post-img thumbnail d-flex align-items-center">
                 <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer1" %>

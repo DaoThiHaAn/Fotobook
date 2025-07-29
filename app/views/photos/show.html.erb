@@ -1,29 +1,32 @@
-<!-- TODO: SHOW PHOTO DETAIILS -> A MODAL -->
-<%= content_for :title, "Photo Details"%>
+<%# app/views/photos/show.html.erb %>
 
 <%= turbo_frame_tag "modal" do %>
-<div class="modal show d-block" id="myModal" data-controller="modal">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-    <div class="modal-content">
+  <div class="modal show d-block" id="myModal"
+       data-controller="modal" <%# Add this Stimulus controller %>
+       data-action="turbo:submit-end->modal#hideModal" <%# Optional: For forms within modal %>
+       data-bs-backdrop="true" <%# Ensure backdrop is active %>
+       data-bs-keyboard="true" <%# Ensure ESC key works %>
+  >
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"><%= "long long long long long Photo title"%></h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header">
+          <h4 class="modal-title"><%= @photo.title %></h4>
+          <%# data-bs-dismiss="modal" will be handled by Stimulus and Bootstrap %>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body d-flex justify-content-center">
+          <%= image_tag @photo.image_path.url %>
+        </div>
+
+        <div class="modal-footer justify-content-between">
+          <p><%= @photo.description %></p>
+          <%# data-bs-dismiss="modal" will be handled by Stimulus and Bootstrap %>
+          <button type="button" class="ms-2 btn btn-danger" data-bs-dismiss="modal" >Close</button>
+        </div>
+
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body d-flex justify-content-center">
-        <%= image_tag "demo-avatar.png"%>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <p><%= "Photo description goes here nfjkgndfjk kjrnfkjg  kqfgnqek jflfeql jqrjegfeqi qgbasj jsffhqipg iqwhwrh qgb gibqiphgq wghq;ghq iJRJQWQR RGQJGQF WIRUQGBTEDFVSCndefbq jfdg fjkwlef qlgjnqe;kf qwkjgnekqr; nkgn qrgnq qkgnreq;g qrkgn wq;gnqn" %></p>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-action="modal#close">Close</button>
-      </div>
-
     </div>
   </div>
-</div>
-<%end%>
+<% end %>

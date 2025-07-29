@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
-    before_action :require_login!, except: [ :index ]
+    before_action :require_login!, except: [ :index, :show ]
+    before_action :check_private, only: [ :show ]
     before_action :set_photo, only: %i[ show edit update destroy ]
-    before_action -> { require_owner!(@photo) }, except: [ :index ]
+    before_action -> { require_owner!(@photo) }, except: [ :index, :show ]
 
   # GET /photos or /photos.json
   def index
@@ -97,5 +98,14 @@ end
     # Only allow a list of trusted parameters through.
     def photo_params
       params.require(:photo).permit(:image_path, :title, :description, :is_public)
+    end
+
+    def check_private
+      @photo = Photo.find(params[:id])
+      unless @photo.is_public
+        if !user_signed_in? || @photo.profile.user_id != current_user.id
+          redirect_to root_path, alert: "This photo is private and cannot be viewed."
+        end
+      end
     end
 end
