@@ -7,6 +7,10 @@ class User < ApplicationRecord
         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   validates :email,  presence: true, uniqueness: true, length: { maximum: 25 }, on: :create
   validates :last_name, :first_name, presence: true, length: { in: 2..25 }
+  validates :email,  presence: true, uniqueness: true, length: { maximum: 25 }, on: :create
+  validates :lname, :fname, presence: true, length: { maximum: 25 }
+
+  mount_uploader :avatar, AvatarUploader
 
   has_one :profile, dependent: :destroy
   has_many :identities, dependent: :destroy
