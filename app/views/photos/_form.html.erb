@@ -1,5 +1,5 @@
 <!-- TODO: handle form-->
-<%= form_with url: photo_path(1), method: :patch, class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
+<%= form_with model: [current_user, @photo], class:"post-form mb-5 d-flex flex-column gap-5" do |f|%>
   <div class="big-row d-flex flex-column flex-md-row justify-content-between gap-5">
     <div class="col d-flex flex-column gap-3">
       <div class="d-flex flex-column gap-2"  data-controller="char-counter">
@@ -70,9 +70,12 @@
 
 <div class="d-flex justify-content-center align-items-center gap-4">
   <%= f.submit t('button.save'), class: "save custom-primary-btn" %>
-  <%= link_to photos_path, method: :delete, class: "delete-btn" do %>
-    <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
-    <span><%= t('button.delete') %></span>
+  <% if @photo.persisted? %>
+    <%= link_to photo_path(@photo), method: :delete, data: { confirm: t('confirm.delete') }, class: "delete-btn" do %>
+      <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
+      <span><%= t('button.delete') %></span>
+    <% end %>
   <% end %>
+
 </div>
 <% end %>

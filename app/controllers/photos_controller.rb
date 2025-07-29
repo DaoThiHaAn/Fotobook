@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
-  # before_action :set_photo, only: %i[ show edit update destroy ]
+    before_action :require_login!, except: [ :index ]
+    before_action :set_photo, only: %i[ show edit update destroy ]
+    before_action -> { require_owner!(@photo) }, except: [ :index ]
 
   # GET /photos or /photos.json
   def index
@@ -27,7 +29,7 @@ end
     # TODO: show all photos in your own profile (only u can view)
     @photos = Photo.where(id: current_user.id).includes(:profile).order(updated_at: :desc)
     @is_public = false
-    @target_person = Profile.where(user_id: current_user.id)
+    @target_person = Profile.find(current_user.id)
     render template: "profiles/show"
   end
 
@@ -46,7 +48,8 @@ end
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @profile = current_user.profile
+    @photo = Photo.new(user_id: @profile.user_id)
   end
 
   # GET /photos/1/edit

@@ -14,7 +14,7 @@
     <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
 
     <div class="btn-group profile-btn-group d-flex flex-wrap gap-3">
-      <%= profile_photo_tab(@is_public, count: 100) %>
+      <%= profile_photo_tab(@is_public, count: @target_person.photos_count) %>
 
       <button class="profile-tab-btn text-uppercase">
         <p class="m-0 number">108</p>
