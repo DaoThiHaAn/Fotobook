@@ -141,3 +141,4 @@ en:
     no_albums: "No albums found!"
     no_followers: "No followers found!"
     no_followees: "No followees found!"
+    less_than: "should be less than %{count} MB"

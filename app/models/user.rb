@@ -8,9 +8,9 @@ class User < ApplicationRecord
   validates :email,  presence: true, uniqueness: true, length: { maximum: 25 }, on: :create
   validates :last_name, :first_name, presence: true, length: { in: 2..25 }
   validates :email,  presence: true, uniqueness: true, length: { maximum: 25 }, on: :create
-  validates :lname, :fname, presence: true, length: { maximum: 25 }
 
   mount_uploader :avatar, AvatarUploader
+  validate :avatar_size_validation
 
   has_one :profile, dependent: :destroy
   has_many :identities, dependent: :destroy
@@ -49,8 +49,10 @@ class User < ApplicationRecord
     # TODO: change to carrierwave method
     fname = first_name.split.first
     lname = last_name.split.first
-    if avatar.nil?
+    if avatar.file.nil?
       "https://ui-avatars.com/api/?name=#{fname}+#{lname}&background=fff&color=3C5999&bold=true"
+    else
+      avatar.url
     end
   end
 
@@ -65,6 +67,12 @@ class User < ApplicationRecord
     # Example: at least 8 characters, one lowercase, one uppercase, one digit
     unless password.match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}\z/)
       errors.add :password, :invalid_password_format
+    end
+  end
+
+  def avatar_size_validation
+    if avatar.present? && avatar.size > 5.megabytes
+      errors.add(:avatar, t("message.less_than", count: 5))
     end
   end
 end

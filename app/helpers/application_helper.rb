@@ -16,7 +16,7 @@ module ApplicationHelper
 
     def style_avatar(user)
         # TODO: check avatar is nil by carrierwave method
-        if user.avatar.nil?
+        if user.avatar.file.nil?
             "fake"
         end
     end

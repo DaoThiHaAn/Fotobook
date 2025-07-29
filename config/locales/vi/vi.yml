@@ -118,4 +118,4 @@ vi:
     no_albums: "Không tìm thấy tập ảnh nào!"
     no_followers: "Không tìm thấy người theo dõi nào!"
     no_followees: "Không tìm thấy người được theo dõi nào!"
-
+    less_than: "phải nhỏ hơn %{count} MB"

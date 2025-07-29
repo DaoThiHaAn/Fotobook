@@ -1,7 +1,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick, MiniMagick, or Vips support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
   # include CarrierWave::Vips
 
   # Choose what kind of storage to use for this uploader:
@@ -28,6 +28,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  process resize_to_limit: [ 350, 350 ]
 
   # Create different versions of your uploaded files:
   # version :thumb do

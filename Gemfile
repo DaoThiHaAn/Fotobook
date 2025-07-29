@@ -44,6 +44,7 @@ gem "thruster", require: false
 
 gem "rack-cors"
 gem "carrierwave"
+gem "mini_magick"
 gem "kaminari"
 
 # Login with other providers

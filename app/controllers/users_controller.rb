@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  before_action :require_login!, only: [ :edit, :update, :index ]
+  before_action :select_user
+  before_action -> { require_owner!(@user) }, except: [ :index ]
+
+  def show
+    @user = User.find(params[:id])
+    @is_public = @user.profile.is_public
+    @photos = @user.photos.order(created_at: :desc).page(params[:page]).per(12)
+  end
+
   def new
   end
 
@@ -29,5 +39,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :first_name, :last_name, :avatar
     )
+  end
+
+  def select_user
+    @user = current_user
   end
 end

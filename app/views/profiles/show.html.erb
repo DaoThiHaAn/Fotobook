@@ -5,10 +5,15 @@
   <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "profile-avatar" %>
 
   <div class="d-flex flex-column gap-3">
-    <%= link_to edit_user_registration_path do %>
-      <button class="edit-profile-btn">
-        <%= t('button.edit_profile') %>
-      </button>
+    <% unless @is_public%>
+      <%= link_to edit_user_registration_path do %>
+        <button class="edit-profile-btn">
+          <%= t('button.edit_profile') %>
+        </button>
+      <% end %>
+    <% else %>
+      <!-- Follow btn-->
+      
     <% end %>
 
     <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>

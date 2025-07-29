@@ -3,10 +3,14 @@
 
     <!-- TODO: handle form -->
     <%= form_with(model: @user, url: user_path(@user), method: :patch, data: {turbo: false}) do |f| %>
-        <div class="change-avatar <%= style_avatar(@user) %> m-auto">
-            <%= image_tag @user.get_avatar, alt: t('profile.avatar')%>
+        <div class="change-avatar <%= style_avatar(@user) %> m-auto" data-controller="image-upload">
+            <%= image_tag @user.get_avatar, alt: t('profile.avatar'), data: {image_upload_target: "preview"}%>
+            
             <!-- TODO: change avatar -->
-            <button class="change-btn">
+            <!-- Hidden file field -->
+            <%= f.file_field :avatar, id: "avatar_input", 
+                data: { image_upload_target: "fileField", action: "change->image-upload#previewImage" } %>
+            <button class="change-btn" data-image-upload-target="imgBtn" data-action="click->image-upload#changeAvatar" type="button"> <!-- must declare type btn in order not to misbehave -->
                 <%= t('button.change')%>
             </button>
         </div>
