@@ -1,9 +1,9 @@
 class Profile < ApplicationRecord
   validates :photos_count, :albums_count, :followers_count, :followings_count, numericality: { greater_than_or_equal_to:  0 }
 
-  belongs_to :user
-  has_many :photos, dependent: :destroy
-  has_many :albums, dependent: :destroy
+  belongs_to :user, foreign_key: :user_id
+  has_many :photos, foreign_key: :user_id, dependent: :destroy
+  has_many :albums, foreign_key: :user_id, dependent: :destroy
 
   # Follows the user initiated (user is the follower)
   has_many :active_follows,

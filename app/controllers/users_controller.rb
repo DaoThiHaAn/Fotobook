@@ -29,8 +29,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to edit_user_registration_path, notice: t("message.update_success")
     else
-      flash.now[:alert] = t("message.update_failed")
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_user_registration_path, alert: @user.errors.full_messages.join("<br>")
     end
   end
 

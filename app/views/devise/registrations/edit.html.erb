@@ -8,8 +8,8 @@
             
             <!-- TODO: change avatar -->
             <!-- Hidden file field -->
-            <%= f.file_field :avatar, id: "avatar_input", 
-                data: { image_upload_target: "fileField", action: "change->image-upload#previewImage" } %>
+            <%= f.file_field :avatar, id: "avatar_input", accept: "image/jpeg, image/png, image/gif",  
+                data: { image_upload_target: "fileField", action: "change->image-upload#previewAvatar" } %>
             <button class="change-btn" data-image-upload-target="imgBtn" data-action="click->image-upload#changeAvatar" type="button"> <!-- must declare type btn in order not to misbehave -->
                 <%= t('button.change')%>
             </button>

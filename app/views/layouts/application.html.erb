@@ -47,7 +47,7 @@
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div class="toast-body">
-            <p><%= flash[:alert] %></p>
+            <p><%= flash[:alert].html_safe %></p>
           </div>
 
         </div>
@@ -62,7 +62,7 @@
           data-bs-delay="5000" data-controller="toast" data-bs-autohide="true">
 
           <div class="toast-body d-flex">
-            <p><%= flash[:notice] %></p>
+            <p><%= flash[:notice].html_safe %></p>
             <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
 

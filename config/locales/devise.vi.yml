@@ -1,0 +1,63 @@
+vi:
+  devise:
+    confirmations:
+      confirmed: "Địa chỉ email của bạn đã được xác nhận thành công!"
+      send_instructions: "Hãy kiểm tra email của bạn để biết hướng dẫn xác nhận."
+      send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong hệ thống, bạn sẽ nhận được email với hướng dẫn xác nhận trong vài phút tới."
+    failure:
+      already_authenticated: "Bạn đã đăng nhập rồi!"
+      inactive: "Tài khoản của bạn chưa được kích hoạt!"
+      invalid: "%{authentication_keys} hoặc mật khẩu không hợp lệ!"
+      locked: "Tài khoản của bạn đã bị khóa!"
+      last_attempt: "Bạn còn 1 lần thử trước khi tài khoản bị khóa."
+      not_found_in_database: "%{authentication_keys} hoặc mật khẩu không hợp lệ!"
+      unauthenticated: "Bạn cần đăng nhập hoặc đăng ký trước khi tiếp tục!"
+      unconfirmed: "Bạn cần xác nhận địa chỉ email trước khi tiếp tục!"
+    mailer:
+      confirmation_instructions:
+        subject: "FOTOBOOK - XÁC NHẬN TÀI KHOẢN"
+      reset_password_instructions:
+        subject: "FOTOBOOK - ĐẶT LẠI MẬT KHẨU"
+      unlock_instructions:
+        subject: "FOTOBOOK - MỞ KHÓA TÀI KHOẢN"
+      email_changed:
+        subject: "FOTOBOOK - ĐỊA CHỈ EMAIL ĐÃ ĐƯỢC THAY ĐỔI"
+      password_change:
+        subject: "FOTOBOOK - MẬT KHẨU ĐÃ ĐƯỢC THAY ĐỔI"
+    omniauth_callbacks:
+      failure: "Không thể xác thực từ %{kind} do \"%{reason}\"."
+      success: "Xác thực thành công từ tài khoản %{kind}."
+    passwords:
+      no_token: "Bạn không thể truy cập trang này nếu không đến từ email đặt lại mật khẩu. Vui lòng kiểm tra lại liên kết đầy đủ từ email."
+      send_instructions: "Bạn sẽ nhận được email với hướng dẫn đặt lại mật khẩu trong vài phút tới."
+      send_paranoid_instructions: "Nếu địa chỉ email tồn tại, bạn sẽ nhận được liên kết khôi phục mật khẩu qua email trong vài phút tới."
+      updated: "Mật khẩu đã được thay đổi thành công. Bạn đã đăng nhập."
+      updated_not_active: "Mật khẩu đã được thay đổi thành công."
+    registrations:
+      destroyed: "Tạm biệt! Tài khoản của bạn đã được hủy. Hy vọng được gặp lại bạn sớm."
+      signed_up: "Chào mừng! Bạn đã đăng ký thành công."
+      signed_up_but_inactive: "Bạn đã đăng ký thành công, nhưng tài khoản của bạn chưa được kích hoạt."
+      signed_up_but_locked: "Bạn đã đăng ký thành công, nhưng tài khoản của bạn đã bị khóa."
+      signed_up_but_unconfirmed: "Một email xác nhận đã được gửi tới địa chỉ email của bạn. Vui lòng kiểm tra và nhấn vào liên kết để kích hoạt tài khoản."
+      update_needs_confirmation: "Bạn đã cập nhật tài khoản thành công. Vui lòng kiểm tra email và nhấn vào liên kết để xác nhận địa chỉ email mới."
+      updated: "Tài khoản của bạn đã được cập nhật thành công."
+      updated_but_not_signed_in: "Tài khoản của bạn đã được cập nhật thành công. Do bạn thay đổi mật khẩu nên cần đăng nhập lại."
+    sessions:
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
+      already_signed_out: "Bạn đã đăng xuất."
+    unlocks:
+      send_instructions: "Bạn sẽ nhận được email hướng dẫn mở khóa tài khoản trong vài phút tới."
+      send_paranoid_instructions: "Nếu tài khoản tồn tại, bạn sẽ nhận được email với hướng dẫn mở khóa trong vài phút tới."
+      unlocked: "Tài khoản của bạn đã được mở khóa thành công. Vui lòng đăng nhập để tiếp tục."
+  errors:
+    messages:
+      already_confirmed: "đã được xác nhận rồi, vui lòng đăng nhập"
+      confirmation_period_expired: "cần được xác nhận trong %{period}, vui lòng yêu cầu xác nhận mới"
+      expired: "đã hết hạn, vui lòng yêu cầu lại"
+      not_found: "không tìm thấy"
+      not_locked: "không bị khóa"
+      not_saved:
+        one: "1 lỗi khiến %{resource} không được lưu:"
+        other: "%{count} lỗi khiến %{resource} không được lưu:"
+      invalid_password_format: "phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 chữ số."

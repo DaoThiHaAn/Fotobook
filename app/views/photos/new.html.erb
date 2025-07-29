@@ -2,5 +2,5 @@
 
 <section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
 <%= render partial: 'layouts/form_title', locals: { title: t('post.add_photo_title') } %>
-<%= render "form"%>
+<%= render "form", photo: @photo%>
 </section>

@@ -1,31 +1,34 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["previewImage", "previewWrapper", "imgBtn", "fileField", "preview"]
+    static targets = ["previewWrapper", "imgBtn", "fileField", "preview"]
 
     connect() {
         console.log("image_controller connected")
     }
 
-
-    preview(event) {
-        const input = event.target
-        const file = input.files[0]
-
-        if (file && file.type.startsWith("image/")) {
-            const reader = new FileReader()
-
-            reader.onload = e => {
-            this.previewImageTarget.src = e.target.result
-            this.previewWrapperTarget.classList.remove("d-none")
-            input.previousElementSibling.style.display = "none" // hide the plus button
-            }
-
-            reader.readAsDataURL(file)
-        }
+    showAddBtn() {
+        this.imgBtnTarget.classList.replace("d-none", "d-flex") ;
     }
 
-    previewImage() {
+    hideAddBtn() {
+        this.imgBtnTarget.classList.replace("d-flex", "d-none")
+    }
+
+    showWrapper() {
+        this.previewWrapperTarget.classList.replace("d-none", "d-flex")
+    }
+
+    hideWrapper() {
+        this.previewWrapperTarget.classList.replace("d-flex", "d-none")
+    }
+
+    changeAvatar() {
+        this.fileFieldTarget.click()
+    }
+
+    // Main functions
+    previewAvatar() {
         const input = this.fileFieldTarget
         const file = input.files[0]
 
@@ -36,17 +39,20 @@ export default class extends Controller {
                 // Set the src of the preview target to the new image data
                 this.previewTarget.src = event.target.result
             }
-
             reader.readAsDataURL(file)
         }
     }
 
-    changeAvatar() {
-        this.fileFieldTarget.click()
-        this.fileFieldTarget.addEventListener("change", this.preview.bind(this), { once: true })
-        // Reset the preview image when changing avatar
-        this.previewImageTarget.src = ""
-        this.previewWrapperTarget.classList.add("d-none")
-        this.fileFieldTarget.previousElementSibling.style.display = "block" // show the plus button again
+    previewPhoto() {
+        this.previewAvatar();
+        this.showWrapper()
+        this.hideAddBtn();
+    }
+
+    // remove temporary img from file uploaded input
+    deleteImg() {
+        this.fileFieldTarget.value = "";
+        this.hideWrapper();
+        this.showAddBtn();
     }
 }

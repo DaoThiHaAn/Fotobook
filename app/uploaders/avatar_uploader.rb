@@ -28,7 +28,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_limit: [ 350, 350 ]
+  process resize_to_limit: [ 300, 300 ]
+
+  def size_range
+    1..5.megabytes
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do
@@ -37,9 +41,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_allowlist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_allowlist
+    %w[jpg jpeg gif png]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

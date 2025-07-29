@@ -2,7 +2,7 @@
 
 <!-- TODO -->
 <section class="general-info d-flex m-3 gap-4 container-fluid">
-  <%= image_tag "demo-avatar.png", alt: t('profile.avatar'), class: "profile-avatar" %>
+  <%= image_tag current_user.get_avatar, alt: t('profile.avatar'), class: "profile-avatar" %>
 
   <div class="d-flex flex-column gap-3">
     <% unless @is_public%>

@@ -48,8 +48,7 @@ end
 
   # GET /photos/new
   def new
-    @profile = current_user.profile
-    @photo = Photo.new(user_id: @profile.user_id)
+    @photo = Photo.new
   end
 
   # GET /photos/1/edit
@@ -58,30 +57,24 @@ end
 
   # POST /photos or /photos.json
   def create
-    @photo = Photo.new(photo_params)
-
-    respond_to do |format|
+      puts "Submitted params: #{params.inspect}"
+      @user = User.find(params[:user_id])
+      @photo = @user.profile.photos.build(photo_params)
       if @photo.save
-        format.html { redirect_to @photo, notice: "Photo was successfully created." }
-        format.json { render :show, status: :created, location: @photo }
+        redirect_to index_user_photos_path(current_user), notice: "Photo is successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        flash.now[:alert] = "Photo could not be created. Please check the errors below."
+        render :new, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /photos/1 or /photos/1.json
   def update
-    respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: "Photo was successfully updated." }
-        format.json { render :show, status: :ok, location: @photo }
+        redirect_to index_user_photos_path(current_user), notice: "Photo was successfully updated!"
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        redirect_to new_user_photos_path(current_user), alert: "Fail to update!."
       end
-    end
   end
 
   # DELETE /photos/1 or /photos/1.json
@@ -102,6 +95,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.expect(photo: [ :image_path, :title, :description, :is_public, :hearts_count ])
+      params.require(:photo).permit(:image_path, :title, :description, :is_public)
     end
 end
