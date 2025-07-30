@@ -17,9 +17,17 @@
         <!-- TODO: click the album to view all photos in a modal
         Edit btn only in My Profile-->
         <div class="album-profile">
-            <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer1" %>
-            <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer2" %>
-            <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class:"layer3" %>
+            <%= link_to album_path(album), data: {turbo_frame: "albumModal"} do %>
+                <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer1" %>
+                <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer2" %>
+                <%= image_tag album.photos.first.image_path.url, alt: t('button.photo.one'), class:"layer3" %>
+
+                <!--TODO: Show number of photos in the album-->
+            <div class="photos-count d-flex flex-column justify-content-center align-items-center">
+                <p class="number m-0"><%= album.photos_count %></p>
+                <p class="text-uppercase m-0"><%= t('button.photo', count: album.photos_count) %></p>
+            </div>
+            <% end %>
 
             <%= link_to edit_album_path(album), class: "edit-album-btn" do%>
                 <button>
@@ -32,11 +40,7 @@
             <i class="fa-solid fa-lock lock-icon-album", title="<%= t('post.private')%>"></i>
             <% end %>
 
-            <!--TODO: Show number of photos in the album-->
-            <div class="photos-count d-flex flex-column justify-content-center align-items-center">
-                <p class="number m-0"><%= album.photos_count %></p>
-                <p class="text-uppercase m-0"><%= t('button.photo', count: album.photos_count) %></p>
-            </div>
+            
         </div>
 
         <p class="m-3 mt-5 photo-title truncate">

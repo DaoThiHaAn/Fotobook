@@ -1,3 +1,7 @@
 <% content_for :title, "Albums" %>
 
-<!--TODO:  SHOW ALL ALBUMS FOR FEEDS/DISCOVER-->
+<% content_for :tab_bar do %>
+  <%= render "layouts/main_tabs" %>
+<% end %>
+
+<%= render "layouts/post", posts: @posts, is_photo: @is_photo %>
