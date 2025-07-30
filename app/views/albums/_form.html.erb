@@ -71,8 +71,8 @@
         </button>
 
             <!-- Hidden file input, allow multiple files -->
-        <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none", 
-            data: { image_upload_target: "fileField", action: "change->album#previewPhotos" }%>
+        <%= f.file_field :image_path, accept: 'image/jpeg, image/png, image/gif', class: "d-none", multiple: true,
+            data: { album_target: "fileField", action: "change->album#previewPhotos" }%>
 
 
         <%# Existing Photos (for edit mode) %>
@@ -89,15 +89,11 @@
         <% end %>
         </div>
     <% else %>
-        <div class="preview-container d-none flex-wrap justify-content-between w-100 mt-2 gap-4" 
-            data-image-upload-target="previewWrapper">
+        <div class="preview-container d-flex flex-wrap justify-content-between w-100 mt-2 gap-4" 
+            data-album-target="previewWrapper">
             
             <!-- TODO: need to concat each image from the file field and can delete it independently, the new uploaded one placed to the end -->
-            <div class="img-preview-container">
-                <i class="fa-solid fa-xmark fa-large" title="<%= t('message.del_icon') %>"
-                data-image-upload-target="delIcon" data-action="click->image-upload#deleteImg"></i>
-                <%= image_tag "demo-avatar.png", alt: t("post.previewed_photo"), class: "img-thumbnail", data: { image_upload_target: "preview" } %>
-            </div>
+            <!-- INJECT VIA JS -->
         </div>
     <% end %>
     </div>

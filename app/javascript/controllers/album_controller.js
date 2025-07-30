@@ -1,7 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
+const maxPhotosValue = 25 // Default to 25 if not set
+
 export default class extends Controller {
-  static targets = ["photosWrapper", "template", "addPhotoBtn", "photoItem", "fileField", "preview"]
+  static targets = ["photosWrapper", "addPhotoBtn", "fileField", "previewWrapper"]
   static values = { maxPhotos: Number }
 
   connect() {
@@ -10,72 +12,53 @@ export default class extends Controller {
   }
 
   get currentPhotoCount() {
-    return this.photoItemTargets.filter(item => {
-      const destroyField = item.querySelector('.destroy-field')
-      return !destroyField || destroyField.value !== "1"
-    }).length
+    // For new albums, just count the number of previews
+    return this.previewWrapperTarget.querySelectorAll('.img-preview-container').length
   }
 
-  addPhotoField(event) {
-    event.preventDefault()
-    if (this.currentPhotoCount >= this.maxPhotosValue) return
-
-    const timestamp = new Date().getTime()
-    const content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, timestamp)
-    this.photosWrapperTarget.insertAdjacentHTML("beforeend", content)
-    this.updateAddButtonVisibility()
+  addPhotoField() {
+    this.fileFieldTarget.click()
   }
 
-  triggerFileUpload(event) {
-    const wrapper = event.target.closest('[data-album-target="photoItem"]')
-    const fileField = wrapper.querySelector('[data-album-target="fileField"]')
-    if (fileField) fileField.click()
-  }
+  previewPhotos(event) {
+    const files = Array.from(event.target.files)
 
-  previewPhoto(event) {
-    const input = event.target
-    const file = input.files[0]
-    const wrapper = input.closest('[data-album-target="photoItem"]')
-    const preview = wrapper.querySelector('[data-album-target="preview"]')
+    const max = 25
 
-    if (file && preview) {
+    if (files.length > max) {
+      alert(`You can upload up to ${max} photos only.`)
+      // Optionally clear the input and previews
+      this.fileFieldTarget.value = ""
+      this.previewWrapperTarget.innerHTML = ""
+      return
+    }
+
+    this.previewWrapperTarget.innerHTML = "" // Clear previous previews
+
+    files.forEach(file => {
       const reader = new FileReader()
       reader.onload = (e) => {
-        preview.src = e.target.result
-        preview.classList.remove("d-none")
-
-        const uploadBtn = wrapper.querySelector('.upload-btn')
-        if (uploadBtn) uploadBtn.classList.add("d-none")
+        const div = document.createElement('div')
+        div.className = "img-preview-container"
+        div.innerHTML = `
+        <i class="fa-solid fa-xmark fa-large"
+           title="Delete"
+           data-image-upload-target="delIcon"
+           data-action="click->image-upload#deleteImg"></i>
+        <img src="${e.target.result}" class="img-thumbnail" alt="Preview" />`
+        this.previewWrapperTarget.appendChild(div)
       }
       reader.readAsDataURL(file)
-    }
-  }
+    })
 
-  removePhoto(event) {
-    const item = event.target.closest('[data-album-target="photoItem"]')
-    const destroyField = item.querySelector('.destroy-field')
-    if (destroyField) {
-      destroyField.value = "1"
-      item.style.display = 'none'
-    } else {
-      item.remove()
-    }
     this.updateAddButtonVisibility()
-  }
-
-  removeNewPhoto(event) {
-    const item = event.target.closest('[data-album-target="photoItem"]')
-    if (item) {
-      item.remove()
-      this.updateAddButtonVisibility()
-    }
   }
 
   updateAddButtonVisibility() {
-    if (this.currentPhotoCount >= this.maxPhotosValue) {
-      this.addPhotoBtnTarget.classList.add("d-none")
+    if (this.currentPhotoCount >= maxPhotosValue) {
+      this.addPhotoBtnTarget.classList.replace("d-flex", "d-none")
     } else {
-      this.addPhotoBtnTarget.classList.remove("d-none")
+      this.addPhotoBtnTarget.classList.replace("d-none", "d-flex")
     }
   }
 }
