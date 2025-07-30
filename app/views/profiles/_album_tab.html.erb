@@ -1,7 +1,7 @@
 <% unless is_public %>
 <div class="w-100 d-flex justify-content-end mb-3 pe-5">
-    <%=link_to new_user_photo_path(current_user), class: "profile-edit-btn" do %>
-        <%= t('button.add_photo') %>
+    <%=link_to new_user_album_path(current_user), class: "profile-edit-btn" do %>
+        <%= t('button.add_album') %>
     <% end %>
 </div>
 <%end%>
@@ -12,7 +12,7 @@
         <p><%= t('message.no_albums') %></p>
     </div>
 <%else%>
-<% albums.each do |album| do%>
+<% albums.each do |album| %>
     <div class="tab-item album">
         <!-- TODO: click the album to view all photos in a modal
         Edit btn only in My Profile-->
@@ -39,9 +39,10 @@
             </div>
         </div>
 
-        <p class="m-3 mt-5 photo-title truncate">l
-            <%album.title%>
+        <p class="m-3 mt-5 photo-title truncate">
+            <%= album.title %>
         </p>
     </div>
-<%end%>
+<% end 
+end %>
 </section>

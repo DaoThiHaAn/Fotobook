@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  root "photos#index" # show all posts of photos in guest mode
+  root "photos#redirect_root" # redirect to show all posts of photos in guest mode
+  get "/photos", to: "photos#index", as: :guest_photos # index_photos_path
+  get "/albums", to: "albums#index", as: :guest_albums # index_albums_path
 
 
     devise_scope :user do

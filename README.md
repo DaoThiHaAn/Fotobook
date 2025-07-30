@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- SWITCH LANGUAGE:
 
-Things you may want to cover:
 
-* Ruby version
+GUEST FEED:
+   - Photo Tab
+   - Album Tab
 
-* System dependencies
+AUTHENTICATE:
+    - Login / Signup: https://youtu.be/THLHDpYy86c 
 
-* Configuration
+EDIT PROFILE:
+    - Change avatar + basic info: https://youtu.be/V6glbwWnLoE
+    - Change password: https://youtu.be/JW6ZFdgAJes
+    - Delete account: https://youtu.be/1Yt4r5elb2c
 
-* Database creation
 
-* Database initialization
+PHOTO:
+    - My profile's photos:
+        + Edit/Delete: https://youtu.be/1KF8AbbttxA
+        + Add: https://youtu.be/J2rSHIzzdMg
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+ALBUM:
+    - My profile's albums (add/edit/delete):
 
-* Deployment instructions
 
-* ...
+
+ADMIN:

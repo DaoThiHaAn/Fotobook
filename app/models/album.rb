@@ -6,4 +6,8 @@ class Album < ApplicationRecord
   belongs_to :profile, primary_key: :user_id, foreign_key: :user_id, counter_cache: true
   has_many :photos, through: :album_components
   has_many :album_components, dependent: :destroy
+
+  # This is crucial for accepting nested photo attributes
+  accepts_nested_attributes_for :album_components, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :photos
 end

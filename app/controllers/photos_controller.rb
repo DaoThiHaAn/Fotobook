@@ -1,8 +1,15 @@
 class PhotosController < ApplicationController
-    before_action :require_login!, except: [ :index, :show ]
+    before_action :require_login!, except: [ :index, :show, :redirect_root ]
     before_action :check_private, only: [ :show ]
     before_action :set_photo, only: %i[ show edit update destroy ]
-    before_action -> { require_owner!(@photo) }, except: [ :index, :show ]
+    before_action -> { require_owner!(@photo) }, except: [ :index, :show, :redirect_root ]
+
+  # Redirect root to show all posts of photos in guest mode
+
+  # GET /photos or /photos.json
+  def redirect_root
+    redirect_to guest_photos_path
+  end
 
   # GET /photos or /photos.json
   def index

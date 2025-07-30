@@ -11,7 +11,16 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h4 class="modal-title"><%= @photo.title %></h4>
+          <div class="modal-title">
+            <h4><%= @photo.title %></h4>
+            <div class="d-flex align-items-center gap-5 mt-3">
+              <div class="d-flex align-items-center gap-2">
+                <p class="heart-count d-inline m-0"><%= @photo.hearts_count %></p>
+                <i class="fa fa-heart fa-lg align-self-center me-2 heart-count"></i>
+              </div>
+              <p class="text-muted m-0"><%= @photo.updated_at.strftime("%H:%M:%S %-d/%-m/%Y") %></p>
+            </div>
+          </div>
           <%# data-bs-dismiss="modal" will be handled by Stimulus and Bootstrap %>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
@@ -22,6 +31,7 @@
 
         <div class="modal-footer justify-content-between">
           <p><%= @photo.description %></p>
+          
           <%# data-bs-dismiss="modal" will be handled by Stimulus and Bootstrap %>
           <button type="button" class="ms-2 btn btn-danger" data-bs-dismiss="modal" >Close</button>
         </div>

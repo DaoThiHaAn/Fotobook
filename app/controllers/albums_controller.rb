@@ -59,16 +59,12 @@ end
 
   # POST /albums or /albums.json
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.build(album_params)
 
-    respond_to do |format|
-      if @album.save
-        format.html { redirect_to @album, notice: "Album was successfully created." }
-        format.json { render :show, status: :created, location: @album }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
-      end
+    if @album.save
+      redirect_to @album, notice: "Album was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -103,6 +99,20 @@ end
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:image_path, :title, :description, :is_public)
+      params.require(:album).permit(
+        :title,
+        :description,
+        :is_public,
+        album_components_attributes: [
+          :id, # Needed for updating/destroying existing components
+          :_destroy, # Needed for destroying components
+          photo_attributes: [ # For creating/updating nested photos
+            :id, # Needed if you're updating an existing photo through this nested attribute
+            :image_path, # This is the file upload
+            :image_path_cache, # CarrierWave cache
+            :_destroy # To destroy a photo directly from here (though usually handled by component destroy)
+          ]
+        ]
+      )
     end
 end
