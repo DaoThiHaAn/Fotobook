@@ -38,6 +38,7 @@ en:
     mng_photos: "Manage Photos"
     mng_albums: "Manage Albums"
     mng_users: "Manage Users"
+    homepage: "Homepage"
 
   button:
     photo:

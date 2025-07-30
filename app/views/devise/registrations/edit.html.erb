@@ -3,8 +3,8 @@
 
     <!-- TODO: handle form -->
     <%= form_with(model: @user, url: user_path(@user), method: :patch, data: {turbo: false}) do |f| %>
-        <div class="change-avatar <%= style_avatar(@user) %> m-auto" data-controller="image-upload">
-            <%= image_tag @user.get_avatar, alt: t('profile.avatar'), data: {image_upload_target: "preview"}%>
+        <div class="change-avatar m-auto" data-controller="image-upload">
+            <%= image_tag @user.get_avatar, alt: t('profile.avatar'), data: {image_upload_target: "preview"}, class:  style_avatar(@user) %>
             
             <!-- TODO: change avatar -->
             <!-- Hidden file field -->

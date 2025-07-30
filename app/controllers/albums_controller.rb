@@ -1,45 +1,52 @@
 class AlbumsController < ApplicationController
-    before_action :require_login!, except: [ :index, :show ]
+    before_action :require_login!, except: [ :index, :show, :index_profile ]
     before_action :check_private, only: [ :show ]
     before_action :set_album, only: %i[ show edit update destroy ]
-    before_action -> { require_owner!(@photo) }, except: [ :index, :show ]
+    before_action -> { require_owner!(@photo) }, except: [ :index, :show, :index_profile ]
+
+  # Redirect root to show all posts of albums in guest mode
+
+  # GET /albums or /albums.json
+  def redirect_root
+    redirect_to guest_albums_path
+  end
 
   # GET /albums or /albums.json
   def index
       # Show all public albums in guest mode
-      @posts = Album.all.includes(profile: :user).where(is_public: true).order(updated_at: :desc)
-      @is_photo = false # to render photo partial
+      @posts = Album.all.includes(:photos, profile: :user).where(is_public: true).order(updated_at: :desc)
+      render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 
   def index_feeds
     # TODO: Show all albums of people who u are following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
     @posts = Album.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
-    @is_photo = false
-    render :index
+    render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 
   def index_discover
       # Show all albums of people you are not following
       following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
       @posts = Album.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
-      @is_photo = false
-      render :index
+      render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 
   def index_user
     # TODO: show all albums in your own profile (only u can view)
-    @target_person = current_user.profile
-    @albums = @target_person.albums.order(updated_at: :desc)
+    @target_person = current_user
+    @target_profile = @target_person.profile
+    @albums = @target_profile.albums.order(updated_at: :desc)
     @is_public = false
     render template: "profiles/show"
   end
 
 def index_profile
     # TODO: show all of his public albums when visiting a user profile
-    @albums = Album.where(user_id: params[:profile_id], is_public: true).order(updated_at: :desc)
+    @target_person = User.find_by(id: params[:profile_id])
+    @target_profile = @target_person.profile
+    @albums = @target_profile.albums.where(is_public: true).order(updated_at: :desc)
     @is_public = true
-    @target_person = Profile.find_by(user_id: params[:profile_id])
     render template: "profiles/show"
 end
 

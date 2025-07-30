@@ -10,18 +10,18 @@
 }
 
 
-.change-avatar {
+.change-avatar, .change-avatar.fake img {
     position: relative;
     width: 30%;
     min-width: 180px;
 }
 
-.change-avatar img {
+.change-avatar img  {
     width: 100%;
     height: auto;
 }
 
-.fake img {
+.fake {
     border: 3px solid var(--dark-blue);
     border-radius: 50%;
     box-shadow: 

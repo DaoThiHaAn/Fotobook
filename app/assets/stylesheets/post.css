@@ -128,6 +128,11 @@
     max-height: 80%
 } 
 
+.post.avatar.fake {
+    box-shadow: none;
+    border-width: 1px
+}
+
 @media  screen and (max-width: 992px) {
     .post-description {
         -webkit-line-clamp: 4;
@@ -156,7 +161,7 @@
     .post.avatar {
         width: 30px;
         height: 30px;
-    } 
+    }
 }
    
 

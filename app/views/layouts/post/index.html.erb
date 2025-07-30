@@ -1,11 +1,17 @@
+<% content_for :title, title %>
+
+<% content_for :tab_bar do %>
+  <%= render "layouts/main_tabs" %>
+<% end %>
+
 
 <section class="px-3 pb-5 d-flex flex-wrap justify-content-around card-container">
 <!-- TODO change to local var "post" + authorization + image viewing + dynamic counting + views based on photo/albu-->
-<% if posts.empty? %>
+<% if @posts.empty? %>
   <h2 class="text-muted"><%= t('message.no_posts') %></h2>
 <% else %>
 
-<% posts.each do |post| %>
+<% @posts.each do |post| %>
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
 
         <% if is_photo %>
@@ -13,20 +19,17 @@
                     <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "post-photo" %>
                 <% end %>
         <%else%>
-            <%= link_to album_path(post), class: "d-block", data: { turbo_frame: "modal" } do %>
-            <!-- TODO: show photo modal -->
-            <div class="post-img thumbnail d-flex align-items-center">
-                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer1" %>
-                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer2" %>
-                <%= image_tag post.image_path.url, alt: t('button.photo.one'), class: "layer3" %>
-            </div>
-            <% end %> 
-        <%end%>
+            <%= link_to album_path(post), class: "post-img thumbnail d-flex align-items-center", data: { turbo_frame: "albumModal" } do %>
+                <%= image_tag post.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer1" %>
+                <%= image_tag post.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer2" %>
+                <%= image_tag post.photos.first.image_path.url, alt: t('button.photo.one'), class: "layer3" %>
+            <% end
+        end%>
 
         <div class="d-flex flex-column flex-wrap p-3 post-content">
             <div class="user d-flex align-items-center mb-3">
-                <%= link_to users_path, title: "Open profile", class:"me-1 d-flex align-items-center" do %>
-                    <%= image_tag post.profile.user.avatar.url, alt: t('profile.avatar'), class: "post avatar me-1" %>
+                <%= link_to profile_path(post.profile), title: "Open profile", class:"me-1 d-flex align-items-center" do %>
+                    <%= image_tag post.profile.user.get_avatar, alt: t('profile.avatar'), class: "post avatar #{style_avatar(post.profile.user)} me-1" %>
                     <div class="d-flex flex-wrap">
                         <%= "#{post.profile.user.first_name} #{post.profile.user.last_name}" %>
                     </div>

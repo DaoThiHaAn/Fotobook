@@ -1,8 +1,8 @@
-<%= content_for :title, "Profile"%>
+<%= content_for :title, @is_public ? "Profile" : "My Profile" %>
 
 <!-- TODO -->
 <section class="general-info d-flex m-3 gap-4 container-fluid">
-  <%= image_tag current_user.get_avatar, alt: t('profile.avatar'), class: "profile-avatar #{style_avatar(current_user)}" %>
+  <%= image_tag @target_person.get_avatar, alt: t('profile.avatar'), class: "profile-avatar #{style_avatar(@target_person)}" %>
 
   <div class="d-flex flex-column gap-3">
     <% unless @is_public%>
@@ -12,16 +12,16 @@
         </button>
       <% end %>
     <% else %>
-      <!-- Follow btn-->
+      <!-- TODO: follow btn-->
       
     <% end %>
 
-    <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+    <h1><%= "#{@target_person.first_name} #{@target_person.last_name}" %></h1>
 
     <div class="btn-group profile-btn-group d-flex flex-wrap gap-3">
-      <%= profile_photo_tab(@is_public, count: @target_person.photos_count) %>
+      <%= profile_photo_tab(@is_public, count: @target_profile.photos_count) %>
 
-      <%= profile_album_tab(@is_public, count: @target_person.albums_count) %>
+      <%= profile_album_tab(@is_public, count: @target_profile.albums_count) %>
 
       <button class="profile-tab-btn text-uppercase">
         <p class="m-0 number">1</p>

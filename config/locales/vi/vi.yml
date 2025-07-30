@@ -14,6 +14,7 @@ vi:
     mng_photos: "Quản lý Ảnh"
     mng_albums: "Quản lý Tập ảnh"
     mng_users: "Quản lý người dùng"
+    homepage: "Trang chủ"
 
   button:
     photo:

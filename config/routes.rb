@@ -49,6 +49,10 @@ Rails.application.routes.draw do
         get "/photos", to: "photos#index_profile", as: :photos # profile_photos
         # profiles/:profile_id/albums
         get "/albums", to: "albums#index_profile", as: :albums # profile_albums
+        # profiles/:profile_id/followers
+        get "/followers", to: "follows#index_followers", as: :followers # profile_followers
+        # profiles/:profile_id/following
+        get "/following", to: "follows#index_following", as: :following # profile_following
     end
 
   namespace :admin do
