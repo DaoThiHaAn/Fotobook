@@ -93,25 +93,36 @@ end
         end
         redirect_to index_user_albums_path(current_user), notice: t("message.album_created")
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity, alert: t("message.album_created_failed")
       end
     end
   end
 
-  # PATCH/PUT /albums/1 or /albums/1.json
   def update
-    respond_to do |format|
+      @album.update(album_params)
       if @album.update(album_params)
-        format.html { redirect_to @album, notice: "Album was successfully updated." }
-        format.json { render :show, status: :ok, location: @album }
+        # Update photos if any
+        files = params[:album][:image_path].reject { |f| f.blank? }
+        if files.any?
+          # Remove existing photos and add new ones
+          @album.album_components.destroy_all
+          files.each do |uploaded_file|
+            photo = Photo.create!(
+              title: @album.title, # or set a default/blank title
+              description: @album.description, # or blank
+              image_path: uploaded_file,
+              is_public: @album.is_public,
+              user_id: current_user.id
+            )
+            AlbumComponent.create!(album: @album, photo: photo)
+          end
+        end
+        redirect_to index_user_albums_path(current_user), notice: t("message.album_updated")
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity, alert: t("message.album_updated_failed")
       end
-    end
   end
 
-  # DELETE /albums/1 or /albums/1.json
   def destroy
     @album.destroy!
 
