@@ -93,9 +93,12 @@ end
 
   # DELETE /photos/1 or /photos/1.json
   def destroy
-    @photo.destroy!
-
-      format.html { redirect_to photos_path, status: :see_other, notice: t("message.photo_deleted") }
+    if @photo.destroy
+      redirect_to index_user_photos_path(current_user), notice: t("message.photo_deleted")
+    else
+        flash.now[:alert] = t("message.photo_deleted_failed")
+        render :edit, status: :unprocessable_entity
+    end
   end
 
   private

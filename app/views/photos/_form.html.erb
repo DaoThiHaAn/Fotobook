@@ -87,12 +87,16 @@
 
 <div class="d-flex justify-content-center align-items-center gap-4">
   <%= f.submit t('button.save'), class: "save custom-primary-btn" %>
+<% end %>
+
   <% if photo.persisted? %>
-    <%= link_to photo_path(photo), method: :delete, data: { confirm: t('confirm.delete') }, class: "delete-btn" do %>
+    <%= button_to photo_path(photo),
+              method: :delete,
+              data: { turbo_confirm: t('message.delete_photo') },
+              class: "delete-btn" do %>
       <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
-      <span><%= t('button.delete') %></span>
+      <%= t('button.delete') %>
     <% end %>
   <% end %>
 
 </div>
-<% end %>
