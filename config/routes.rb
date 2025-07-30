@@ -34,13 +34,19 @@ Rails.application.routes.draw do
             end
         end
 
-        resources :albums, shallow: true
+        resources :albums, shallow: true, except: [ :index ] do
+            collection do
+                get "", to: "albums#index_user", as: :index # index_user_albums
+            end
+        end
     end
 
 
     resources :profiles do
         # profiles/:profile_id/photos
         get "/photos", to: "photos#index_profile", as: :photos # profile_photos
+        # profiles/:profile_id/albums
+        get "/albums", to: "albums#index_profile", as: :albums # profile_albums
     end
 
   namespace :admin do

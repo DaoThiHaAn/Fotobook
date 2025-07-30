@@ -8,8 +8,8 @@ class PhotosController < ApplicationController
   def index
     # Show all public photos in guest mode
     unless user_signed_in?
-    @posts = Photo.all.includes(profile: :user).where(is_public: true).order(updated_at: :desc)
-    @is_photo = true # to render photo partial
+      @posts = Photo.all.includes(profile: :user).where(is_public: true).order(updated_at: :desc)
+      @is_photo = true # to render photo partial
     else
       # If logged in, redirect to feeds
       redirect_to user_tab_photos_path(current_user, "feeds")
