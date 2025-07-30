@@ -3,7 +3,6 @@ class PhotosController < ApplicationController
     before_action :check_private, only: [ :show ]
     before_action :set_photo, only: %i[ show edit update destroy ]
     before_action -> { require_owner!(@photo) }, except: [ :index, :show, :redirect_root, :index_profile ]
-
   # Redirect root to show all posts of photos in guest mode
 
   # GET /photos or /photos.json
@@ -96,7 +95,12 @@ end
   # DELETE /photos/1 or /photos/1.json
   def destroy
     if @photo.destroy
-      redirect_to index_user_photos_path(current_user), notice: t("message.photo_deleted")
+      removed_count = remove_empty_albums # returns how many were removed
+      flash[:notice] = t("message.photo_deleted")
+      if removed_count > 0
+        flash[:notice] += "<br>#{removed_count} empty album#{'s' if removed_count > 1} removed."
+      end
+      redirect_to index_user_photos_path(current_user)
     else
         flash.now[:alert] = t("message.photo_deleted_failed")
         render :edit, status: :unprocessable_entity
@@ -121,5 +125,12 @@ end
           redirect_to root_path, alert: "This photo is private and cannot be viewed."
         end
       end
+    end
+
+    def remove_empty_albums
+      @empty_albums = current_user.profile.albums.where(photos_count: 0)
+      count = @empty_albums.count
+      @empty_albums.destroy_all if @empty_albums.any?
+      count
     end
 end
