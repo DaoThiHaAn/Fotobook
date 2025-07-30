@@ -3,8 +3,8 @@
     data: { album_max_photos_value: 25 } do |f| %>
 
   <% if album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+    <div id="error_explanation" class="error-messages mb-3">
+      <h3><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h3>
       <ul>
         <% album.errors.full_messages.each do |message| %>
           <li><%= message %></li>

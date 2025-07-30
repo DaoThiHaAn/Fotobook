@@ -134,3 +134,4 @@ vi:
     album_deleted: "Tập ảnh đã được xóa thành công!"
     album_created_failed: "Tạo tập ảnh thất bại. Vui lòng thử lại."
     album_deleted_failed: "Xóa tập ảnh thất bại. Vui lòng thử lại."
+    upload_1_photo: "Bạn phải tải lên ít nhất 1 ảnh!"

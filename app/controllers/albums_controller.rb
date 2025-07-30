@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
     before_action :require_login!, except: [ :index, :show ]
     before_action :check_private, only: [ :show ]
-    before_action :set_photo, only: %i[ show edit update destroy ]
+    before_action :set_album, only: %i[ show edit update destroy ]
     before_action -> { require_owner!(@photo) }, except: [ :index, :show ]
 
   # GET /albums or /albums.json
@@ -59,12 +59,35 @@ end
 
   # POST /albums or /albums.json
   def create
-    @album = current_user.albums.build(album_params)
+    @album = Album.new(album_params)
+    @album.profile = current_user.profile
 
-    if @album.save
-      redirect_to @album, notice: "Album was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    if params[:album][:image_path].present?
+      # remove nil file as Rails auto insert at multiple-file field
+      files = params[:album][:image_path].reject { |f| f.blank? }
+
+      if files.empty?
+        flash.now[:alert] = t("message.upload_1_photo")
+        render :new, status: :unprocessable_entity
+        return
+      end
+
+      # Save album first to get its ID
+      if @album.save
+        files.each do |uploaded_file|
+          photo = Photo.create!(
+            title: @album.title, # or set a default/blank title
+            description: @album.description, # or blank
+            image_path: uploaded_file,
+            is_public: @album.is_public,
+            user_id: current_user.id
+          )
+          AlbumComponent.create!(album: @album, photo: photo)
+        end
+        redirect_to index_user_albums_path(current_user), notice: t("message.album_created")
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -99,20 +122,15 @@ end
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(
-        :title,
-        :description,
-        :is_public,
-        album_components_attributes: [
-          :id, # Needed for updating/destroying existing components
-          :_destroy, # Needed for destroying components
-          photo_attributes: [ # For creating/updating nested photos
-            :id, # Needed if you're updating an existing photo through this nested attribute
-            :image_path, # This is the file upload
-            :image_path_cache, # CarrierWave cache
-            :_destroy # To destroy a photo directly from here (though usually handled by component destroy)
-          ]
-        ]
-      )
+       params.require(:album).permit(:title, :description, :is_public)
+    end
+
+    def check_private
+      @album = Album.find(params[:id])
+      unless @album.is_public
+        if !user_signed_in? || @album.profile.user_id != current_user.id
+          redirect_to root_path, alert: "This album is private and cannot be viewed."
+        end
+      end
     end
 end

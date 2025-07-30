@@ -172,6 +172,12 @@ hr {
   display: contents;
 }
 
+.error-messages {
+    color: red !important;
+    background-color: rgb(255, 222, 222);
+    padding: 10px;
+}
+
 
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {

@@ -44,9 +44,14 @@ class ApplicationController < ActionController::Base
 
   def require_owner!(resource) # avoid someone fake your id
       if resource.nil?
-        if !user_signed_in? || current_user.id != params[:user_id].to_i
-          render template: "layouts/error/unauthorized", status: :forbidden and return
+        if !user_signed_in?
+          if params[:user_id].present? && current_user.id != params[:user_id].to_i
+            render template: "layouts/error/unauthorized", status: :forbidden and return
+          elsif resource.profile.user_id != current_user.id
+            render template: "layouts/error/unauthorized", status: :forbidden and return
+          end
         end
+
       elsif resource.profile.user_id != current_user.id
           render template: "layouts/error/unauthorized", status: :forbidden and return
       end
