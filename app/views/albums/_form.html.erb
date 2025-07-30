@@ -77,8 +77,8 @@
 
         <%# Existing Photos (for edit mode) %>
     <% if album.persisted? %>
-        <div class="preview-container d-flex flex-wrap justify-content-between w-100 mt-2 gap-4" 
-            data-image-upload-target="previewWrapper">
+        <div class="preview-container d-flex flex-wrap w-100 mt-2 gap-4" 
+            data-album-target="previewWrapper">
         <% album.photos.each do |photo| %>
             <!-- Each photo preview with delete option, the new uploaded one placed to the end -->
             <div class="img-preview-container">
@@ -100,17 +100,13 @@
 
     <div class="d-flex justify-content-center align-items-center gap-4">
         <%= f.submit t('button.save'), class: "save custom-primary-btn" %>
-    </div>
 <% end %> 
 
-<% if album.persisted? %>
-  <div class="d-flex justify-content-center align-items-center gap-4">
-    <%= button_to album_path(album),
-              method: :delete,
-              data: { turbo_confirm: t('message.delete_album') },
-              class: "delete-btn" do %>
-      <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
-      <%= t('button.delete') %>
-    <% end %>
-  </div>
-<% end %>
+      <% if album.persisted? %>
+        <%= button_to album_path(album), method: :delete,
+                  data: { turbo_confirm: t('message.delete_album') }, class: "delete-btn" do %>
+          <i class="fa-solid fa-trash-can fa-lg me-2" title="<%= t('button.delete') %>"></i>
+          <%= t('button.delete') %>
+        <% end %>
+      <% end %>
+    </div>

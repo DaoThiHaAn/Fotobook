@@ -27,9 +27,6 @@ export default class extends Controller {
 
     if (files.length > max) {
       alert(`You can upload up to ${max} photos only.`)
-      // Optionally clear the input and previews
-      this.fileFieldTarget.value = ""
-      this.previewWrapperTarget.innerHTML = ""
       return
     }
 

@@ -124,16 +124,14 @@ end
   end
 
   def destroy
-    @album.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to albums_path, status: :see_other, notice: "Album was successfully destroyed." }
-      format.json { head :no_content }
+    if @album.destroy
+      redirect_to index_user_albums_path(current_user), notice: t("message.album_deleted")
+    else
+      render :edit, status: :unprocessable_entity, alert: t("message.album_deleted_failed")
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params.expect(:id))
     end
