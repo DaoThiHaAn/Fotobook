@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
   # GET /photos or /photos.json
   def redirect_root
     if user_signed_in?
-      if current_user.is_admin?
+      if current_user.is_admin
         redirect_to admin_users_path
       else
         redirect_to user_tab_photos_path(current_user, "feeds")
@@ -76,7 +76,6 @@ def index_profile
 end
 
   def show
-    # @photo = Photo.find(params[:id])
   end
 
   def new
@@ -130,7 +129,6 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params.expect(:id))
     end

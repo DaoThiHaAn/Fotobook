@@ -51,8 +51,8 @@ Rails.application.configure do
     authentication:       "plain",
     enable_starttls_auto: true,
     # Increase the timeout for opening the connection (in seconds)
-    open_timeout:         20,
-    read_timeout:         20
+    open_timeout:         60,
+    read_timeout:         60
   }
 
   # Print deprecation notices to the Rails logger.

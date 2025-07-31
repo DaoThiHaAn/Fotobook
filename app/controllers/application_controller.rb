@@ -64,6 +64,6 @@ class ApplicationController < ActionController::Base
 
   # Redirect to Photos in feed after signin
   def after_sign_in_path_for(resource)
-    user_tab_photos_path(resource, "feeds")
+    root_path
   end
 end
