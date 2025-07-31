@@ -3,6 +3,7 @@
 }
 .post-card {
     width: 47%;
+    max-height: 30%;
     background-color: var(--post-bg-color);
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -111,7 +112,6 @@
 
 .post-description {
     -webkit-line-clamp: 5;            /* how many lines to show */
-    font-size: 0.75rem;
 }
 
 .post-card h6 {
@@ -191,7 +191,7 @@
         width: 100%;
     }
     .post-description {
-        -webkit-line-clamp: 5;
+        -webkit-line-clamp: 4;
     }
     .thumbnail {
         width: 40vw

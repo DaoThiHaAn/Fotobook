@@ -56,6 +56,15 @@ class User < ApplicationRecord
     end
   end
 
+  # check account state
+  def active_for_authentication?
+    super && is_active?
+  end
+
+  def inactive_message
+    is_active? ? super : :inactive
+  end
+
   # Override Devise's default password validation
   validate :password_complexity
 

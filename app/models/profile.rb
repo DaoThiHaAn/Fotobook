@@ -28,4 +28,6 @@ class Profile < ApplicationRecord
   has_many :followers,
            through: :passive_follows,
            source: :follower
+
+  has_many :favorites, foreign_key: :user_id, dependent: :destroy
 end

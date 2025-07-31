@@ -4,6 +4,10 @@
   <%= render "layouts/main_tabs" %>
 <% end %>
 
+<%  # polymorphic type must be capitalize the first letter
+    post_type = is_photo ? "Photo" : "Album" 
+%>
+
 
 <section class="px-3 pb-5 d-flex flex-wrap justify-content-around card-container">
 <% if @posts.empty? %>
@@ -34,33 +38,37 @@
                     </div>
                 <% end %>
 
-                <!-- TODO: In the "feeds" and "guest", not have Follow button -->
+                <!-- In the "feeds" and "guest", not have Follow button -->
                 <%if user_signed_in? && params[:tab] != "feeds"%>
                     <%= render "layouts/follow_btn", is_following: false, profile_id: post.user_id%>
                 <% end %>
             </div>
 
-            <h6 class="truncate">
-                <%= simple_format(post.title) %>
-            </h6>
+            <%= simple_format(post.title, class: "truncate fs-6 fw-bold m-0 mb-4") %>
 
-            <p class="post-description truncate mb-4">
-                <%= simple_format(post.description) %>
-            </p>
+            <%= simple_format(post.description, class: "post-description m-0 truncate mb-4") %>
 
             <div class="post-footer mt-auto d-flex flex-wrap justify-content-between" data-controller="post">
                 <div class="mb-1">
-                    <%
-                        is_liked = true
+                    <% if !user_signed_in? || current_user.is_admin %>
+                        <i class="fa-solid fa-heart fa-lg align-self-center me-2 heart-count"></i>
+                    <% else
+                        is_liked = check_favorite(current_user.profile, post, post_type)
                         icon = is_liked ? "fa-solid" : "fa-regular"
                         title_txt = is_liked ? t('message.unlike') : t('message.like')
                     %>
                     <i class="<%=icon%> fa-heart fa-lg align-self-center me-2 heart-count", title="<%= title_txt%>"
                         data-action="click->post#toggleHeart"
                         data-like-title="<%=t('message.like')%>"
-                        data-unlike-title="<%= t('message.unlike') %>"></i>
+                        data-unlike-title="<%= t('message.unlike') %>"
+                        data-post-id = "<%= post.id%>"
+                        data-post-type = "<%=post_type%>"
+                        data-user-id = "<%=current_user.id%>"></i>
+                    <%end%>
 
-                    <p class="heart-count d-inline"><%= post.hearts_count %></p>
+                    <p class="heart-count d-inline" data-post-target="heartCount">
+                        <%= post.hearts_count %>
+                    </p>
                 </div>
                 <p class="date ms-2"><%= post.updated_at.strftime("%H:%M:%S %d/%m/%Y") %></p>
             </div>

@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-
+    static targets = ["heartCount"]
     connect() {
         console.log("post_controller connected")
     }
@@ -44,20 +44,53 @@ export default class extends Controller {
                 followButton.classList.replace("active", "gradient-text");
                 followButton.title = followButton.dataset.followTitle;
                 followButton.textContent = followButton.dataset.followTitle;
-
             }
         })
     }
 
     toggleHeart(event) {
         const heartIcon = event.currentTarget;
-        if (heartIcon.classList.contains("fa-regular")) { //unliked
-            heartIcon.classList.replace("fa-regular", "fa-solid")
-            heartIcon.title = heartIcon.dataset.unlikeTitle;
+        const heartCount = parseInt(this.heartCountTarget.textContent, 10);
+        const isLiking = heartIcon.classList.contains("fa-regular")
+        const postId = heartIcon.dataset.postId
+        const postType = heartIcon.dataset.postType
+        const userId = heartIcon.dataset.userId
+
+        const url = `/users/${userId}/favorites/${postType}/${postId}`;
+        const method = isLiking ? "DELETE" : "POST";
+        const headers = {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        };
+        const options = {
+            method: method,
+            headers: headers
+        };
+
+        // Only add body for POST
+        if (method === "POST") {
+            headers["Content-Type"] = "application/json";
+            options.body = JSON.stringify({ 
+                user_id: userId,
+                post_type: postType,
+                post_id: postId });
         }
-        else { 
-            heartIcon.classList.replace("fa-solid", "fa-regular")
-            heartIcon.title = heartIcon.dataset.likeTitle;
-        }
+
+        fetch(url, options)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == "error") {
+                alert(data.message)
+            } 
+            else if (data.status == "liked") { 
+                heartIcon.classList.replace("fa-regular", "fa-solid")
+                heartIcon.title = heartIcon.dataset.unlikeTitle;
+                this.heartCountTarget.innerHTML = heartCount + 1
+            }
+            else { 
+                heartIcon.classList.replace("fa-solid", "fa-regular")
+                heartIcon.title = heartIcon.dataset.likeTitle;
+                this.heartCountTarget.textContent = heartCount - 1
+            }
+        })
     }
 }

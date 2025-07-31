@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_30_092513) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_31_170310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,6 +33,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_092513) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_albums_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.string "post_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_type", "post_id"], name: "index_favorites_on_post_type_and_post_id"
+    t.index ["user_id", "post_id", "post_type"], name: "index_favorites_on_user_id_and_post_id_and_post_type", unique: true
   end
 
   create_table "follows", primary_key: ["follower_id", "followee_id"], force: :cascade do |t|
@@ -102,6 +112,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_092513) do
   add_foreign_key "album_components", "albums"
   add_foreign_key "album_components", "photos"
   add_foreign_key "albums", "profiles", column: "user_id", primary_key: "user_id"
+  add_foreign_key "favorites", "profiles", column: "user_id", primary_key: "user_id"
   add_foreign_key "follows", "profiles", column: "followee_id", primary_key: "user_id"
   add_foreign_key "follows", "profiles", column: "follower_id", primary_key: "user_id"
   add_foreign_key "identities", "users"

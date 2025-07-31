@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get "/:tab/albums", to: "albums#index_tab", as: :tab_albums
         get "/followers", to: "users#index_followers", as: :followers
         get "/followings", to: "users#index_followings", as: :followings
+        post "favorites/:post_type/:post_id", to: "favorites#add_to_fav", as: :add_favorites
+        delete "favorites/:post_type/:post_id", to: "favorites#add_to_fav", as: :remove_favorites
 
         resources :photos, shallow: true, except: [ :index ] do
             collection do

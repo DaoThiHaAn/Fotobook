@@ -10,4 +10,6 @@ class Album < ApplicationRecord
   # This is crucial for accepting nested photo attributes
   accepts_nested_attributes_for :album_components, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :photos
+
+  has_many :favorites, as: :post, dependent: :destroy
 end

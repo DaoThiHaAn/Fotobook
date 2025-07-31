@@ -39,4 +39,8 @@ module ProfilesHelper
     def check_follow(person1, person2) # expect Profile obj
       Follow.exists?(follower_id: person1.user_id, followee_id: person2.user_id)
     end
+
+    def check_favorite(profile, post, post_type)
+        Favorite.exists?(user_id: profile.user_id, post_id: post.id, post_type: post_type)
+    end
 end
