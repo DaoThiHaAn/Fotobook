@@ -17,4 +17,22 @@ module ProfilesHelper
             content_tag(:p, count.to_s, class: "m-0 number") + t("button.album", count: count)
         end
     end
+
+    def profile_follower_tab(is_public, count: 0)
+        path = is_public ? profile_followers_path(params[:profile_id]) : user_followers_path(current_user.id)
+        tab_class = "profile-tab-btn text-uppercase #{highlight_active_tab("followers")}"
+
+        link_to path, class: tab_class do
+            content_tag(:p, count.to_s, class: "m-0 number") + t("button.follower", count: count)
+        end
+    end
+
+    def profile_following_tab(is_public, count: 0)
+        path = is_public ? profile_followings_path(params[:profile_id]) : user_followings_path(current_user.id)
+        tab_class = "profile-tab-btn text-uppercase #{highlight_active_tab("followings")}"
+
+        link_to path, class: tab_class do
+            content_tag(:p, count.to_s, class: "m-0 number") + t("button.following", count: count)
+        end
+    end
 end

@@ -27,8 +27,10 @@ Rails.application.routes.draw do
 
 
     resources :users, except: [ :edit ] do
-        get "/:tab/photos", to: "photos#index_feeds", as: :tab_photos
-        get "/:tab/albums", to: "albums#index_feeds", as: :tab_albums
+        get "/:tab/photos", to: "photos#index_tab", as: :tab_photos
+        get "/:tab/albums", to: "albums#index_tab", as: :tab_albums
+        get "/followers", to: "users#index_followers", as: :followers
+        get "/followings", to: "users#index_followings", as: :followings
 
         resources :photos, shallow: true, except: [ :index ] do
             collection do
@@ -50,9 +52,9 @@ Rails.application.routes.draw do
         # profiles/:profile_id/albums
         get "/albums", to: "albums#index_profile", as: :albums # profile_albums
         # profiles/:profile_id/followers
-        get "/followers", to: "follows#index_followers", as: :followers # profile_followers
+        get "/followers", to: "profiles#index_followers", as: :followers # profile_followers
         # profiles/:profile_id/following
-        get "/following", to: "follows#index_following", as: :following # profile_following
+        get "/followings", to: "profiles#index_followings", as: :followings # profile_followings
     end
 
   namespace :admin do

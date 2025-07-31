@@ -23,15 +23,9 @@
 
       <%= profile_album_tab(@is_public, count: @target_profile.albums_count) %>
 
-      <button class="profile-tab-btn text-uppercase">
-        <p class="m-0 number">1</p>
-        <span><%= t('button.follower', count:1) %></span>
-      </button>
-
-      <button class="profile-tab-btn text-uppercase">
-        <p class="m-0 number">0</p>
-        <span><%= t('button.following', count:0) %></span>
-      </button>
+      <%= profile_follower_tab(@is_public, count: @target_profile.followers_count) %>
+      
+      <%= profile_following_tab(@is_public, count: @target_profile.followings_count) %>
     </div>
     
   </div>
@@ -43,7 +37,7 @@
 <% elsif request.fullpath.include?("albums") %>
 <%= render partial: "profiles/album_tab", locals: { albums: @albums, is_public: @is_public } %>
 <% elsif request.fullpath.include?("followers") %>
-<%= render partial: "profiles/follower_tab", locals: { followers: @followers, is_public: @is_public } %>
+<%= render partial: "profiles/follower_tab", locals: { followers: @follower_profiles, is_public: @is_public } %>
 <% elsif request.fullpath.include?("following") %>
-<%= render partial: "profiles/following_tab", locals: { following: @following, is_public: @is_public } %>
+<%= render partial: "profiles/following_tab", locals: { followings: @following_profiles, is_public: @is_public } %>
 <%end%>

@@ -21,17 +21,32 @@ class PhotosController < ApplicationController
     end
   end
 
+  # Redirect to feeds/discover based on params[:tab]
+  def index_tab
+    case params[:tab]
+    when "feeds"
+      index_feeds
+    when "discover"
+      index_discover
+    else
+      render file: Rails.root.join("public/404.html"), status: :not_found, layout: false
+    end
+  end
+
   def index_feeds
-    # TODO: Show all photos in of people who u are following
+    # TODO: Show all public photos in of people who u are following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-    @posts = Photo.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+    @posts = Photo.where(user_id: following_ids, is_public: true).includes(:profile).order(updated_at: :desc)
+    puts "Feed post count: #{@posts.size}"
     render template: "layouts/post/index", locals: { title: "Photos", is_photo: true }
   end
 
   def index_discover
-      # Show all photos of people you are not following
-      following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-      @posts = Photo.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+      # Show all public photos of people you are not following (not u too)
+      following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id).push(current_user.id)
+      @posts = Photo.where.not(user_id: following_ids).where(is_public: true).includes(:profile).order(updated_at: :desc)
+      puts "Discover post count: #{@posts.size}"
+
       render template: "layouts/post/index", locals: { title: "Photos", is_photo: true }
   end
 

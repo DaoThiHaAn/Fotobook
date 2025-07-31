@@ -4,6 +4,8 @@ class Profile < ApplicationRecord
   belongs_to :user, foreign_key: :user_id
   has_many :photos, foreign_key: :user_id, dependent: :destroy
   has_many :albums, foreign_key: :user_id, dependent: :destroy
+  has_many :follows, foreign_key: :follower_id, dependent: :destroy
+  has_many :profiles, through: :follows
 
   # Follows the user initiated (user is the follower)
   has_many :active_follows,

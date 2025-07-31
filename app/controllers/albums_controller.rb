@@ -11,24 +11,35 @@ class AlbumsController < ApplicationController
     redirect_to guest_albums_path
   end
 
-  # GET /albums or /albums.json
   def index
       # Show all public albums in guest mode
       @posts = Album.all.includes(:photos, profile: :user).where(is_public: true).order(updated_at: :desc)
       render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 
+  # Redirect to feeds/discover based on params[:tab]
+  def index_tab
+    case params[:tab]
+    when "feeds"
+      index_feeds
+    when "discover"
+      index_discover
+    else
+      render file: Rails.root.join("public/404.html"), status: :not_found, layout: false
+    end
+  end
+
   def index_feeds
-    # TODO: Show all albums of people who u are following
+    # TODO: Show all public albums of people who u are following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-    @posts = Album.where(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+    @posts = Album.where(user_id: following_ids, is_public: true).includes(:profile).order(updated_at: :desc)
     render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 
   def index_discover
-      # Show all albums of people you are not following
-      following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
-      @posts = Album.where.not(user_id: following_ids).includes(:profile).order(updated_at: :desc)
+      # Show all public albums of people you are not following
+      following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id).push(current_user.id)
+      @posts = Album.where.not(user_id: following_ids).where(is_public: true).includes(:profile).order(updated_at: :desc)
       render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
   end
 

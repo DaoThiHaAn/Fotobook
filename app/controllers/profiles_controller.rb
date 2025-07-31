@@ -44,7 +44,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /profiles/1 or /profiles/1.json
   def destroy
     @profile.destroy!
 
@@ -53,6 +52,25 @@ class ProfilesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def index_followers
+    @target_profile = Profile.find(params[:profile_id])
+    @target_person = @target_profile.user
+    @followers = Follow.where(followee_id: @target_profile.user_id).pluck(:follower_id)
+    @follower_profiles = Profile.where(user_id: @followers)
+    @is_public = true
+    render "profiles/show"
+  end
+
+  def index_followings
+    @target_profile = Profile.find(params[:profile_id])
+    @target_person = @target_profile.user
+    @followings = Follow.where(follower_id: @target_profile.user_id).pluck(:followee_id)
+    @following_profiles = Profile.where(user_id: @followings)
+    @is_public = true
+    render "profiles/show"
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
