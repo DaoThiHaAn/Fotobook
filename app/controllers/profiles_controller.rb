@@ -53,21 +53,25 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # Show all followers of a profile (public mode)
   def index_followers
     @target_profile = Profile.find(params[:profile_id])
     @target_person = @target_profile.user
     @followers = Follow.where(followee_id: @target_profile.user_id).pluck(:follower_id)
     @follower_profiles = Profile.where(user_id: @followers)
     @is_public = true
+    @is_following = check_follow(current_user.profile, @target_profile)
     render "profiles/show"
   end
 
+  # Show all followers of a profile (public mode)
   def index_followings
     @target_profile = Profile.find(params[:profile_id])
     @target_person = @target_profile.user
     @followings = Follow.where(follower_id: @target_profile.user_id).pluck(:followee_id)
     @following_profiles = Profile.where(user_id: @followings)
     @is_public = true
+    @is_following = check_follow(current_user.profile, @target_profile)
     render "profiles/show"
   end
 
@@ -81,5 +85,9 @@ class ProfilesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def profile_params
       params.expect(profile: [ :photos_count, :albums_count, :followers_count, :followings_count ])
+    end
+
+    def check_follow(person1, person2)
+      Follow.exists?(follower_id: person1.user_id, followee_id: person2.user_id)
     end
 end

@@ -35,4 +35,8 @@ module ProfilesHelper
             content_tag(:p, count.to_s, class: "m-0 number") + t("button.following", count: count)
         end
     end
+
+    def check_follow(person1, person2) # expect Profile obj
+      Follow.exists?(follower_id: person1.user_id, followee_id: person2.user_id)
+    end
 end

@@ -83,6 +83,13 @@
     border:none;
 }
 
+.bigger.follow-btn {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    padding: 4px 20px;
+    font-size: 0.8rem;
+}
+
 .gradient-text {
   background: var(--folow-btn-color);
   -webkit-background-clip: text;

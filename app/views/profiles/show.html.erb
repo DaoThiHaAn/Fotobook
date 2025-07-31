@@ -12,8 +12,8 @@
         </button>
       <% end %>
     <% else %>
-      <!-- TODO: follow btn-->
-      
+      <!-- bigger follow btn-->
+      <%= render "layouts/follow_btn", is_following: @is_following, profile_id: @target_person.id, bigger: true %>
     <% end %>
 
     <h1><%= "#{@target_person.first_name} #{@target_person.last_name}" %></h1>

@@ -35,7 +35,9 @@
                 <% end %>
 
                 <!-- TODO: In the "feeds", not have Follow button -->
-                <%= render "layouts/follow_btn"%>
+                <%if params[:tab] != "feeds"%>
+                <%= render "layouts/follow_btn", is_following: false, profile_id: post.user_id%>
+                <% end %>
             </div>
 
             <h6 class="truncate">

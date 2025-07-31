@@ -159,3 +159,4 @@ en:
     album_created_failed: "Failed to create album. Please try again."
     album_deleted_failed: "Failed to delete album. Please try again."
     upload_1_photo: "You must upload at least 1 photo!"
+    follow_error: "Can't do the action! Please try again!"

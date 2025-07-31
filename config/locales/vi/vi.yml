@@ -136,3 +136,4 @@ vi:
     album_created_failed: "Tạo tập ảnh thất bại. Vui lòng thử lại."
     album_deleted_failed: "Xóa tập ảnh thất bại. Vui lòng thử lại."
     upload_1_photo: "Bạn phải tải lên ít nhất 1 ảnh!"
+    follow_error: "Không thể thực hiện hành động! Vui lòng thử lại!"

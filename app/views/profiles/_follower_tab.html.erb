@@ -1,4 +1,4 @@
-<section class="mt-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
+<section class="my-5 pb-5 d-flex flex-wrap gap-4 justify-content-center profile-tab-view">
 <% if followers.empty? %>
     <h3 class="text-muted text-uppercase"><%= t('message.no_followers') %></h3>
 <% else %>
@@ -6,9 +6,9 @@
 <%followers.each do |follower|%>
     <div class="follow tab-item d-flex flex-column gap-2 align-items-center justify-content-center">
         <%= image_tag follower.user.get_avatar, alt: t("profile.avatar"), class: "avatar m-0 #{style_avatar(follower.user)}" %>
-        <div> <!-- Need <div> to display properly-->
-            <p class="truncate username"> <%= follower.user.username %></p>
-        </div>
+        <%= link_to profile_path(follower) do %> <!-- Need <div> to display properly-->
+            <p class="truncate username"> <%= "#{follower.user.first_name} #{follower.user.last_name}" %></p>
+        <% end %>
         <div class="d-flex gap-4 mb-2 extra-info">
             <div class="text-center">
                 <p class="m-0 number"><%= follower.photos_count %></p>
@@ -20,8 +20,10 @@
                 <p class="m-0 text-uppercase"><%= t('button.album', count: follower.albums_count) %></p>
             </div>
         </div>
-        
-        <%= render "layouts/follow_btn"%>
+
+        <% if current_user.id != follower.user_id %>
+            <%= render "layouts/follow_btn", profile_id: follower.user_id, is_following: check_follow(current_user.profile, follower) %>
+        <% end %>
     </div>
 <%end%>
 <% end %>
