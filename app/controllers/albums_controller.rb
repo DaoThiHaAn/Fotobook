@@ -154,9 +154,9 @@ end
 
     def check_private
       @album = Album.find(params[:id])
-      unless @album.is_public
-        if !user_signed_in? || @album.profile.user_id != current_user.id
-          redirect_to root_path, alert: "This album is private and cannot be viewed."
+      unless @album.is_public || current_user&.is_admin
+        if !user_signed_in? || @album.profile.user_id != current_user&.id
+          redirect_to root_path, alert: t("message.private_album")
         end
       end
     end

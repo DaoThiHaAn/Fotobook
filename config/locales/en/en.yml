@@ -172,3 +172,5 @@ en:
     follow_error: "Can't do the action! Please try again!"
     delete_acc_success: "Account is deleted successfully"
     delete_acc_failed: "Failed to delete account!"
+    private_album: "This album is private and cannot be viewed."
+    private_photo: "This photo is private and cannot be viewed."

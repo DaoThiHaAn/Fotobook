@@ -142,7 +142,7 @@ end
 
     def check_private
       @photo = Photo.find(params[:id])
-      unless @photo.is_public
+      unless @photo.is_public || current_user&.is_admin
         if !user_signed_in? || @photo.profile.user_id != current_user.id
           redirect_to root_path, alert: "This photo is private and cannot be viewed."
         end

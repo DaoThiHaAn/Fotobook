@@ -147,3 +147,6 @@ vi:
     follow_error: "Không thể thực hiện hành động! Vui lòng thử lại!"
     delete_acc_success: "Xóa tài khoản thành công"
     delete_acc_failed: "Xóa thất bại!"
+    private_album: "This album is private and cannot be viewed."
+    private_photo: "This photo is private and cannot be viewed."
+
