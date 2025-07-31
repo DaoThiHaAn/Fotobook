@@ -7,7 +7,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    redirect_to profile_photos_path(params[:id])
+    if current_user.id == params[:id].to_i
+      # redirect to my profile
+      redirect_to index_user_photos_path(current_user)
+    else
+      redirect_to profile_photos_path(params[:id])
+    end
   end
 
   def new
