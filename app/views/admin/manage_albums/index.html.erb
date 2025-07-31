@@ -3,7 +3,7 @@
 <section class="m-5 mt-3">
     <h1 class="text-center"><%= t('sidebar.mng_albums') %></h1>
 
-    <div class="w-100 d-flex flex-wrap justify-content-center my-5 gap-5">
+    <div class="w-100 d-flex flex-wrap justify-content-center my-5 gap-md-5 gap-3">
         <% @albums.each do |album| %>
           <div class="album-card p-4">
             <div class="photo-stack">
@@ -16,7 +16,11 @@
 
             <div class="title-container d-flex flex-nowrap">
                 <p class="m-0 truncate card-title"><%= album.title %></p>
-                <span class="ms-auto"><i class="fa-solid fa-pen-to-square fa-lg" title="<%= t('button.edit') %>"></i></span>
+                <span class="ms-auto">
+                    <%= link_to edit_admin_album_path(album) do %>
+                        <i class="fa-solid fa-pen-to-square fa-lg" title="<%= t('button.edit') %>"></i>
+                    <% end %>
+                </span>
             </div>        
           </div>
         <% end %>

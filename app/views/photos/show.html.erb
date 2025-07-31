@@ -10,7 +10,7 @@
 
         <div class="modal-header">
           <div class="modal-title">
-            <h4><%= @photo.title %></h4>
+            <h4><%= simple_format(@photo.title) %></h4>
             <div class="d-flex align-items-center gap-5 mt-3">
               <div class="d-flex align-items-center gap-2">
                 <p class="heart-count d-inline m-0"><%= @photo.hearts_count %></p>
@@ -28,8 +28,8 @@
         </div>
 
         <div class="modal-footer justify-content-between">
-          <p><%= @photo.description %></p>
-          
+          <p><%= simple_format(@photo.description) %></p>
+
           <%# data-bs-dismiss="modal" will be handled by Stimulus and Bootstrap %>
           <button type="button" class="ms-2 btn btn-danger" data-bs-dismiss="modal" >Close</button>
         </div>

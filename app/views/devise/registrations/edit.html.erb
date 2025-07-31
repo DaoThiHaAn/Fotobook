@@ -66,7 +66,7 @@
             <div class="col-md-6 p-0">
                 <div class="pw-field" data-controller="form">
                     <%= f.password_field :current_password, maxlength: 64, autocomplete: "new-password",
-                        data:{form_target: "pwField"}, require: true  %>
+                        data:{form_target: "pwField"}, required: true  %>
                     <i class="fa-solid fa-eye togglePw" data-form-target="eyeIcon" data-action="click->form#togglePw"></i>
                 </div>
                <% if f.object.errors[:current_password].any? %>

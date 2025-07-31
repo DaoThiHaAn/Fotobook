@@ -13,7 +13,7 @@ A MODAL THAT CAN LOOP OVER ALL OF ITS PHOTOS -->
 
         <div class="modal-header">
           <div class="modal-title">
-            <h4><%= @album.title %></h4>
+            <h4><%= simple_format(@album.title) %></h4>
             <div class="d-flex align-items-center gap-5 mt-3">
               <div class="d-flex align-items-center gap-2">
                 <p class="heart-count d-inline m-0"><%= @album.hearts_count %></p>
@@ -37,8 +37,8 @@ A MODAL THAT CAN LOOP OVER ALL OF ITS PHOTOS -->
                     <%= image_tag photo.image_path.url, class: "album-photo-modal-img", 
                     data: { album_modal_target: "photo", index: idx } %>
                     <div class="d-flex mt-2 text-muted">
-                        <p data-album-modal-target="currentIndex">1 </p>
-                        <p>/ <%= count %></p>
+                        <p data-album-modal-target="currentIndex">1</p>
+                        <p>&nbsp;/ <%= count %></p>
                     </div>
                 </div>
             <% end %>
@@ -49,7 +49,7 @@ A MODAL THAT CAN LOOP OVER ALL OF ITS PHOTOS -->
         </div>
 
         <div class="modal-footer justify-content-between">
-          <p><%= @album.description %></p>
+          <p><%= simple_format(@album.description) %></p>
           <button type="button" class="ms-2 btn btn-danger" data-bs-dismiss="modal" >Close</button>
         </div>
 

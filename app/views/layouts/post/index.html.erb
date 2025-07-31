@@ -41,11 +41,11 @@
             </div>
 
             <h6 class="truncate">
-                <%= post.title %>
+                <%= simple_format(post.title) %>
             </h6>
 
             <p class="post-description truncate mb-4">
-                <%= post.description %>
+                <%= simple_format(post.description) %>
             </p>
 
             <div class="post-footer mt-auto d-flex flex-wrap justify-content-between" data-controller="post">

@@ -110,7 +110,6 @@ end
   end
 
   def update
-      @album.update(album_params)
       if @album.update(album_params)
         # Update photos if any
         files = params[:album][:image_path].reject { |f| f.blank? }

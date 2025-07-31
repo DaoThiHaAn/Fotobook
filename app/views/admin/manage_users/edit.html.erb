@@ -21,17 +21,17 @@
         <h2 class="text-center my-5"><%= t('profile.basic_info') %></h2>
         <div class="row mb-3">
             <%= f.label :first_name, t('profile.fname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
-            <%= f.text_field :first_name, maxlength: 25, class: "col-md-6" %>
+            <%= f.text_field :first_name, maxlength: 25, class: "col-md-6", required: true %>
         </div>
 
         <div class="row mb-3">
             <%= f.label :last_name, t('profile.lname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
-            <%= f.text_field :last_name, maxlength: 25, class: "col-md-6" %>
+            <%= f.text_field :last_name, maxlength: 25, class: "col-md-6", required: true %>
         </div>
 
         <div class="row mb-3">
             <%= f.label :email, t('profile.email'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
-            <%= f.email_field :email, maxlength: 25, class: "col-md-6" %>
+            <%= f.email_field :email, maxlength: 25, class: "col-md-6", required: true %>
         </div>
 
         <div class="row mb-3">
