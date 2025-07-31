@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
       )
 
       if @favorite.destroy
-        render json: { status: "liked" }
+        render json: { status: "unliked" }
       else
         render json: { status: "error", message: t("message.follow_error") }
       end

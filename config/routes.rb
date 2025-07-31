@@ -32,7 +32,7 @@ Rails.application.routes.draw do
         get "/followers", to: "users#index_followers", as: :followers
         get "/followings", to: "users#index_followings", as: :followings
         post "favorites/:post_type/:post_id", to: "favorites#add_to_fav", as: :add_favorites
-        delete "favorites/:post_type/:post_id", to: "favorites#add_to_fav", as: :remove_favorites
+        delete "favorites/:post_type/:post_id", to: "favorites#remove_from_fav", as: :remove_favorites
 
         resources :photos, shallow: true, except: [ :index ] do
             collection do

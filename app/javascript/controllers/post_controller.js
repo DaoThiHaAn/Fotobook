@@ -51,7 +51,7 @@ export default class extends Controller {
     toggleHeart(event) {
         const heartIcon = event.currentTarget;
         const heartCount = parseInt(this.heartCountTarget.textContent, 10);
-        const isLiking = heartIcon.classList.contains("fa-regular")
+        const isLiking = heartIcon.classList.contains("fa-solid")
         const postId = heartIcon.dataset.postId
         const postType = heartIcon.dataset.postType
         const userId = heartIcon.dataset.userId
