@@ -1,7 +1,7 @@
 <!-- TODO: manage users page -->
 <h1 class="fw-bold text-center my-4 admin-mng-title"><%= t('sidebar.mng_users') %></h1>
 
-<div class="m-5 table-responsive-md d-flex justify-content-center align-items-center">
+<div class="m-5 table-responsive d-flex justify-content-center align-items-center">
 <table class="table table-hover align-middle">
     <thead class="fw-bold">
       <tr>
@@ -14,20 +14,23 @@
       </tr>
     </thead>
     <tbody class="table-group-divider custom">
-      <% 20.times do %>
+      <% @users.each do |user| %>
         <tr>
-          <td><%= "1" %></td>
-          <td><%= "long longan" %></td>
-          <td><%= "long long cd" %></td>
-          <td class="email-cell"><%= "longlonglonglongemail@gmail.com" %></td>
-          <td><%= "4,56pm 23/43/2383" %></td>
-          <td class="text-center">
-            <%= link_to edit_admin_user_path(1), class: "save custom-primary-btn shadow-sm me-2" do %>
-              <%= t('button.edit') %>
-            <% end %>
-            <%= link_to user_path(1), method: :delete, class: "btn btn-danger shadow-sm" do %>
-              <%= t('button.delete') %>
-            <% end %>
+          <td><%= user.id %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td class="email-cell"><%= user.email %></td>
+            <td><%= user.last_sign_in_at&.strftime('%H:%M:%S %d/%m/%Y') %></td>
+          <td>
+            <div class="d-flex dlex-wrap">
+                <%= link_to edit_admin_user_path(user.id), class: "save custom-primary-btn shadow-sm me-2" do %>
+                  <%= t('button.edit') %>
+                <% end %>
+                <%= button_to admin_user_path(user.id), method: :delete, class: "btn btn-danger shadow-sm",
+                    data: { turbo_confirm: t('message.delete_confirm') } do %>
+                  <%= t('button.delete') %>
+                <% end %>
+            </div>
           </td>
         </tr>
       <% end %>
@@ -35,20 +38,7 @@
 </table>
 </div>
 
-<nav class="nav-pagination" aria-label="Page navigation example text-center">
-  <ul class="pagination justify-content-center my-5">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<!-- Kaminari pagination -->
+<div class="d-flex mt-5 px-3 w-100 justify-content-center mt-auto">
+<%= paginate @users, window: 2 %>
+</div>

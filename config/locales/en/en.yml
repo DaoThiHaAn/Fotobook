@@ -28,6 +28,14 @@
 #       enabled: "ON"
 
 en:
+  views:
+      pagination:
+        first: "« FIRST"
+        last: "LAST »"
+        previous: "‹ PREV"
+        next: "NEXT ›"
+        truncate: "…"
+
   nav:
     app_name: "Fotobook"
     admin: "Fotobook Admin"
@@ -80,6 +88,7 @@ en:
     send: "Send"
 
   profile:
+    user_id: "User ID"
     edit_title: "Edit User Profile"
     email: "Email"
     fname: "First Name"
@@ -136,6 +145,7 @@ en:
     del_icon: "Remove this photo"
     warning: "Warning!"
     delete_acc: "Are you sure to delete your account?"
+    delete_confirm: "Are you sure to delete this account?"
     delete_photo: "Are you sure to delete this photo?"
     delete_album: "Are you sure to delete this album?"
     update_success: "Profile updated successfully!"
@@ -160,3 +170,5 @@ en:
     album_deleted_failed: "Failed to delete album. Please try again."
     upload_1_photo: "You must upload at least 1 photo!"
     follow_error: "Can't do the action! Please try again!"
+    delete_acc_success: "Account is deleted successfully"
+    delete_acc_failed: "Failed to delete account!"

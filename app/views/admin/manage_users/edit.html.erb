@@ -7,25 +7,26 @@
     </div>
     <hr class="w-100"/>
 
-    <!-- TODO: handle form -->
-    <%= form_with url: user_path(1), method: :patch do |f| %>
-        <div class="change-avatar m-auto">
-            <%= image_tag "demo-avatar.png", alt: t('profile.avatar')%>
-            <!-- TODO: change avatar -->
-            <button class="change-btn">
+    <%= form_with model: @user, url: admin_user_path(@user), class: "w-100" do |f| %>
+        <div class="change-avatar m-auto" data-controller="image-upload">
+            <%= image_tag @user.get_avatar, alt: t('profile.avatar'), data: {image_upload_target: "preview"}, class:  style_avatar(@user) %>
+            
+            <%= f.file_field :avatar, id: "avatar_input", accept: "image/jpeg, image/png, image/gif",  
+                data: { image_upload_target: "fileField", action: "change->image-upload#previewAvatar" } %>
+            <button class="change-btn" data-image-upload-target="imgBtn" data-action="click->image-upload#changeAvatar" type="button"> <!-- must declare type btn in order not to misbehave -->
                 <%= t('button.change')%>
             </button>
         </div>
 
         <h2 class="text-center my-5"><%= t('profile.basic_info') %></h2>
         <div class="row mb-3">
-            <%= f.label :fname, t('profile.fname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
-            <%= f.text_field :fname, maxlength: 25, class: "col-md-6" %>
+            <%= f.label :first_name, t('profile.fname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :first_name, maxlength: 25, class: "col-md-6" %>
         </div>
 
         <div class="row mb-3">
-            <%= f.label :lname, t('profile.lname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
-            <%= f.text_field :lname, maxlength: 25, class: "col-md-6" %>
+            <%= f.label :last_name, t('profile.lname'), class: "col-md-3 col-form-label me-3 text-md-end text-start fw-bold" %>
+            <%= f.text_field :last_name, maxlength: 25, class: "col-md-6" %>
         </div>
 
         <div class="row mb-3">
@@ -34,8 +35,8 @@
         </div>
 
         <div class="row mb-3">
-            <%= f.label :active, t('profile.active'), class: "form-check-label col-form-label col-3 me-3 text-md-end text-start fw-bold" %>
-            <%= f.check_box :active, class: "custom form-check-input col-6" %>
+            <%= f.label :is_active, t('profile.active'), class: "form-check-label col-form-label col-3 me-3 text-md-end text-start fw-bold" %>
+            <%= f.check_box :is_active, class: "custom form-check-input col-6" %>
         </div>
 
         <div class="d-flex flex-column flex-md-row mt-5">
@@ -44,9 +45,10 @@
     <% end %>
 
     <!-- TODO: delete account -->
-    <button class="delete-btn mb-5">
-        <i class="fa-solid fa-trash me-2"></i>
-        <%= t('button.delete_this_acc') %>
-    </button>   
+    <%= button_to admin_user_path(@user), method: :delete, 
+        data: { turbo_confirm: t('message.delete_confirm') }, class: "delete-btn mb-5" do %>
+      <i class="fa-solid fa-trash me-2"></i>
+      <%= t('button.delete_this_acc') %>
+    <% end %>   
 
 </section>

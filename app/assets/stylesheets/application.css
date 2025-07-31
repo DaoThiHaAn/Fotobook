@@ -18,6 +18,7 @@
 @import url("edit_post.css");
 @import url("manage_user.css");
 @import url("admin_post.css");
+@import url("pagination.css");
 
 :root {
 --dark-blue: #3C5999;

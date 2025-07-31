@@ -7,7 +7,15 @@ class PhotosController < ApplicationController
 
   # GET /photos or /photos.json
   def redirect_root
-    redirect_to guest_photos_path
+    if user_signed_in?
+      if current_user.is_admin?
+        redirect_to admin_users_path
+      else
+        redirect_to user_tab_photos_path(current_user, "feeds")
+      end
+    else
+      redirect_to guest_photos_path
+    end
   end
 
   def index
@@ -17,7 +25,6 @@ class PhotosController < ApplicationController
       render template: "layouts/post/index", locals: { title: "Photos", is_photo: true }
     else
       # If logged in, redirect to feeds
-      redirect_to user_tab_photos_path(current_user, "feeds")
     end
   end
 

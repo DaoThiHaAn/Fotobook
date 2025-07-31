@@ -1,12 +1,28 @@
 class UserMailer < ApplicationMailer
-  default from: email_address_with_name("daothihaan@gmail.com", "Fotobook Team")
-
-  def welcome_email
-    @user = User.current_user
-    @root_url = Rails.application.routes.url_helpers.root_url
+  def update_profile_email
+    @user = params[:user]
     mail(
-      to: @user.email
-      subject: "Welcome to Fotobook"
+      to: @user.email,
+      subject: "FOTOBOOK ACCOUNT UPDATED BY ADMIN",
+      template_name: "profile_update_email"
     )
+  end
 
+  def inactive_profile_email
+    @user = params[:user]
+    mail(
+      to: @user.email,
+      subject: "FOTOBOOK ACCOUNT INACTIVE",
+      template_name: "profile_inactive_email"
+    )
+  end
+
+  def delete_profile_email(email)
+    @email = email
+    mail(
+      to: @email,
+      subject: "FOTOBOOK ACCOUNT DELETED",
+      template_name: "profile_delete_email"
+    )
+  end
 end

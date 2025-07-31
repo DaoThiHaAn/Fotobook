@@ -1,13 +1,10 @@
 <section class="profile-form-container d-flex flex-column align-items-center justify-content-center gap-4 m-4">
     <%= render partial: 'layouts/form_title', locals: { title: t('profile.edit_title') } %>
 
-    <!-- TODO: handle form -->
     <%= form_with(model: @user, url: user_path(@user), method: :patch, data: {turbo: false}) do |f| %>
         <div class="change-avatar m-auto" data-controller="image-upload">
             <%= image_tag @user.get_avatar, alt: t('profile.avatar'), data: {image_upload_target: "preview"}, class:  style_avatar(@user) %>
             
-            <!-- TODO: change avatar -->
-            <!-- Hidden file field -->
             <%= f.file_field :avatar, id: "avatar_input", accept: "image/jpeg, image/png, image/gif",  
                 data: { image_upload_target: "fileField", action: "change->image-upload#previewAvatar" } %>
             <button class="change-btn" data-image-upload-target="imgBtn" data-action="click->image-upload#changeAvatar" type="button"> <!-- must declare type btn in order not to misbehave -->
@@ -126,7 +123,7 @@
 
     <!-- TODO: delete account -->
     <%= button_to registration_path(resource_name), method: :delete, 
-        data: { confirm: t('button.delete_acc'), turbo_confirm: t('message.delete_acc') }, class: "delete-btn mb-5" do %>
+        data: { turbo_confirm: t('message.delete_acc') }, class: "delete-btn mb-5" do %>
       <i class="fa-solid fa-trash me-2"></i>
       <%= t('button.delete_acc') %>
     <% end %>

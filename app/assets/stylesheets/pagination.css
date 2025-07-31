@@ -1,0 +1,30 @@
+.pagination {
+    align-items: center;
+    margin-top: auto;
+    flex-wrap: wrap;
+    color: var(--primary-btn-hover)
+}
+
+.pagination *:hover {
+    background-color: whitesmoke
+}
+
+.page, .first, .next, .prev, .last {
+    padding: 5px 15px;
+    border: 1px solid rgb(225, 225, 225)
+}
+
+.first {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.last {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.page.current {
+    color: var(--dark-blue);
+    font-weight: 900
+}

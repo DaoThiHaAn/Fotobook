@@ -1,0 +1,30 @@
+<div class="email-container">
+  <h1>Hi, <%= @user.email %>!</h1>
+
+  <h2>Your Fotobook Account Has Been Deactivated</h2>
+
+  <p>
+    We’re writing to inform you that your Fotobook account has been set to inactive by an administrator. This means you will not be able to log in or access your profile until your account is reactivated.
+  </p>
+
+  <p>
+    <strong>What this means:</strong>
+  </p>
+  <ul>
+    <li>Your profile and photos are no longer publicly visible.</li>
+    <li>You cannot upload, edit, or share new content.</li>
+    <li>Some site features may be restricted until reactivation.</li>
+  </ul>
+
+  <p>
+    If you believe this was done in error or have any questions about this status change, please reach out to our support team.
+  </p>
+
+  <p>
+    Thank you for being a part of the Fotobook community.
+  </p>
+
+  <p>
+    &copy; <%= Time.current.year %> Fotobook. All rights reserved.
+  </p>
+</div>

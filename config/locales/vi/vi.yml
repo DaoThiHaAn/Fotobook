@@ -4,6 +4,13 @@ vi:
       default: "%d/%m/%Y %H:%M"
       short: "%H:%M"
 
+  views:
+      pagination:
+        first: "« Trang đầu"
+        last: "Trang cuối »"
+        previous: "‹ Trước"
+        next: "Sau ›"
+        truncate: "…"
   nav:
     app_name: "Fotobook"
     admin: "Quản trị viên Fotobook"
@@ -56,6 +63,7 @@ vi:
     send: "Gửi"
 
   profile:
+    user_id: Mã người dùng
     edit_title: "Chỉnh sửa hồ sơ người dùng"
     email: "Email"
     fname: "Tên"
@@ -137,3 +145,5 @@ vi:
     album_deleted_failed: "Xóa tập ảnh thất bại. Vui lòng thử lại."
     upload_1_photo: "Bạn phải tải lên ít nhất 1 ảnh!"
     follow_error: "Không thể thực hiện hành động! Vui lòng thử lại!"
+    delete_acc_success: "Xóa tài khoản thành công"
+    delete_acc_failed: "Xóa thất bại!"

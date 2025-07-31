@@ -5,19 +5,22 @@
         <%if user_signed_in?%>
             <nav class="nav flex-column">
                 <!-- TODO: Authorization-->
-            <% if current_user.is_admin %>        
-                <a class="nav-link <%= highlight_active_tab("photos") %>sidebar-link" href="#">
-                    <i class="fa-solid fa-images me-2"></i>
-                    <%= t('sidebar.mng_photos')%>
-                </a>
-                <a class="nav-link <%= highlight_active_tab("albums") %> sidebar-link" href="#">
-                    <i class="fa-solid fa-folder me-2"></i>
-                    <%= t('sidebar.mng_albums')%>
-                </a>
-                <%= link_to admin_users_path, class: "sidebar-link #{highlight_active_tab("users")}" do %>
+            <% if current_user.is_admin %>  
+                <%= link_to admin_users_path, class: "nav-link sidebar-link #{highlight_active_tab("users")}" do %>
                     <i class="fa-solid fa-users me-2"></i>
                     <%= t('sidebar.mng_users')%>
                 <% end %>
+
+                <%= link_to admin_photos_path, class: "nav-link sidebar-link #{highlight_active_tab("photos")}" do %>
+                    <i class="fa-solid fa-images me-2"></i>
+                    <%= t('sidebar.mng_photos')%>
+                <% end %>
+
+                <%= link_to admin_albums_path, class: "nav-link sidebar-link #{highlight_active_tab("albums")}" do %>
+                    <i class="fa-solid fa-folder me-2"></i>
+                    <%= t('sidebar.mng_albums')%>
+                <%end%>
+
 
             <%else%>
                 <%= link_to user_tab_photos_path(current_user.id, "feeds"), class: "nav-link sidebar-link #{highlight_active_tab("feeds")}" do %>
@@ -50,18 +53,20 @@
             <nav class="nav flex-column">
                 <!-- TODO: Authorization-->
             <% if current_user.is_admin %>        
-                <a class="nav-link <%= highlight_active_tab("photos") %>sidebar-link" href="#">
-                    <i class="fa-solid fa-images me-2"></i>
-                    <%= t('sidebar.mng_photos')%>
-                </a>
-                <a class="nav-link <%= highlight_active_tab("albums") %> sidebar-link" href="#">
-                    <i class="fa-solid fa-folder me-2"></i>
-                    <%= t('sidebar.mng_albums')%>
-                </a>
-                <%= link_to admin_users_path, class: "sidebar-link #{highlight_active_tab("users")}" do %>
+                <%= link_to admin_users_path, class: "nav-link sidebar-link #{highlight_active_tab("users")}" do %>
                     <i class="fa-solid fa-users me-2"></i>
                     <%= t('sidebar.mng_users')%>
                 <% end %>
+
+                <%= link_to admin_photos_path, class: "nav-link sidebar-link #{highlight_active_tab("photos")}" do %>
+                    <i class="fa-solid fa-images me-2"></i>
+                    <%= t('sidebar.mng_photos')%>
+                <% end %>
+
+                <%= link_to admin_albums_path, class: "nav-link sidebar-link #{highlight_active_tab("albums")}" do %>
+                    <i class="fa-solid fa-folder me-2"></i>
+                    <%= t('sidebar.mng_albums')%>
+                <%end%>
 
             <%else%>
                 <%= link_to user_tab_photos_path(current_user.id, "feeds"), class: "nav-link sidebar-link #{highlight_active_tab("feeds")}" do %>

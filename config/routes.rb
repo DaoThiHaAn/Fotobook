@@ -61,8 +61,8 @@ Rails.application.routes.draw do
     delete "/follows/:id", to: "follows#destroy"
 
   namespace :admin do
-    resources :users, only: [ :index, :edit, :update ], controller: "manage_users"
-    resources :albums, only: [ :index, :edit, :update ], controller: "manage_albums"
-    resources :photos, only: [ :index, :edit, :update ], controller: "manage_photos"
+    resources :users, only: [ :index, :edit, :update, :destroy ], controller: "manage_users"
+    resources :albums, only: [ :index, :edit, :update, :destroy ], controller: "manage_albums"
+    resources :photos, only: [ :index, :edit, :update, :destroy ], controller: "manage_photos"
   end
 end
