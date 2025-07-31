@@ -28,7 +28,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_limit: [ 300, 300 ]
+  process resize_to_limit: [ 450, 450 ]
 
   def size_range
     1..5.megabytes

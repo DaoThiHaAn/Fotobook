@@ -123,11 +123,6 @@
     color: rgb(178, 178, 178);
 }
 
-.modal-body img {
-    max-width: 80%;
-    max-height: 80%
-} 
-
 .post.avatar.fake {
     box-shadow: none;
     border-width: 1px
