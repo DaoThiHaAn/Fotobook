@@ -57,7 +57,8 @@ Rails.application.routes.draw do
         get "/followings", to: "profiles#index_followings", as: :followings # profile_followings
     end
 
-    resources :follows, only: [ :create, :destroy ]
+    post "/follows/:id", to: "follows#create"
+    delete "/follows/:id", to: "follows#destroy"
 
   namespace :admin do
     resources :users, only: [ :index, :edit, :update ], controller: "manage_users"

@@ -4,7 +4,7 @@
 <section class="general-info d-flex m-3 gap-4 container-fluid">
   <%= image_tag @target_person.get_avatar, alt: t('profile.avatar'), class: "profile-avatar #{style_avatar(@target_person)}" %>
 
-  <div class="d-flex flex-column gap-3">
+  <div class="d-flex flex-column justify-content-center gap-3">
     <% unless @is_public%>
       <%= link_to edit_user_registration_path do %>
         <button class="edit-profile-btn">
@@ -13,8 +13,10 @@
       <% end %>
     <% else %>
       <!-- bigger follow btn-->
-      <%= render "layouts/follow_btn", is_following: @is_following, profile_id: @target_person.id, bigger: true %>
-    <% end %>
+      <%if user_signed_in? %>
+      <%= render "layouts/follow_btn", is_following: check_follow(current_user.profile, @target_profile), profile_id: @target_person.id, bigger: true %>
+    <% end
+    end %>
 
     <h1><%= "#{@target_person.first_name} #{@target_person.last_name}" %></h1>
 

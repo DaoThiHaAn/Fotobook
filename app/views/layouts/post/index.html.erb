@@ -34,9 +34,9 @@
                     </div>
                 <% end %>
 
-                <!-- TODO: In the "feeds", not have Follow button -->
-                <%if params[:tab] != "feeds"%>
-                <%= render "layouts/follow_btn", is_following: false, profile_id: post.user_id%>
+                <!-- TODO: In the "feeds" and "guest", not have Follow button -->
+                <%if user_signed_in? && params[:tab] != "feeds"%>
+                    <%= render "layouts/follow_btn", is_following: false, profile_id: post.user_id%>
                 <% end %>
             </div>
 

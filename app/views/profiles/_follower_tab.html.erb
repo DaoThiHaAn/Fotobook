@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <% if current_user.id != follower.user_id %>
+        <% if !current_user.nil? && current_user.id != follower.user_id %>
             <%= render "layouts/follow_btn", profile_id: follower.user_id, is_following: check_follow(current_user.profile, follower) %>
         <% end %>
     </div>

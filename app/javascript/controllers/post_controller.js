@@ -13,18 +13,23 @@ export default class extends Controller {
         const isFollowing = followButton.classList.contains("active");
         const followeeId = followButton.dataset.followeeId;
 
-        const url = "/follows";
+        const url = `/follows/${followeeId}`;
         const method = isFollowing ? "DELETE" : "POST";
-        const body = JSON.stringify({ followee_id: followeeId });
-
-        fetch(url, {
+        const headers = {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        };
+        const options = {
             method: method,
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content  // rails need this token for non-GET method
-            },
-            body: body
-        })
+            headers: headers
+        };
+
+        // Only add body for POST
+        if (method === "POST") {
+            headers["Content-Type"] = "application/json";
+            options.body = JSON.stringify({ id: followeeId });
+        }
+
+        fetch(url, options)
         .then(response => response.json())
         .then(data => {
             if (data.status === "error") {

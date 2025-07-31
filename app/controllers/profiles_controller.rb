@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    if current_user.id == params[:id].to_i
+    if current_user&.id == params[:id].to_i
       # redirect to my profile
       redirect_to index_user_photos_path(current_user)
     else
@@ -65,7 +65,7 @@ class ProfilesController < ApplicationController
     @followers = Follow.where(followee_id: @target_profile.user_id).pluck(:follower_id)
     @follower_profiles = Profile.where(user_id: @followers)
     @is_public = true
-    @is_following = check_follow(current_user.profile, @target_profile)
+    # @is_following = check_follow(current_user.profile, @target_profile)
     render "profiles/show"
   end
 
@@ -76,7 +76,7 @@ class ProfilesController < ApplicationController
     @followings = Follow.where(follower_id: @target_profile.user_id).pluck(:followee_id)
     @following_profiles = Profile.where(user_id: @followings)
     @is_public = true
-    @is_following = check_follow(current_user.profile, @target_profile)
+    # @is_following = check_follow(current_user.profile, @target_profile)
     render "profiles/show"
   end
 
