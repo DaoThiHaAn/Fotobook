@@ -12,10 +12,29 @@
           <div class="modal-title">
             <h4><%= simple_format(@photo.title) %></h4>
             <div class="d-flex align-items-center gap-5 mt-3">
-              <div class="d-flex align-items-center gap-2">
-                <p class="heart-count d-inline m-0"><%= @photo.hearts_count %></p>
-                <i class="fa fa-heart fa-lg align-self-center me-2 heart-count"></i>
+              
+              <div class="d-flex align-items-center gap-2" data-controller="post">
+                  <% if !user_signed_in? || current_user.is_admin %>
+                      <i class="fa-solid fa-heart fa-lg align-self-center me-2 heart-count"></i>
+                  <% else
+                      is_liked = check_favorite(current_user.profile, @photo, "Photo")
+                      icon = is_liked ? "fa-solid" : "fa-regular"
+                      title_txt = is_liked ? t('message.unlike') : t('message.like')
+                  %>
+                  <i class="<%=icon%> fa-heart fa-lg align-self-center me-2 heart-count", title="<%= title_txt%>"
+                      data-action="click->post#toggleHeart"
+                      data-like-title="<%=t('message.like')%>"
+                      data-unlike-title="<%= t('message.unlike') %>"
+                      data-post-id = "<%= @photo.id %>"
+                      data-post-type = "Photo"
+                      data-user-id = "<%=current_user.id%>"></i>
+                  <%end%>
+
+                  <p class="heart-count d-inline m-0" data-post-target="heartCount">
+                      <%= @photo.hearts_count %>
+                  </p>
               </div>
+              
               <p class="text-muted m-0"><%= @photo.updated_at.strftime("%H:%M:%S %-d/%-m/%Y") %></p>
             </div>
           </div>
