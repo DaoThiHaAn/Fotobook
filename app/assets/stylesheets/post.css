@@ -135,6 +135,10 @@
     border-width: 1px
 }
 
+.fa-heart {
+    cursor: pointer;
+}
+
 @media  screen and (max-width: 992px) {
     .post-description {
         -webkit-line-clamp: 4;
