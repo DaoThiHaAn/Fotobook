@@ -4,6 +4,9 @@
 
 GUEST FEED + SWITCH LANGUAGE: https://youtu.be/5OKGbsNiDro
 
+RESPONSIVE MODE: 
+    https://youtu.be/XCUV1SX56QE
+    https://youtu.be/fKF_AZN6qiA
 
 AUTHENTICATE:
     - Login / Signup: https://youtu.be/THLHDpYy86c 
@@ -23,8 +26,9 @@ PHOTO:
 ALBUM:
     - Add/edit/delete: https://youtu.be/zzIQRobyCwg
 
-FOLLOW / UNFOLLW: https://youtu.be/6qQgFvMJOL4
+FOLLOW / UNFOLLOW: https://youtu.be/6qQgFvMJOL4
 
+LIKE / UNLIKE POSTS: https://youtu.be/CIPMk6APFmI
 
 ADMIN:
     - Login, edit users/photos, block inactive users: https://youtu.be/ir-t7k6ILqs
