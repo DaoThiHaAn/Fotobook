@@ -29,11 +29,13 @@
             </div>
             <% end %>
 
+            <% unless is_public %>
             <%= link_to edit_album_path(album), class: "edit-album-btn" do%>
                 <button>
                     <%= t('button.edit')%>
                 </button>
-            <%end%>
+            <%end
+            end%>
 
             <!-- TODO: Private icon only shown in My Profile-->
             <% unless album.is_public %>
