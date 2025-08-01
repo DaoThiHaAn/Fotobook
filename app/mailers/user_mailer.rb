@@ -17,8 +17,8 @@ class UserMailer < ApplicationMailer
     )
   end
 
-  def delete_profile_email(email)
-    @email = email
+  def delete_profile_email
+    @email = params[:email]
     mail(
       to: @email,
       subject: "FOTOBOOK ACCOUNT DELETED",

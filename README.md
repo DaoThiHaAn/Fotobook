@@ -34,3 +34,5 @@ ADMIN:
     - Login, edit users/photos, block inactive users: https://youtu.be/ir-t7k6ILqs
     - View / Edit album: https://youtu.be/2JNvNhR_cDc
     - Delete album: https://youtu.be/p_mA8WJBrPU
+    - Delete acc: https://youtu.be/CREfXOpqUz8
+    
