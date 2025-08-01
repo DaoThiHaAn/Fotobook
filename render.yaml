@@ -8,12 +8,42 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite-db
+          name: fotobook-pg
+          property: connectionString
+      - key: QUEUE_DATABASE_URL
+        fromDatabase:
+          name: fotobook-pg
+          property: connectionString
+      - key: CACHE_DATABASE_URL
+        fromDatabase:
+          name: fotobook-pg
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
         value: 2
+
+  - type: worker
+    name: solid-queue-worker
+    runtime: ruby
+    plan: free
+    startCommand: bundle exec solid_queue:work
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fotobook-pg
+          property: connectionString
+      - key: QUEUE_DATABASE_URL
+        fromDatabase:
+          name: fotobook-pg
+          property: connectionString
+      - key: CACHE_DATABASE_URL
+        fromDatabase:
+          name: fotobook-pg
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
 databases:
-  - name: mysite-db
+  - name: fotobook-pg
     plan: free
