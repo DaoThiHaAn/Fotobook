@@ -61,6 +61,8 @@ Rails.application.routes.draw do
 
     post "/follows/:id", to: "follows#create"
     delete "/follows/:id", to: "follows#destroy"
+    get "/search/photos", to: "search#photos", as: :search_photos
+    get "/search/albums", to: "search#albums", as: :search_albums
 
   namespace :admin do
     resources :users, only: [ :index, :edit, :update, :destroy ], controller: "manage_users"

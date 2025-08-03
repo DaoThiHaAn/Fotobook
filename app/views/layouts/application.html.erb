@@ -81,13 +81,15 @@
       <%= render 'layouts/sidebar' %>
       
       <main class="content-area">
-        <% if content_for?(:tab_bar)%>
-          <%= yield(:tab_bar)%>
-        <% end %>
+        <%=turbo_frame_tag "seach" do%>
+          <% if content_for?(:tab_bar)%>
+            <%= yield(:tab_bar)%>
+          <% end %>
 
-        <div class="py-3 px-2 h-100">
-        <%= yield %>
-        </div>
+          <div class="py-3 px-2 h-100">
+          <%= yield %>
+          </div>
+        <% end %>
       </main>
     </div>
 

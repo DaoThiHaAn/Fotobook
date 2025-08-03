@@ -16,9 +16,29 @@
 }
 
 .searchbar {
-    min-width: 25%;
+    min-width: 30%;
     max-width: 50%;
     margin: 0 auto;
+    position: relative;
+}
+
+.searchbar input {
+    width: 100%;
+    padding-right: 30px; /* Space for the search button */
+}
+
+.search-btn {
+    background-color: transparent;
+    color: var(--muted);
+    border: none;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-btn:hover {
+    color: black;
 }
 
 .lang-icon {

@@ -1,20 +1,10 @@
-<% content_for :title, title %>
-
-<% content_for :tab_bar do %>
-  <%= render "layouts/main_tabs" %>
-<% end %>
-
-<%  # polymorphic type must be capitalize the first letter
-    post_type = is_photo ? "Photo" : "Album" 
-%>
-
-
+<!-- Local params: posts, is_photo-->
 <section class="px-3 pb-5 d-flex flex-wrap justify-content-around card-container">
-<% if @posts.empty? %>
+<% if posts.empty? %>
   <h2 class="text-muted text-uppercase"><%= t('message.no_posts') %></h2>
 <% else %>
 
-<% @posts.each do |post| %>
+<% posts.each do |post| %>
     <div class="post-card d-flex flex-nowrap" title="<%= t('message.click_post')%>">
 
         <% if is_photo %>

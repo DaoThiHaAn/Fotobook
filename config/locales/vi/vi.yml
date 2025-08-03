@@ -14,6 +14,7 @@ vi:
   nav:
     app_name: "Fotobook"
     admin: "Quản trị viên Fotobook"
+    search_photo_album: "Tìm kiếm Ảnh / Tập ảnh"
 
   sidebar:
     feeds: "Bảng tin"
