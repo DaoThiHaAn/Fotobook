@@ -23,9 +23,13 @@
 
         <div class="collapse navbar-collapse" id="navbar" data-navbar-target="collapse">
             <!-- TODO: SEARCH BAR (press enter to submit)-->
-            <form class="searchbar mb-3 mb-lg-0">
-                <input class="form-control" type="text" placeholder="Search Photo / Album">
-            </form>
+            <%= form_with url: search_photos_path, method: :get, local: true, class: "searchbar mb-3 mb-lg-0" do |f| %>
+                <%= f.text_field :q, placeholder: t('nav.search_photo_album'), class: "form-control", 
+                        value: params[:q] || ""  %>
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            <% end %>
             <!--  VIEW AUTHOURIZATION-->
             <ul class="navbar-nav ms-auto gap-3 align-items-center justify-content-start"> <!-- push these elements to the right-->  
                 <%unless user_signed_in?%>

@@ -39,6 +39,7 @@ en:
   nav:
     app_name: "Fotobook"
     admin: "Fotobook Admin"
+    search_photo_album: "Search Photo / Album"
 
   sidebar:
     feeds: "Feeds"

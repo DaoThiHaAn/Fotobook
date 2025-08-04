@@ -1,0 +1,15 @@
+<% content_for :title, "Search Albums/Photos" %>
+<% content_for :search_tab_bar do %>
+<div class="container-fluid main-tabs d-flex justify-content-center mb-3 mt-1 sticky-top" >
+    <div class="btn-group custom">
+        <%= link_to t('button.photo.one'), search_photos_path(q: @search),
+            class: "#{highlight_active_tab("photos")} tab-btn d-flex align-items-center justify-content-center"%>
+
+        <%= link_to t('button.album.one'), search_albums_path(q: @search),
+            class: "#{highlight_active_tab("albums")} tab-btn d-flex align-items-center justify-content-center"%>
+    </div>
+</div>
+<% end %>
+
+
+<%= render partial: "layouts/post/post", locals: {posts: @results, is_photo: @is_photo} %>
