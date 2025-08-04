@@ -4,13 +4,6 @@ class AlbumsController < ApplicationController
     before_action :set_album, only: %i[ show edit update destroy ]
     before_action -> { require_owner!(@photo) }, except: [ :index, :show, :index_profile ]
 
-  # Redirect root to show all posts of albums in guest mode
-
-  # GET /albums or /albums.json
-  def redirect_root
-    redirect_to guest_albums_path
-  end
-
   def index
       # Show all public albums in guest mode
       @posts = Album.all.includes(:photos, profile: :user).where(is_public: true).order(updated_at: :desc)
@@ -30,7 +23,7 @@ class AlbumsController < ApplicationController
   end
 
   def index_feeds
-    # TODO: Show all public albums of people who u are following
+    # Show all public albums of people who u are following
     following_ids = Follow.where(follower_id: current_user.id).pluck(:followee_id)
     @posts = Album.where(user_id: following_ids, is_public: true).includes(:profile).order(updated_at: :desc)
     render template: "layouts/post/index", locals: { title: "Albums", is_photo: false }
@@ -44,7 +37,7 @@ class AlbumsController < ApplicationController
   end
 
   def index_user
-    # TODO: show all albums in your own profile (only u can view)
+    # Show all albums in your own profile (only u can view)
     @target_person = current_user
     @target_profile = @target_person.profile
     @albums = @target_profile.albums.order(updated_at: :desc)
