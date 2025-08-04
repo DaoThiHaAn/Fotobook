@@ -30,6 +30,8 @@ FOLLOW / UNFOLLOW: https://youtu.be/6qQgFvMJOL4
 
 LIKE / UNLIKE POSTS: https://youtu.be/CIPMk6APFmI
 
+SEARCH ALBUMS / PHOTOS: https://youtu.be/v02hVhnK-Ak
+
 ADMIN:
     - Login, edit users/photos, block inactive users: https://youtu.be/ir-t7k6ILqs
     - View / Edit album: https://youtu.be/2JNvNhR_cDc
